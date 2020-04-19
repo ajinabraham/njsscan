@@ -43,7 +43,7 @@
   description: The Vue.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
-  pattern: v-html=(\'|").*(\'|")
+  pattern: v-html=[\'|"].*[\'|"]
   severity: error
   input_case: exact
   cwe: CWE-79
