@@ -1,0 +1,16 @@
+rules:
+  - id: node_sqli_injection
+    patterns:
+      - pattern-inside: |
+          $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {
+              ...
+          });
+      - pattern-either:
+          - pattern: |
+              $CON.query("..." + $REQ.$QUERY.$VAR + "..." + $REQ.$QUERY.$VAR2 + "...", ...)
+          - pattern: |
+              $CON.query("..." + $REQ.$QUERY.$VAR + "..." , ...)
+    message: sqli
+    languages:
+      - js
+    severity: ERROR

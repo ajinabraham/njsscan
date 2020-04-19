@@ -4,10 +4,26 @@ from setuptools import (
     setup,
 )
 
+from pathlib import Path
+
+
+def read(rel_path):
+    init = Path(__file__).resolve().parent / rel_path
+    return init.read_text('utf-8', 'ignore')
+
+
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            return line.split('\'')[1]
+    else:
+        raise RuntimeError('Unable to find version string.')
+
+
 description = ('Something awesome is coming')
 setup(
     name='njsscan',
-    version='0.0.1',
+    version=get_version('njsscan/__init__.py'),
     description=description,
     author='Ajin Abraham',
     author_email='ajin25@gmail.com',
