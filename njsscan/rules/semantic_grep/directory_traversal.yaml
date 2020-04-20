@@ -80,6 +80,12 @@ rules:
     patterns:
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
+      - pattern-not: |
+          $X.createReadStream("...", ...)
+      - pattern-not: |
+          $X.readFile("...", ...)
+      - pattern-not: |
+          $X.readFileSync("...", ...)
       - pattern-either:
           - pattern: |
               $X.createReadStream(...)
@@ -87,6 +93,7 @@ rules:
               $X.readFile(...)
           - pattern: |
               $X.readFileSync(...)
+
     message: >-
       Make sure that untruseted user input does not reach the functions
       readFile()/readFileSync()/createReadStream(). This may result in Directory

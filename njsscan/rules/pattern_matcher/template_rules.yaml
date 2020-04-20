@@ -4,7 +4,7 @@
     user input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: '{{{.*}}}|{{[ ]*&[\w]+.*}}'
-  severity: error
+  severity: ERROR
   input_case: exact
   cwe: CWE-79
   owasp: A1 - Injection
@@ -14,7 +14,7 @@
     passed to this variable results in Cross Site Scripting (XSS)
   type: Regex
   pattern: '{.*\|[ ]*s[ ]*}[^}]'
-  severity: error
+  severity: ERROR
   input_case: exact
   cwe: CWE-79
   owasp: A1 - Injection
@@ -24,7 +24,7 @@
     input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: '!{.*}'
-  severity: error
+  severity: ERROR
   input_case: exact
   cwe: CWE-79
   owasp: A1 - Injection
@@ -34,7 +34,7 @@
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: '<%-.*%>'
-  severity: error
+  severity: ERROR
   input_case: exact
   cwe: CWE-79
   owasp: A1 - Injection
@@ -44,7 +44,7 @@
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: v-html=[\'|"].*[\'|"]
-  severity: error
+  severity: ERROR
   input_case: exact
   cwe: CWE-79
   owasp: A1 - Injection
@@ -54,7 +54,7 @@
     in Cross Site Scripting (XSS).
   type: Regex
   pattern: '_.unescape\(.*\)'
-  severity: error
+  severity: ERROR
   input_case: exact
   cwe: CWE-79
   owasp: A1 - Injection

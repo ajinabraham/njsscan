@@ -40,10 +40,13 @@ setup(
     entry_points={
         'console_scripts': [
             'njsscan = njsscan.__main__:main',
+            'nodejsscan = njsscan.__main__:main',
         ],
     },
     include_package_data=True,
     url='https://github.com/ajinabraham/njsscan',
     long_description=description,
-    install_requires=[],
+    install_requires=[
+        'colorama>=0.4.3',
+    ],
 )
