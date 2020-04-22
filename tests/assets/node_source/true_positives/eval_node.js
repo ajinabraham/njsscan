@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
     res.send('Response</br>' + resp);
 });
 app.listen(8000);
-eval("outside_express")
+eval("outside_express" + req.foo)
 setTimeout('alert(' + req.body.name, 0);
 setInterval(req.body.name, 0);
 new Function('arg1', 'arg2', req.query.name)

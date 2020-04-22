@@ -34,4 +34,8 @@ IGNORE_EXTENSIONS = {
     '.zip', '.7z', '.tz',
     '.rar', '.exe', '.o', '.a',
 }
-IGNORE_PATHS = {'__MACOSX'}
+IGNORE_PATHS = {
+    '__MACOSX',
+    'node_modules',
+    'bower_components',
+}

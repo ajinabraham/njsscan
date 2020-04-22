@@ -53,8 +53,14 @@ rules:
     patterns:
       - pattern-not-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
+      - pattern-not:
+          $X.exec("...", ...)
+      - pattern-not:
+          $X.execSync("...", ...)
       - pattern: |
           $X.exec(...)
+      - pattern: |
+          $X.execSync(...)
     message: >-
       User controlled data in 'child_process.exec()' may result in Remote OS
       Command Execution.

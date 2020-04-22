@@ -83,15 +83,23 @@ rules:
     patterns:
       - pattern-not-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
+      - pattern-not:
+          eval("...")
+      - pattern-not:
+          setTimeout("...",  ...)
+      - pattern-not:
+          setInterval("...",  ...)
+      - pattern-not:
+          new Function(..., "...")
       - pattern-either:
           - pattern: |
-              eval(...)
+              eval(..., $X, ...)
           - pattern: |
-              setTimeout(...)
+              setTimeout(..., $X, ...)
           - pattern: |
-              setInterval(...)
+              setInterval(..., $X, ...)
           - pattern: |
-              new Function(...)
+              new Function(..., $X, ...)
     message: >-
       User controlled data in eval() or similar functions may result in Server
       Side Injection or Remote Code Injection
