@@ -49,21 +49,31 @@ rules:
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {
               ...
-              var $VAL = '*';
-              ...
            });
       - pattern-either:
           - pattern: >
+              ...
+              var $VAL = '*';
+              ...
               $RES.set("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
-              $VAL, ...)
+              $VAL, ...);
           - pattern: >
+              ...
+              var $VAL = '*';
+              ...
               $RES.set(..., {
               "=~/[Access-Control-Allow-Origin|access-control-allow-origin]/" :
-              $VAL }, ...)
+              $VAL }, ...);
           - pattern: >
+              ...
+              var $VAL = '*';
+              ...
               $RES.header("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
-              $VAL, ...)
+              $VAL, ...);
           - pattern: >
+              ...
+              var $VAL = '*';
+              ...
               $RES.writeHead(...,
               {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/":
               $VAL }, ...);

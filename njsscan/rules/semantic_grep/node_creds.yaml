@@ -36,8 +36,8 @@ rules:
           - pattern: |
               $X.PASSWORD = '...';
     message: >-
-      A hardcoded password in plain text is identified. Store it properly in a
-      config file/environment variable.
+      A hardcoded password in plain text is identified. Store it properly in an
+      environment variable.
     languages:
       - js
     severity: ERROR
@@ -80,16 +80,16 @@ rules:
           - pattern: |
               $X.API_SECRET = '...';
           - pattern: |
-              $X('api_secret', ...)
+              $X('api_secret', '...')
           - pattern: |
-              $X('API_SECRET', ...)
+              $X('API_SECRET', '...')
           - pattern: |
-              $X('secret', ...)
+              $X('secret', '...')
           - pattern: |
-              $X('SECRET', ...)
+              $X('SECRET', '...')
     message: >-
-      A hardcoded secret is identified. Store it properly in a config
-      file/environment variable.
+      A hardcoded secret is identified. Store it properly in an
+      environment variable.
     languages:
       - js
     severity: ERROR
@@ -132,8 +132,8 @@ rules:
           - pattern: |
               $X.USER = '...';
     message: >-
-      A hardcoded username in plain text is identified. Store it properly in a
-      config file/environment variable.
+      A hardcoded username in plain text is identified. Store it properly in an
+      environment variable.
     languages:
       - js
     severity: ERROR
@@ -176,16 +176,16 @@ rules:
           - pattern: |
               $X.KEY = '...';
           - pattern: |
-              $X('api_key', ...)
+              $X('api_key', '...')
           - pattern: |
-              $X('API_KEY', ...)
+              $X('API_KEY', '...')
           - pattern: |
-              $X('key', ...)
+              $X('key', '...')
           - pattern: |
-              $X('KEY', ...)
+              $X('KEY', '...')
     message: >-
-      A hardcoded API Key is identified. Store it properly in a config
-      file/environment variable.
+      A hardcoded API Key is identified. Store it properly in an
+      environment variable.
     languages:
       - js
     severity: ERROR

@@ -59,7 +59,21 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES) { ... })
       - pattern-either:
           - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ, ...)
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR, ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR + "...", ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR + "...", ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR, ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR.$FOO, ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR.$FOO + "...", ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO + "...", ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO, ...)
           - pattern: |
               $RES.writeHead(..., { "=~/[Ll]+ocation/": $REQ.$VAR }, ...);
           - pattern: >
