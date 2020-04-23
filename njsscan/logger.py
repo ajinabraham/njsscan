@@ -20,8 +20,8 @@ class ColorLogsWrapper(object):
 
     def __getattr__(self, attr_name):
         """Getattr."""
-        if attr_name == 'warn':
-            attr_name = 'warning'
+        if attr_name == 'info':
+            attr_name = 'info'
         if attr_name not in 'debug info warning error critical':
             return getattr(self.logger, attr_name)
         log_level = getattr(logging, attr_name.upper())
@@ -43,8 +43,7 @@ def init_logger(module_name) -> logging.Logger:
     log_format = '%(message)s'
     logging.basicConfig(stream=sys.stderr,
                         format=log_format,
-                        level=logging.DEBUG)
+                        level=logging.INFO)
     logger_obj = logging.getLogger(module_name)
-    logger_obj.propagate = False
     logger = ColorLogsWrapper(logger_obj)
     return logger

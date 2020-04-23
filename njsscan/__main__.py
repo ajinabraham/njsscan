@@ -85,9 +85,6 @@ def main():
                         nargs='*',
                         help=('Path can be file(s) or '
                               'directories with Node.js source code'))
-    parser.add_argument('--no-strict',
-                        help='Scan non Node.js files as well.',
-                        action='store_true')
     parser.add_argument('--json',
                         help='Print JSON output',
                         action='store_true')
