@@ -39,5 +39,5 @@ IGNORE_PATHS = {
     'node_modules',
     'bower_components',
     'fixtures',
-    'jquery'
+    'jquery',
 }
