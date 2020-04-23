@@ -172,17 +172,9 @@ rules:
           - pattern: |
               $X.API_KEY = '...';
           - pattern: |
-              $X.key = '...';
-          - pattern: |
-              $X.KEY = '...';
-          - pattern: |
               $X('api_key', '...')
           - pattern: |
               $X('API_KEY', '...')
-          - pattern: |
-              $X('key', '...')
-          - pattern: |
-              $X('KEY', '...')
     message: >-
       A hardcoded API Key is identified. Store it properly in an
       environment variable.

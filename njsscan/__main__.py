@@ -16,12 +16,16 @@ logger = init_logger(__name__)
 def cli_out(rule_id, details):
     """Get CLI friendly format."""
     items = []
-    items.append(f'\nRULE ID: {rule_id}')
+    items.append('\n==================================================='
+                 '===================================================')
+    items.append(f'RULE ID: {rule_id}')
     for meta, value in details['metadata'].items():
         if meta == 'id':
             continue
         meta_format = meta.upper().replace('_', '')
         items.append(f'{meta_format}: {value}')
+    items.append('==================================================='
+                 '===================================================')
     items.append('\n__________________FILES___________________________')
     for match in details['files']:
         items.append('\n')
@@ -38,7 +42,6 @@ def cli_out(rule_id, details):
         if isinstance(match_string, list):
             match_string = '\n'.join(ln.strip() for ln in match_string)
         items.append(f'Match String: {match_string}')
-    items.append('___________________________________________________')
     return '\n'.join(items)
 
 

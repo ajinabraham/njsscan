@@ -5,9 +5,13 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... });
       - pattern-either:
           - pattern: |
-              $PKG.get($REQ.$VAR, ...)
+              needle.get($REQ.$VAR, ...)
           - pattern: |
-              $PKG.get($REQ.$VAR.$FOO, ...)
+              needle.get($REQ.$VAR.$FOO, ...)
+          - pattern: |
+              axios.get($REQ.$VAR, ...)
+          - pattern: |
+              axios.get($REQ.$VAR.$FOO, ...)
           - pattern: |
               $PKG.post($REQ.$VAR, ...)
           - pattern: |

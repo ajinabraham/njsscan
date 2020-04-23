@@ -13,16 +13,17 @@ rules:
               $RES.set(..., $REQ.$QUERY.$VAR + "...", ...)
           - pattern: |
               $RES.set(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              $RES.set(..., $REQ.$QUERY, ...)
-          - pattern: |
-              $RES.set(..., "..." + $REQ.$QUERY, ...)
-          - pattern: |
-              $RES.set(..., $REQ.$QUERY + "...", ...)
-          - pattern: |
-              $RES.set(..., "..." + $REQ.$QUERY + "...", ...)
-          - pattern: |
-              $RES.set(..., { $X: $REQ.$VAR }, ...);
+        # Reduce False positives set() is very common
+        #   - pattern: |
+        #       $RES.set(..., $REQ.$QUERY, ...)
+        #   - pattern: |
+        #       $RES.set(..., "..." + $REQ.$QUERY, ...)
+        #   - pattern: |
+        #       $RES.set(..., $REQ.$QUERY + "...", ...)
+        #   - pattern: |
+        #       $RES.set(..., "..." + $REQ.$QUERY + "...", ...)
+        #  - pattern: |
+        #      $RES.set(..., { $X: $REQ.$VAR }, ...);
           - pattern: |
               $RES.set(..., { $X: "..." + $REQ.$VAR, }, ...)
           - pattern: |

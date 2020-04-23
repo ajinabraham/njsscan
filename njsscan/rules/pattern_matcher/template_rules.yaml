@@ -3,7 +3,7 @@
   description: The Handlebar.js/Mustache.js template has an unescaped variable. Untrusted
     user input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
-  pattern: '{{{.*}}}|{{[ ]*&[\w]+.*}}'
+  pattern: '{{{.+}}}|{{[ ]*&[\w]+.*}}'
   severity: ERROR
   input_case: exact
   cwe: CWE-79
@@ -13,7 +13,7 @@
   description: The Dust.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS)
   type: Regex
-  pattern: '{.*\|[ ]*s[ ]*}[^}]'
+  pattern: '{.+\|[ ]*s[ ]*}[^}]'
   severity: ERROR
   input_case: exact
   cwe: CWE-79
@@ -23,7 +23,7 @@
   description: The Pug.js/Jade.js template has an unescaped variable. Untrusted user
     input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
-  pattern: '!{.*}'
+  pattern: '!{.+}'
   severity: ERROR
   input_case: exact
   cwe: CWE-79
@@ -33,7 +33,7 @@
   description: The EJS/ECT template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
-  pattern: '<%-.*%>'
+  pattern: <%-(?![ ]*include\().*%>
   severity: ERROR
   input_case: exact
   cwe: CWE-79
@@ -43,7 +43,7 @@
   description: The Vue.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
-  pattern: v-html=[\'|"].*[\'|"]
+  pattern: v-html=[\'|"].+[\'|"]
   severity: ERROR
   input_case: exact
   cwe: CWE-79
@@ -53,7 +53,7 @@
   description: The Underscore unescape function with untrusted user input results
     in Cross Site Scripting (XSS).
   type: Regex
-  pattern: '_.unescape\(.*\)'
+  pattern: '_.unescape\(.+\)'
   severity: ERROR
   input_case: exact
   cwe: CWE-79

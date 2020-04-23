@@ -38,4 +38,6 @@ IGNORE_PATHS = {
     '__MACOSX',
     'node_modules',
     'bower_components',
+    'fixtures',
+    'jquery'
 }
