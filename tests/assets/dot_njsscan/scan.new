@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+ 
+        <script type="text/javascript">
+            var escapedStr = "&lt;html&gt;topjavatutorial.com&lt;/html&gt;";
+            var unescapedStr = _.unescape(escapedStr);
+            console.log(unescapedStr);
+        </script>
+    </head>
+ 
+</html>

@@ -6,9 +6,8 @@ import json
 import sys
 
 from njsscan import __version__
-from njsscan.njsscan import NJSScan
 from njsscan.logger import init_logger
-
+from njsscan.njsscan import NJSScan
 
 logger = init_logger(__name__)
 
@@ -70,8 +69,10 @@ def handle_output(out, scan_results):
             json.dump(scan_results, outfile, sort_keys=True,
                       indent=2, separators=(',', ': '))
     else:
-        print((json.dumps(scan_results, sort_keys=True,
-                          indent=2, separators=(',', ': '))))
+        json_output = (json.dumps(scan_results, sort_keys=True,
+                                  indent=2, separators=(',', ': ')))
+        print(json_output)
+        return json_output
 
 
 def handle_exit(results):
@@ -100,7 +101,7 @@ def main():
                         action='store_true')
     args = parser.parse_args()
     if args.path:
-        scan_results = NJSScan(args).scan()
+        scan_results = NJSScan(args.path, args.json).scan()
         if args.json or args.output:
             handle_output(args.output, scan_results)
         else:

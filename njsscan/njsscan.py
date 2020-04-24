@@ -2,9 +2,7 @@
 """The nodejsscan cli: njsscan."""
 from libsast import Scanner
 
-from njsscan import (
-    settings,
-)
+from njsscan import settings
 from njsscan.utils import (
     find_sgrep_bin,
     get_config,
@@ -12,8 +10,8 @@ from njsscan.utils import (
 
 
 class NJSScan:
-    def __init__(self, args) -> None:
-        conf = get_config(args.path)
+    def __init__(self, paths, json) -> None:
+        conf = get_config(paths)
         self.options = {
             'match_rules': settings.PATTERN_RULES_DIR,
             'sgrep_rules': settings.SGREP_RULES_DIR,
@@ -24,7 +22,9 @@ class NJSScan:
             'ignore_extensions': conf['ignore_extensions'],
             'ignore_paths': conf['ignore_paths'],
         }
-        self.paths = args.path
+        if not json:
+            self.options['show_progress'] = True
+        self.paths = paths
         self.result = {
             'templates': {},
             'nodejs': {},

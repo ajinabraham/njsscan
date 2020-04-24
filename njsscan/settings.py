@@ -17,7 +17,7 @@ NODEJS_FILE_EXTENSIONS = {
     '',
 }
 TEMPLATE_FILE_EXTENSIONS = {
-    '.html', '.mustache', '.hbs',
+    '.html', '.mustache', '.hbs', '.vue',
     '.hdbs', '.ejs', '.dust', '.json',
     '.tl', '.tpl', '.tmpl', '.pug',
     '.ect', '.sh', '.yml', '.toml',

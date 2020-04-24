@@ -1,0 +1,19 @@
+---
+- nodejs-extensions:
+  - .js
+
+  template-extensions:
+  - .new
+  - .hbs
+  - ''
+
+  ignore-filenames:
+  - skip.js
+
+  ignore-paths:
+  - __MACOSX
+  - skip_dir
+  - node_modules
+
+  ignore-extensions:
+  - .hbs
