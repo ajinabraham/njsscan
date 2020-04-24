@@ -30,6 +30,9 @@ jobs:
     - name: Bandit
       run: |
         tox -e bandit
+    - name: Unit test
+      run: |
+        tox -e py38
     - name: Clean Up
       run: |
         tox -e clean
