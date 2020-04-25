@@ -53,6 +53,8 @@ def test_nodejs_rules():
     assert len(pos_files) == len(neg_files)
     res = scanner(pos_files)
     actual = [*res['nodejs']]
+    actual.sort()
+    EXPECTED.sort()
     assert actual == EXPECTED
     res = scanner(neg_files)
     assert res['nodejs'] == {}
