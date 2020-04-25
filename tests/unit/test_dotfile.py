@@ -11,7 +11,7 @@ TMPL_IDS = [
 ]
 
 NJS_IDS = [
-    'njsscan.rules.semantic_grep.eval_warning',
+    'rule.semantic_grep.eval_warning',
 ]
 
 
