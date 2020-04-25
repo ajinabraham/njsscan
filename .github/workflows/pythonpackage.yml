@@ -20,11 +20,6 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install semgrep binary
-      run: |
-        wget https://github.com/returntocorp/semgrep/releases/download/v0.5.0-dev.2/semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
-        tar -xvzf semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
-        export PATH="$(pwd)/semgrep-files/:$PATH"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -35,9 +30,11 @@ jobs:
     - name: Bandit
       run: |
         tox -e bandit
-    - name: Unit test
+    - name: Install semgrep binary and run tests
       run: |
-        semgrep-core -h
+        wget https://github.com/returntocorp/semgrep/releases/download/v0.5.0-dev.2/semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
+        tar -xvzf semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
+        export PATH="$(pwd)/semgrep-files/:$PATH"
         tox -e py38
     - name: Clean Up
       run: |
