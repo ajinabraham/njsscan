@@ -30,7 +30,7 @@ jobs:
     - name: Bandit
       run: |
         tox -e bandit
-    - name: Install semgrep binary and run tests
+    - name: Download semgrep binary and run tests
       run: |
         wget https://github.com/returntocorp/semgrep/releases/download/v0.5.0-dev.2/semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
         tar -xvzf semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
