@@ -25,8 +25,7 @@ jobs:
         wget https://github.com/returntocorp/semgrep/releases/download/v0.5.0-dev.2/semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
         tar -xvzf semgrep-v0.5.0-dev.2-ubuntu-16.04.tgz
         export PATH="$(pwd)/semgrep-files/:$PATH"
-        ls $(pwd)/semgrep-files/
-        file $(pwd)/semgrep-files/semgrep-core
+        semgrep-core -h
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -39,6 +38,7 @@ jobs:
         tox -e bandit
     - name: Unit test
       run: |
+        semgrep-core -h
         tox -e py38
     - name: Clean Up
       run: |
