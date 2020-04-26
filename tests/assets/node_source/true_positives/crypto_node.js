@@ -35,3 +35,5 @@ function decrypt(text) {
     let decipher = crypto.createDecipheriv('aes-128-ecb', Buffer.from(ENCRYPTION_KEY), iv);
     let decrypted = decipher.update(encryptedText);
 }
+
+crypto.pseudoRandomBytes(1); // <Buffer 45>

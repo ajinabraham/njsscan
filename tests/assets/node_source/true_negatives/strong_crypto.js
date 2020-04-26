@@ -35,3 +35,7 @@ function decrypt(text) {
     let decipher = crypto.createDecipheriv('aes-128-cbc', Buffer.from(ENCRYPTION_KEY), iv);
     let decrypted = decipher.update(encryptedText);
 }
+
+
+var crypto = require('crypto');
+crypto.randomBytes(1); // <Buffer 44>

@@ -1,7 +1,7 @@
 # Rule from : https://github.com/returntocorp/semgrep-rules/blob/develop/javascript/jwt-none-alg/jwt-none-alg.yaml
 # https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#Meet-the--None--Algorithm
 rules:
-  - id: jwt_none_algorithm
+  - id: node_jwt_none_algorithm
     patterns:
       - pattern-either:
           - pattern: |

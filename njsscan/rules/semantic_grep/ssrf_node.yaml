@@ -44,6 +44,14 @@ rules:
               fetch($REQ.$VAR, ...)
           - pattern: |
               fetch($REQ.$VAR.$FOO, ...)
+          - pattern: |
+              $SOCKET.connect($PORT, $REQ.$VAR, ...)
+          - pattern: |
+              $SOCKET.connect($PORT, $REQ.$VAR.$FOO, ...)
+          - pattern: |
+              $HTTP.get(..., {host: $REQ.$VAR}, ...)
+          - pattern: |
+              $HTTP.get(..., {host: $REQ.$VAR.$FOO}, ...)
     message: >-
       User controlled URL in http client libraries can result in Server Side
       Request Forgery (SSRF).

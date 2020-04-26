@@ -92,3 +92,37 @@ needle.get('http://google.com', function (error, response) {
     if (!error && response.statusCode == 200)
         console.log(response.body);
 });
+
+
+var net = require('net');
+
+
+app.get('/', function (req, res) {
+    var client = new net.Socket();
+    client.connect(1337, '127.0.0.1', function () {
+        console.log('Connected');
+        client.write('Hello, server! Love, Client.');
+    });
+
+    client.on('data', function (data) {
+        console.log('Received: ' + data);
+        client.destroy(); // kill client after server's response
+    });
+
+    client.on('close', function () {
+        console.log('Connection closed');
+    });
+
+    const http = require('http');
+    const options = {
+        host: 'www.google.com',
+    };
+    const req = http.get(options);
+    req.end();
+    req.once('response', (res) => {
+        const ip = req.socket.localAddress;
+        const port = req.socket.localPort;
+        console.log(`Your IP address is ${ip} and your source port is ${port}.`);
+        // Consume response object
+    });
+});
