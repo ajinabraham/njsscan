@@ -37,3 +37,5 @@ function decrypt(text) {
 }
 
 crypto.pseudoRandomBytes(1); // <Buffer 45>
+//Math based random insecure
+const val = Math.random();

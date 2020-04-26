@@ -37,5 +37,6 @@ function decrypt(text) {
 }
 
 
-var crypto = require('crypto');
-crypto.randomBytes(1); // <Buffer 44>
+
+const crypto = require('crypto');
+const buf = crypto.randomBytes(1);

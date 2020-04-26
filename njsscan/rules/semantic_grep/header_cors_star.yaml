@@ -1,4 +1,4 @@
-# Need QA + sgrep bug fix + false positive in generic_2
+# Need QA + sgrep bug fix + false positive in generic_2 and {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/": '*' } not working
 rules:
   - id: generic_cors
     patterns:

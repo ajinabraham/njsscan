@@ -43,10 +43,13 @@ rules:
       cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
   - id: node_insecure_random_generator
     patterns:
-      - pattern: |
-          $X.pseudoRandomBytes(...)
+      - pattern-either:
+        - pattern: |
+            $X.pseudoRandomBytes(...)
+        - pattern: |
+            Math.random(...)
     message: >-
-      crypto.pseudoRandomBytes() is a cryptographically weak random number generator.
+      crypto.pseudoRandomBytes()/Math.random() is a cryptographically weak random number generator.
     languages:
       - js
     severity: WARNING
