@@ -5,6 +5,8 @@ rules:
       - pattern-inside: |
           var $X = require('lusca');
           ...
+      - pattern-not: |
+          $X.use(helmet())
       - pattern-either:
           - pattern: |
               $X.xssProtection(false)
