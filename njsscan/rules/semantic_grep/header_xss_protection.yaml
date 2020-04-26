@@ -45,7 +45,7 @@ rules:
     metadata:
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
-  - id: header_xss_generic_2
+  - id: header_xss_generic2
     patterns:
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {

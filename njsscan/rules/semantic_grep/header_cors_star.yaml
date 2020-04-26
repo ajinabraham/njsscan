@@ -44,7 +44,7 @@ rules:
     metadata:
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
-  - id: express_cors_2
+  - id: express_cors2
     patterns:
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {
