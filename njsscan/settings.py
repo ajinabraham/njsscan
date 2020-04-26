@@ -20,7 +20,7 @@ TEMPLATE_FILE_EXTENSIONS = {
     '.html', '.mustache', '.hbs', '.vue',
     '.hdbs', '.ejs', '.dust', '.json',
     '.tl', '.tpl', '.tmpl', '.pug',
-    '.ect', '.sh', '.yml', '.toml',
+    '.ect', '.sh', '.yml', '.toml', '.jade',
 }
 IGNORE_FILENAMES = {
     '.DS_Store', 'jquery.min.js', 'axios.min.js',

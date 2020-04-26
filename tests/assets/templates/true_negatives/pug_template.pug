@@ -1,0 +1,28 @@
+doctype 5  
+html  
+ head
+   title My title
+   block head <!-- will render the script call -->
+ body
+   #content
+     block content <!-- will render the h1 -->
+Block append & prepend  
+The block feature can be extended even further by using the prepend or append blocks. Suppose for example you have default scripts in a "scripts" block that you wish to use on every page:  
+// container-scripts.pug
+   .container
+       block scripts
+        script(src='/javascripts/bootstrap.js')
+              script(src='/javascripts/app.js')
+mixin header_block(title, link)  
+ header
+   h3.main-title #{title}
+   ul
+       li
+            a(href='#{link}', target="_blank")
++header_block('Amazing title here!', 'features.html')
+
+link(href='/css/styles.css', rel='stylesheet')
+script(type='text/javascript').  
+    var myVar = ‘Hello Var’;
+    console.log(myVar);
+script(src='/javascripts/app.js')

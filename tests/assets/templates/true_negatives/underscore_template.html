@@ -1,0 +1,39 @@
+<script type="text/html" id='usageList'>
+<table cellspacing='0' cellpadding='0' border='1' >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <% _.each(items,function(item,key,list){ %>
+        <% var f = item.name; %><!-- create more variables -->
+            <tr>
+                <!-- use variables -->
+                <td><%= key %></td>
+                <td class="<%= f %>"><%= item.name %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+</script>
+
+<!-- Create your target -->
+<div id="target"></div>
+<script>         
+var items = [
+        {name:"Alexander"},
+        {name:"Barklay"},
+        {name:"Chester"},
+        {name:"Domingo"},
+        {name:"Edward"},
+        {name:"..."},
+        {name:"Yolando"},
+        {name:"Zachary"}
+    ];
+ 
+var template = $("#usageList").html();
+$("#target").html(_.template(template,{items:items}));
+</script>

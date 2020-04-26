@@ -1,0 +1,47 @@
+rules:
+  - id: node_xxe
+    patterns:
+      - pattern-inside: |
+          $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
+      - pattern-either:
+          - pattern: |
+              $LIBXML.parseXmlString(..., $REQ.$QUERY.$VAR, ...)
+          - pattern: |
+              $LIBXML.parseXmlString(..., "..." + $REQ.$QUERY.$VAR, ...)
+          - pattern: |
+              $LIBXML.parseXmlString(..., $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $LIBXML.parseXmlString(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $LIBXML.parseXmlString(..., $REQ.$QUERY, ...)
+          - pattern: |
+              $LIBXML.parseXmlString(..., "..." + $REQ.$QUERY, ...)
+          - pattern: |
+              $LIBXML.parseXmlString(..., $REQ.$QUERY + "...", ...);
+          - pattern: |
+              $LIBXML.parseXmlString(..., "..." + $REQ.$QUERY + "...", ...)
+          - pattern: |
+              $LIBXML.parseXml(..., $REQ.$QUERY.$VAR, ...)
+          - pattern: |
+              $LIBXML.parseXml(..., "..." + $REQ.$QUERY.$VAR, ...)
+          - pattern: |
+              $LIBXML.parseXml(..., $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $LIBXML.parseXml(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $LIBXML.parseXml(..., $REQ.$QUERY, ...)
+          - pattern: |
+              $LIBXML.parseXml(..., "..." + $REQ.$QUERY, ...)
+          - pattern: |
+              $LIBXML.parseXml(..., $REQ.$QUERY + "...", ...);
+          - pattern: |
+              $$LIBXML.parseXml(..., "..." + $REQ.$QUERY + "...", ...)
+    message: >-
+      User controlled data in parseXml()/parseXmlString() can result in XML
+      External Entity (XXE) Processing vulnerabilities
+    languages:
+      - js
+    severity: ERROR
+    metadata:
+      owasp: 'A4: XML External Entities (XXE)'
+      cwe: 'CWE-611: Improper Restriction of XML External Entity Reference'

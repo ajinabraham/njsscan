@@ -1,0 +1,23 @@
+{
+    title : 'Hello, world!',
+    id : 'main',
+    links: [
+        { name : 'Google', url : 'https://google.com/' },
+        { name : 'Facebook', url : 'https://facebook.com/' },
+        { name : 'Twitter', url : 'https://twitter.com/' }
+    ],
+    upperHelper : function (string) {
+        return string.toUpperCase();
+    }
+}
+
+% extend 'layout' %>
+
+<div id="<%= @id %>">
+    <h1><%= @upperHelper @title %></h1>
+    <% include 'list' %>
+</div>
+
+<% block 'footer-info' : %>
+    <div class="right">page: main</div>
+<% end %>

@@ -50,6 +50,8 @@ EXPECTED = [
     'rule.semantic_grep.node_ssrf',
     'rule.semantic_grep.node_timing_attack',
     'rule.semantic_grep.node_tls_reject',
+    'rule.semantic_grep.node_xpath_injection',
+    'rule.semantic_grep.node_xxe',
     'rule.semantic_grep.yaml_deserialize',
     'rule.semantic_grep.yaml_deserialize2',
 ]
@@ -63,7 +65,7 @@ def test_nodejs():
 
 
 def test_nodejs_rules():
-    paths = get_paths()
+    paths = get_paths('nodejs')
     truepos = paths['true_positives']
     trueneg = paths['true_negatives']
     pos_files = list(truepos.glob('**/*.js'))
