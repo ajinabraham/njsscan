@@ -58,7 +58,7 @@ EXPECTED = [
 
 
 def test_nodejs():
-    paths = get_paths()
+    paths = get_paths('nodejs')
     truepos = paths['true_positives']
     res = scanner([truepos])
     assert len(res['nodejs'].keys()) != 0
