@@ -70,7 +70,7 @@ rules:
               $PARSER.write(..., "..." + $REQ.$QUERY.$VAR + "...", ...);
     message: >-
       User controlled data in XML Parsers can result in
-      XML Internal Entity Processing vulnerabilities and can result in DoS.
+      XML Internal Entity Processing vulnerabilities like in DoS.
     languages:
       - js
     severity: ERROR
