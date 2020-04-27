@@ -52,6 +52,10 @@ rules:
               $HTTP.get(..., {host: $REQ.$VAR}, ...)
           - pattern: |
               $HTTP.get(..., {host: $REQ.$VAR.$FOO}, ...)
+          - pattern: |
+              $HTTP.get(..., {hostname: $REQ.$VAR}, ...)
+          - pattern: |
+              $HTTP.get(..., {hostname: $REQ.$VAR.$FOO}, ...)
     message: >-
       User controlled URL in http client libraries can result in Server Side
       Request Forgery (SSRF).

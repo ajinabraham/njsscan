@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
         '<sibling>with content!</sibling>' +
         '</root>';
 
-    var xmlDoc = libxml.parseXmlString(xml);
+    var xmlDoc = libxml.parseXmlString(foo);
 
     // xpath queries
     var gchild = xmlDoc.get('//grandchild');
@@ -22,7 +22,12 @@ app.get('/', function (req, res) {
 
     console.log(child.attr('foo').value()); // prints "bar"
 
-    var doc = libxml.parseXmlString(xml);
-    var doc = libxml.parseXmlString(xml, { noblanks: true });
+    var doc = libxml.parseXmlString(foo);
+    var doc = libxml.parseXmlString(foo, { noblanks: true });
     res.send('Hello World!')
 })
+
+
+app.get('/some/path', function (req, res) {
+    libxmljs.parseXml(foo);
+});

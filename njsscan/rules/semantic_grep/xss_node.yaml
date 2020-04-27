@@ -78,6 +78,30 @@ rules:
               $RES.write(..., $REQ.$QUERY.$VAR, ...)
           - pattern: |
               $RES.write(..., $REQ.$QUERY, ...)
+          - pattern: |
+              $RES.send(..., "..." + $REQ.$QUERY.$VAR, ...)
+          - pattern: |
+              $RES.send(..., "..." + $REQ.$QUERY, ...)
+          - pattern: |
+              $RES.write(..., "..." + $REQ.$QUERY.$VAR, ...)
+          - pattern: |
+              $RES.write(..., "..." + $REQ.$QUERY, ...)
+          - pattern: |
+              $RES.send(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $RES.send(..., "..." + $REQ.$QUERY + "...", ...)
+          - pattern: |
+              $RES.write(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $RES.write(..., "..." + $REQ.$QUERY+ "...", ...)
+          - pattern: |
+              $RES.send(..., $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $RES.send(..., $REQ.$QUERY + "...", ...)
+          - pattern: |
+              $RES.write(..., $REQ.$QUERY.$VAR + "...", ...)
+          - pattern: |
+              $RES.write(..., $REQ.$QUERY+ "...", ...)
     message: >-
       Untrusted User Input in Response will result in Reflected Cross Site
       Scripting Vulnerability.

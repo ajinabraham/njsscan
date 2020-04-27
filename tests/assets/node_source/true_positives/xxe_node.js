@@ -1,28 +1,32 @@
-var child_process = require('child_process');
-var x = 1;
-app.get('/', function (req, res) {
-    var libxml = require("libxmljs");
-    var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
-        '<root>' +
-        '<child foo="bar">' +
-        '<grandchild baz="fizbuzz">grandchild content</grandchild>' +
-        '</child>' +
-        '<sibling>with content!</sibling>' +
-        '</root>';
 
-    var xmlDoc = libxml.parseXmlString(req.foo + "sdsdfdsf");
+const libxmljs = require('libxmljs');
 
-    // xpath queries
-    var gchild = xmlDoc.get('//grandchild');
+app.get('/noent', function (req, res) {
+    // entity expansion
+    libxmljs.parseXml(req.param("xml"), { noent: true });
+});
 
-    console.log(gchild.text());  // prints "grandchild content"
 
-    var children = xmlDoc.root().childNodes();
-    var child = children[0];
+app.get('/sax', function (req, res) {
+    // SAX parser expands external entities
+    const parser = new libxmljs.SaxParser();
+    const x = 1
+    parser.parseString(req.param("xml"));
+});
 
-    console.log(child.attr('foo').value()); // prints "bar"
 
-    var doc = libxml.parseXmlString(req.foo.bar);
-    var doc = libxml.parseXmlString(request.foo, { noblanks: true });
-    res.send('Hello World!')
+app.get('/saxpush/parser', function (req, res) {
+    // SAX parser expands external entities
+    const parser = new libxmljs.SaxPushParser();
+    const x = 1
+    parser.push(req.param("some-xml"));
+});
+
+
+app.get('/sax', function (req, res) {
+    // SAX parser expands external entities
+    const parser = new libxmljs.SaxParser();
+    const x = 1
+    var products = libxmljs.parseXmlString(req.files.products.data, { noent: true, noblanks: true })
 })
+

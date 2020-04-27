@@ -41,6 +41,20 @@ rules:
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
       cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+  - id: node_weak_crypto
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $X.createCipher('des', ...)
+    message: >-
+      A weak or broken cryptographic algorithm was identified. Using these
+      functions will introduce vulnerabilities or downgrade the security of your application.
+    languages:
+      - js
+    severity: ERROR
+    metadata:
+      owasp: 'A9: Using Components with Known Vulnerabilities'
+      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
   - id: node_insecure_random_generator
     patterns:
       - pattern-either:
