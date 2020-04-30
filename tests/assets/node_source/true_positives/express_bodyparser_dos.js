@@ -1,4 +1,4 @@
-var express = require('express')
+const express = require('express')
     , cors = require('cors')
     , bodyParser = require('body-parser');
 

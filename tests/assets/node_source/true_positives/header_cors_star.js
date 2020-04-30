@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
     res.set('Access-Control-Allow-Origin', 'google.com');
     res.set('Access-Control-Allow-Origin', '*');
     res.set({
-        'Content-Length': req.query.foo,
+        'Content-Length': 123,
         'access-control-allow-origin': '*',
         'ETag': '12345'
     })

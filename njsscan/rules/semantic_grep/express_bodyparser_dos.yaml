@@ -1,6 +1,12 @@
 rules:
   - id: express_bodyparser
-    pattern: $X.bodyParser(...)
+    patterns:
+      - pattern-inside:
+          var $APP = express();
+          ...
+          $APP.use(...);
+      - pattern:
+          $X.bodyParser(...)
     message: >-
       POST Request to Express Body Parser 'bodyParser()' can create Temporary
       files and consume space.

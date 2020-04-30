@@ -2,9 +2,8 @@
 rules:
   - id: generic_cors
     patterns:
-      - pattern-either:
-          - pattern: |
-              $APP.options('*', cors())
+      - pattern: |
+          $APP.options('*', cors(...))
     message: >-
       Access-Control-Allow-Origin response header is set to "*". This will
       disable CORS Same Origin Policy restrictions.
@@ -20,7 +19,7 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
       - pattern-either:
           - pattern: |
-              app.options('*', cors())
+              $APP.options('*', cors(...))
           - pattern: >
               $RES.set("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
               '*', ...)
