@@ -60,6 +60,12 @@ EXPECTED = [
     'rule.semantic_grep.zip_path_overwrite2',
     'rule.semantic_grep.admzip_path_overwrite',
     'rule.semantic_grep.tar_path_overwrite',
+    'rule.semantic_grep.electron_disable_websecurity',
+    'rule.semantic_grep.electron_allow_http',
+    'rule.semantic_grep.electron_blink_integration',
+    'rule.semantic_grep.electron_nodejs_integration',
+    'rule.semantic_grep.electron_context_isolation',
+    'rule.semantic_grep.electron_experimental_features',
 ]
 
 

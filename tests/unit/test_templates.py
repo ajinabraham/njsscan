@@ -12,6 +12,8 @@ EXPECTED = [
     'rule.vue_template',
     'rule.handlebar_mustache_template',
     'rule.dust_template',
+    'rule.electronjs_node_integration',
+    'rule.electronjs_disable_websecurity',
 ]
 
 

@@ -12,7 +12,7 @@ rules:
     severity: WARNING
     metadata:
       owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      cwe: 'CWE-346: Origin Validation Error'
   - id: express_cors
     patterns:
       - pattern-inside: |
@@ -42,7 +42,7 @@ rules:
     severity: WARNING
     metadata:
       owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      cwe: 'CWE-346: Origin Validation Error'
   - id: express_cors2
     patterns:
       - pattern-inside: |
@@ -84,4 +84,4 @@ rules:
     severity: WARNING
     metadata:
       owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      cwe: 'CWE-346: Origin Validation Error'
