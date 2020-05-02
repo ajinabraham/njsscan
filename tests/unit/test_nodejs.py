@@ -56,6 +56,10 @@ EXPECTED = [
     'rule.semantic_grep.node_xxe',
     'rule.semantic_grep.yaml_deserialize',
     'rule.semantic_grep.yaml_deserialize2',
+    'rule.semantic_grep.zip_path_overwrite',
+    'rule.semantic_grep.zip_path_overwrite2',
+    'rule.semantic_grep.admzip_path_overwrite',
+    'rule.semantic_grep.tar_path_overwrite',
 ]
 
 
