@@ -4,6 +4,7 @@ rules:
       - pattern-inside:
           var $APP = express();
           ...
+      - pattern-inside: |
           $APP.use(...);
       - pattern:
           $X.bodyParser(...)

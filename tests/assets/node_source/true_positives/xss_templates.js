@@ -16,3 +16,4 @@ var template = Handlebars.compile(source, { noEscape: true });
 var template = "This is {{target}}";
 var target = "user's pictures";
 var result = Handlerbars.compile(template, { noEscape: true })({ target: target });
+Sqrl.autoEscaping(false)

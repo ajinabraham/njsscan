@@ -66,6 +66,8 @@ EXPECTED = [
     'rule.semantic_grep.electron_nodejs_integration',
     'rule.semantic_grep.electron_context_isolation',
     'rule.semantic_grep.electron_experimental_features',
+    'rule.semantic_grep.squirrelly_autoescape',
+    'rule.semantic_grep.server_side_template_injection',
 ]
 
 

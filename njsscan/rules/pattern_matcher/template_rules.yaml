@@ -59,6 +59,16 @@
   cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
   owasp: A1 - Injection
 
+- id: rule.squirrelly
+  description: The Squirrelly.js template has an unescaped variable. Untrusted user input
+    passed to this variable results in Cross Site Scripting (XSS)
+  type: Regex
+  pattern: '{{.+\|.*safe.*}}'
+  severity: ERROR
+  input_case: exact
+  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+  owasp: A1 - Injection
+
 - id: rule.electronjs_node_integration
   description: Node integration exposes node.js APIs to the electron app and this
     can introduce remote code execution vulnerabilities to the application if the
@@ -79,3 +89,22 @@
   input_case: exact
   cwe: "CWE-346: Origin Validation Error"
   owasp: A6 - Security Misconfiguration
+
+# Move to Sgrep
+- id: rule.node_sql_injection
+  description: Untrusted input in raw SQL query can result in SQL Injection.
+  type: Regex
+  pattern: (SELECT|INSERT|UPDATE|DELETE|CREATE|EXPLAIN)(.{0,40000})(req\.|req\.query|req\.body|req\.param)
+  severity: ERROR
+  input_case: exact
+  cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+  owasp: A1 - Injection
+# Move to Sgrep
+- id: rule.node_nosql_injection
+  description: Untrusted user input in vulnerable MongoDB functions can cause NoSQLi JavaScript injection.
+  type: Regex
+  pattern: (\.)(find|drop|create|explain|delete|count|bulk|copy)(.{0,4000})({(.{0,4000})\$where:)(.{0,4000})(req\.|req\.query|req\.body|req\.param)
+  severity: ERROR
+  input_case: exact
+  cwe: "CWE-943: Improper Neutralization of Special Elements in Data Query Logic"
+  owasp: A1 - Injection

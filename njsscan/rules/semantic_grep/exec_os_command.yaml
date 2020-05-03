@@ -4,6 +4,7 @@ rules:
       - pattern-inside: |
           var $EXEC = require('child_process');
           ...
+      - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
       - pattern-either:
           - pattern: |
