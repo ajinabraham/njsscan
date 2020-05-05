@@ -57,8 +57,8 @@ EXPECTED = [
     'squirrelly_autoescape',
     'server_side_template_injection',
     'node_error_disclosure',
-    'generic_error_disclosure'
-
+    'generic_error_disclosure',
+    'node_logic_bypass',
 ]
 
 CONTROLS = [
