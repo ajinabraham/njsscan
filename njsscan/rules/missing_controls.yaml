@@ -1,0 +1,85 @@
+controls:
+  anti_csrf_control:
+    description: 'This application does not have anti CSRF protection which prevents cross site request forgery attacks.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-352: Cross-Site Request Forgery (CSRF)'
+  rate_limit_control:
+    description: 'This application does not have API rate limiting controls.'
+    metadata:
+      severity: INFO
+      owasp: 'A5: Broken Access Control'
+      cwe: 'CWE-770: Allocation of Resources Without Limits or Throttling'
+  helmet_header_check_csp:
+    description: 'Helmet Content Security Policy header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_check_expect_ct:
+    description: 'Helmet Expect CT header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_feature_policy:
+    description: 'Helmet Feature Policy header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_frame_guard:
+    description: 'Helmet X Frame Options header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_dns_prefetch:
+    description: 'Helmet DNS Prefetch header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_x_powered_by:
+    description: 'Helmet X Powered By header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_hsts:
+    description: 'Helmet HSTS header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_ienoopen:
+    description: 'Helmet IE No Open header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_nosniff:
+    description: 'Helmet No Sniff header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_referrer_policy:
+    description: 'Helmet Referrer Policy header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_xss_filter:
+    description: 'Helmet XSS Protection header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
+  helmet_header_check_crossdomain:
+    description: 'Helmet X Permitted Cross Domain Policies header is not configured for this application.'
+    metadata:
+      severity: INFO
+      owasp: 'A6: Security Misconfiguration'
+      cwe: 'CWE-693: Protection Mechanism Failure'
