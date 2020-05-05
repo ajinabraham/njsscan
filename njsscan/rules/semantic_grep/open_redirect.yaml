@@ -75,6 +75,14 @@ rules:
           - pattern: |
               $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO, ...)
           - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR["..."], ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR("..."), ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR["..."] + "...", ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR("...") + "...", ...)
+          - pattern: |
               $RES.writeHead(..., { "=~/[Ll]+ocation/": $REQ.$VAR }, ...);
           - pattern: >
               $RES.writeHead(..., { "=~/[Ll]+ocation/": "..." + $REQ.$VAR, },

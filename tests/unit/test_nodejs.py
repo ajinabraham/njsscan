@@ -12,6 +12,7 @@ EXPECTED = [
     'express_cors',
     'express_cors2',
     'express_open_redirect',
+    'express_open_redirect2',
     'express_xss',
     'generic_cors',
     'generic_header_injection',
