@@ -1,4 +1,4 @@
-# Need QA + Bug Fix https://github.com/returntocorp/sgrep/issues/512
+# Need QA
 rules:
   - id: express_open_redirect
     patterns:
@@ -74,6 +74,14 @@ rules:
               $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO + "...", ...)
           - pattern: |
               $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO, ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR["..."], ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR("..."), ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR["..."] + "...", ...)
+          - pattern: |
+              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR("...") + "...", ...)
           - pattern: |
               $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR["..."], ...)
           - pattern: |

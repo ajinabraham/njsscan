@@ -53,12 +53,12 @@ app.all(function (req, res) {
     res.header('Location', req.param("foo"));
 });
 
-// bug in sgrep
+
 app.all(function (req, res) {
     res.writeHead(200, { location: 'foo \rinvalid: bar' + req.foo + 'asdadasd', foo: bar });
 });
 
-//bug in sgrep may be?
+
 app.all(function (req, res) {
     res.writeHead(200, { 'location': req.foo });
 });
