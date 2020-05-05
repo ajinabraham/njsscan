@@ -6,15 +6,15 @@ from .setup_test import (
 
 
 EXPECTED = [
-    'rule.underscore_template',
-    'rule.pug_jade_template',
-    'rule.ejs_ect_template',
-    'rule.vue_template',
-    'rule.handlebar_mustache_template',
-    'rule.dust_template',
-    'rule.squirrelly',
-    'rule.electronjs_node_integration',
-    'rule.electronjs_disable_websecurity',
+    'underscore_template',
+    'pug_jade_template',
+    'ejs_ect_template',
+    'vue_template',
+    'handlebar_mustache_template',
+    'dust_template',
+    'squirrelly',
+    'electronjs_node_integration',
+    'electronjs_disable_websecurity',
 ]
 
 

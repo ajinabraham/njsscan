@@ -4,8 +4,8 @@ from pathlib import Path
 from njsscan.njsscan import NJSScan
 
 
-def scanner(paths):
-    return NJSScan(paths, True).scan()
+def scanner(paths, skip=False):
+    return NJSScan(paths, True, skip).scan()
 
 
 def get_paths(who):

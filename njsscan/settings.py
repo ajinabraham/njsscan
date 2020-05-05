@@ -11,6 +11,9 @@ SGREP_RULES_DIR = (
 PATTERN_RULES_DIR = (
     BASE_DIR / 'rules' / 'pattern_matcher'
 ).as_posix()
+MISSING_CONTROLS = (
+    BASE_DIR / 'rules' / 'missing_controls.yaml'
+)
 
 NODEJS_FILE_EXTENSIONS = {
     '.js',
@@ -40,4 +43,20 @@ IGNORE_PATHS = {
     'bower_components',
     'fixtures',
     'jquery',
+}
+GOOD_CONTROLS_ID = {
+    'anti_csrf_control',
+    'rate_limit_control',
+    'helmet_header_check_csp',
+    'helmet_header_check_expect_ct',
+    'helmet_header_feature_policy',
+    'helmet_header_frame_guard',
+    'helmet_header_dns_prefetch',
+    'helmet_header_x_powered_by',
+    'helmet_header_hsts',
+    'helmet_header_ienoopen',
+    'helmet_header_nosniff',
+    'helmet_header_referrer_policy',
+    'helmet_header_xss_filter',
+    'helmet_header_check_crossdomain',
 }

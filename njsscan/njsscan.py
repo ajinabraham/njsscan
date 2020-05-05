@@ -6,12 +6,14 @@ from njsscan import settings
 from njsscan.utils import (
     find_sgrep_bin,
     get_config,
+    read_missing_controls,
 )
 
 
 class NJSScan:
-    def __init__(self, paths, json) -> None:
+    def __init__(self, paths, json, skip_controls) -> None:
         conf = get_config(paths)
+        self.skip_controls = skip_controls
         self.options = {
             'match_rules': settings.PATTERN_RULES_DIR,
             'sgrep_rules': settings.SGREP_RULES_DIR,
@@ -44,6 +46,20 @@ class NJSScan:
         self.format_sgrep(results['semantic_grep'])
         self.format_matches(results['pattern_matcher'])
 
+    def missing_controls(self, result):
+        """Check for missing controls."""
+        missing_controls = read_missing_controls()['controls']
+        result_keys = result['nodejs'].keys()
+        for rule_id in settings.GOOD_CONTROLS_ID:
+            if rule_id in result_keys:
+                # Good! Control is present
+                del result['nodejs'][rule_id]
+            else:
+                if self.skip_controls:
+                    continue
+                else:
+                    result['nodejs'][rule_id] = missing_controls[rule_id]
+
     def format_sgrep(self, sgrep_output):
         """Remove metavars from sgrep output."""
         self.result['errors'] = sgrep_output['errors']
@@ -51,6 +67,7 @@ class NJSScan:
             for finding in sgrep_output['matches'][rule_id]['files']:
                 finding.pop('metavars', None)
         self.result['nodejs'] = sgrep_output['matches']
+        self.missing_controls(self.result)
 
     def format_matches(self, matcher_out):
         """Format Pattern Matcher output."""

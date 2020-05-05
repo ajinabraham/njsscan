@@ -25,8 +25,11 @@ def cli_out(rule_id, details):
         items.append(f'{meta_format}: {value}')
     items.append('==================================================='
                  '===================================================')
+    files = details.get('files')
+    if not files:
+        return '\n'.join(items)
     items.append('\n__________________FILES___________________________')
-    for match in details['files']:
+    for match in files:
         items.append('\n')
         file_path = match['file_path']
         items.append(f'File: {file_path}')
@@ -95,13 +98,16 @@ def main():
     parser.add_argument('-o', '--output',
                         help='Output filename to save JSON report.',
                         required=False)
+    parser.add_argument('--skip-controls',
+                        help='Skip checks for missing security controls.',
+                        action='store_true')
     parser.add_argument('-v', '--version',
                         help='Show njsscan version',
                         required=False,
                         action='store_true')
     args = parser.parse_args()
     if args.path:
-        scan_results = NJSScan(args.path, args.json).scan()
+        scan_results = NJSScan(args.path, args.json, args.skip_controls).scan()
         if args.json or args.output:
             handle_output(args.output, scan_results)
         else:

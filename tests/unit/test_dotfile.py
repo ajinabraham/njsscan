@@ -6,19 +6,19 @@ from .setup_test import (
 
 
 TMPL_IDS = [
-    'rule.underscore_template',
-    'rule.pug_jade_template',
+    'underscore_template',
+    'pug_jade_template',
 ]
 
 NJS_IDS = [
-    'rule.semantic_grep.eval_warning',
+    'eval_warning',
 ]
 
 
 def test_njsscan_dotfile():
     paths = get_paths('nodejs')
     files = paths['dot_file']
-    res = scanner([files])
+    res = scanner([files], True)
     tmpl = [*res['templates']]
     njs = [*res['nodejs']]
     tmpl.sort()

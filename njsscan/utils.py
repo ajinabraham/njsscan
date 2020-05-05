@@ -45,6 +45,11 @@ def get_config(base_path):
     return options
 
 
+def read_missing_controls():
+    """Read missing controls yaml."""
+    return read_yaml(config.MISSING_CONTROLS)
+
+
 def find_sgrep_bin():
     """Find Semantic Grep Binary."""
     return None
