@@ -11,9 +11,9 @@ from njsscan.utils import (
 
 
 class NJSScan:
-    def __init__(self, paths, json, skip_controls) -> None:
+    def __init__(self, paths, json, check_controls) -> None:
         conf = get_config(paths)
-        self.skip_controls = skip_controls
+        self.check_controls = check_controls
         self.options = {
             'match_rules': settings.PATTERN_RULES_DIR,
             'sgrep_rules': settings.SGREP_RULES_DIR,
@@ -48,17 +48,17 @@ class NJSScan:
 
     def missing_controls(self, result):
         """Check for missing controls."""
-        missing_controls = read_missing_controls()['controls']
+        controls = read_missing_controls()['controls']
         result_keys = result['nodejs'].keys()
         for rule_id in settings.GOOD_CONTROLS_ID:
             if rule_id in result_keys:
                 # Good! Control is present
                 del result['nodejs'][rule_id]
             else:
-                if self.skip_controls:
-                    continue
+                if self.check_controls:
+                    result['nodejs'][rule_id] = controls[rule_id]
                 else:
-                    result['nodejs'][rule_id] = missing_controls[rule_id]
+                    continue
 
     def format_sgrep(self, sgrep_output):
         """Remove metavars from sgrep output."""

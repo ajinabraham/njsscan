@@ -1,0 +1,63 @@
+rules:
+  - id: regex_injection_dos
+    patterns:
+      - pattern-inside: |
+          app.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
+      - pattern-either:
+          - pattern: |
+              var $INP = $REQ.$PARAM("...");
+              ...
+              var $RE = new RegExp("..." + $INP + "...");
+          - pattern: |
+              var $INP = $REQ.$PARAM("...");
+              ...
+              var $RE = new RegExp("..." + $INP);
+          - pattern: |
+              var $INP = $REQ.$PARAM["..."];
+              ...
+              var $RE = new RegExp("..." + $INP);
+          - pattern: |
+              var $INP = $REQ.$PARAM["..."];
+              ...
+              var $RE = new RegExp("..." + $INP + "...");
+          - pattern: |
+              var $INP = $REQ.$PARAM.$BAR;
+              ...
+              var $RE = new RegExp("..." + $INP);
+          - pattern: |
+              var $INP = $REQ.$PARAM.$BAR;
+              ...
+              var $RE = new RegExp("..." + $INP + "...");
+          - pattern: |
+              var $INP = $REQ.$PARAM;
+              ...
+              var $RE = new RegExp("..." + $INP);
+          - pattern: |
+              var $INP = $REQ.$PARAM;
+              ...
+              var $RE = new RegExp("..." + $INP + "...");
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM + "...");
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM);
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM.$BAR + "...");
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM.$BAR);
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM["..."] + "...");
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM["..."]);
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM("...") + "...");
+          - pattern: |
+              new RegExp("..." + $REQ.$PARAM("..."));
+    message: >-
+      User controlled data in RegExp() can make the application vulnerable to
+      layer 7 DoS.
+    languages:
+      - js
+    severity: ERROR
+    metadata:
+      owasp: 'A1: Injection'
+      cwe: 'CWE-400: Uncontrolled Resource Consumption'

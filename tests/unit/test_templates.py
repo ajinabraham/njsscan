@@ -21,7 +21,7 @@ EXPECTED = [
 def test_templates():
     paths = get_paths('templates')
     tmpl_files = paths['template_dir']
-    res = scanner([tmpl_files])
+    res = scanner([tmpl_files], False)
     assert len(res['templates'].keys()) != 0
 
 
@@ -32,10 +32,10 @@ def test_templates_rules():
     pos_files = list(truepos.glob('**/*'))
     neg_files = list(trueneg.glob('**/*'))
     assert len(pos_files) == len(neg_files)
-    res = scanner(pos_files)
+    res = scanner(pos_files, False)
     actual = [*res['templates']]
     actual.sort()
     EXPECTED.sort()
     assert actual == EXPECTED
-    res = scanner(neg_files)
+    res = scanner(neg_files, False)
     assert res['templates'] == {}

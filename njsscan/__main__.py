@@ -98,8 +98,8 @@ def main():
     parser.add_argument('-o', '--output',
                         help='Output filename to save JSON report.',
                         required=False)
-    parser.add_argument('--skip-controls',
-                        help='Skip checks for missing security controls.',
+    parser.add_argument('--missing-controls',
+                        help='Enable missing security controls check.',
                         action='store_true')
     parser.add_argument('-v', '--version',
                         help='Show njsscan version',
@@ -107,7 +107,11 @@ def main():
                         action='store_true')
     args = parser.parse_args()
     if args.path:
-        scan_results = NJSScan(args.path, args.json, args.skip_controls).scan()
+        scan_results = NJSScan(
+            args.path,
+            args.json,
+            args.missing_controls,
+        ).scan()
         if args.json or args.output:
             handle_output(args.output, scan_results)
         else:

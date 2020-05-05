@@ -59,6 +59,7 @@ EXPECTED = [
     'node_error_disclosure',
     'generic_error_disclosure',
     'node_logic_bypass',
+    'regex_injection_dos',
 ]
 
 CONTROLS = [
@@ -82,7 +83,7 @@ CONTROLS = [
 def test_nodejs():
     paths = get_paths('nodejs')
     truepos = paths['true_positives']
-    res = scanner([truepos])
+    res = scanner([truepos], False)
     assert len(res['nodejs'].keys()) != 0
 
 
@@ -93,11 +94,11 @@ def test_nodejs_rules():
     pos_files = list(truepos.glob('**/*.js'))
     neg_files = list(trueneg.glob('**/*.js'))
     assert len(pos_files) == len(neg_files)
-    res = scanner(pos_files)
+    res = scanner(pos_files, True)
     actual = [*res['nodejs']]
     actual.sort()
     EXPECTED.extend(CONTROLS)
     EXPECTED.sort()
     assert actual == EXPECTED
-    res = scanner(neg_files)
+    res = scanner(neg_files, True)
     assert res['nodejs'] == {}

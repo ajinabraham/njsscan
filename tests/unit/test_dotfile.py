@@ -18,7 +18,7 @@ NJS_IDS = [
 def test_njsscan_dotfile():
     paths = get_paths('nodejs')
     files = paths['dot_file']
-    res = scanner([files], True)
+    res = scanner([files], False)
     tmpl = [*res['templates']]
     njs = [*res['nodejs']]
     tmpl.sort()
