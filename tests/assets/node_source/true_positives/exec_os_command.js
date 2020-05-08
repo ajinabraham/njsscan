@@ -74,3 +74,7 @@ http.createServer(function (request, response) {
     });
 
 }).listen(8888);
+
+exe.exec('ping -c 2 ' + parsedUrl.query.ping, function (err, data) {
+    response.end();
+});

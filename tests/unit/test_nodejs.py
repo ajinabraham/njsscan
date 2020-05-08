@@ -10,7 +10,7 @@ TRIGGERED = {
     'zip_path_overwrite': 3,
     'tar_path_overwrite': 3,
     'generic_path_traversal3_warning': 5,
-    'generic_os_command_exec': 7,
+    'generic_os_command_exec': 8,
     'server_side_template_injection': 5,
     'node_error_disclosure': 1,
     'node_ssrf': 12,

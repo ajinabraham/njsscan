@@ -72,3 +72,7 @@ http.createServer(function (request, response) {
     });
 
 }).listen(8888);
+
+exe.exec('ping -c 2  google.com', function (err, data) {
+    response.end();
+});
