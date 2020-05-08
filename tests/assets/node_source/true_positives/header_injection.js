@@ -13,6 +13,9 @@ var server = http.createServer(function (req, res) {
         case 3:
             res.writeHead(200, { test: bla + 'foo \n\n\ninvalid: bar' + req.foo });
             break;
+        case 5:
+            res.writeHead(200, { test: bla + 'foo \n\n\ninvalid: bar' + req.foo('asd') });
+            break;
         case 4:
             res.writeHead(200, { test: req.foo });
             server.close();
@@ -44,5 +47,3 @@ app.get('/', function (req, res) {
     res.writeHead(200, { tast: ddd })
     res.set(ffff)
 });
-
-

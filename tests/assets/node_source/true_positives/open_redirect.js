@@ -74,12 +74,10 @@ app.get('/some/path', function (req, res) {
     res.redirect(target);
 });
 
-//Can't detect presicely
 app.get('/foo', function (req, res) {
     // BAD: may be a global redirection
     res.redirect((req.param('action') && req.param('action') != "") ? req.param('action') : "/google_contacts")
 });
-//Can't detect presicely
 
 app.get('/yet/another/path', function (req, res) {
     // BAD: a request parameter is incorporated without validation into a URL redirect
@@ -106,5 +104,7 @@ app.get('/redirect/:user', function (req, res) {
     res.redirect('//' + req.params.user); // BAD - could go to //evil.com
     res.redirect('u' + req.params.user); // BAD - could go to u.evil.com
     res.redirect('Fan999' + req.params.user); // BAD - could go to Fan999.evil.com
-    res.redirect('/' + ('/u' + req.params.user)); // BAD - could go to //u.evil.com, but not flagged
+    res.redirect('/' + ('/u' + req.params.user)); // BAD - could go to //u.evil.com,
+    //do not trigger
+    res.redirect('/' + foo)
 });

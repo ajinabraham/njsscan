@@ -1,4 +1,3 @@
-# Need QA
 rules:
   - id: express_open_redirect
     patterns:
@@ -6,43 +5,17 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
       - pattern-either:
           - pattern: |
-              $X.redirect(..., $REQ.$QUERY)
+              $X.redirect(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              $X.redirect(..., $REQ.$QUERY["..."])
+              $X.redirect(..., <... $REQ.$QUERY.$FOO ...>, ...)
           - pattern: |
-              $X.redirect(..., $REQ.$QUERY("..."))
+              var $INP = <... $REQ.$QUERY ...>;
+              ...
+              $X.redirect(..., <... $INP ...>, ...);
           - pattern: |
-              $X.redirect(..., $REQ.$QUERY + "...")
-          - pattern: |
-              $X.redirect(..., $REQ.$QUERY["..."] + "...")
-          - pattern: |
-              $X.redirect(..., $REQ.$QUERY("...") + "...")
-          - pattern: |
-              $X.redirect(..., "=~/^\//"+ $REQ.$QUERY)
-          - pattern: |
-              $X.redirect(..., "=~/^\//" + $REQ.$QUERY["..."])
-          - pattern: |
-              $X.redirect(..., "=~/^\//" + $REQ.$QUERY("..."))
-          - pattern: |
-              $X.redirect(..., "=~/^\//" + $REQ.$QUERY + "...")
-          - pattern: |
-              $X.redirect(...,"=~/^\//" + $REQ.$QUERY["..."] + "...")
-          - pattern: |
-              $X.redirect(..., "=~/^\//" + $REQ.$QUERY("...") + "...")
-          - pattern: |
-              $X.redirect(..., "=~/^\([a-zA-Z0-9]+\)/" + $REQ.$QUERY)
-          - pattern: |
-              $X.redirect(...,"=~/^\([a-zA-Z0-9]+\)/" + $REQ.$QUERY["..."])
-          - pattern: |
-              $X.redirect(..., "=~/^\([a-zA-Z0-9]+\)/" + $REQ.$QUERY("..."))
-          - pattern: |
-              $X.redirect(..., "=~/^\([a-zA-Z0-9]+\)/" + $REQ.$QUERY + "...")
-          - pattern: >
-              $X.redirect(...,"=~/^\([a-zA-Z0-9]+\)/" + $REQ.$QUERY["..."] +
-              "...")
-          - pattern: >
-              $X.redirect(..., "=~/^\([a-zA-Z0-9]+\)/" + $REQ.$QUERY("...") +
-              "...")
+              var $INP = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              $X.redirect(..., <... $INP ...>, ...);
     message: >-
       Untrusted user input in redirect() can result in Open Redirect
       vulnerability.
@@ -58,60 +31,18 @@ rules:
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES) { ... })
       - pattern-either:
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR, ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR, ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR.$FOO, ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR.$FOO + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR.$FOO, ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR["..."], ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR("..."), ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR["..."] + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", $REQ.$VAR("...") + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR["..."], ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR("..."), ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR["..."] + "...", ...)
-          - pattern: |
-              $RES.header(..., "=~/[Ll]+ocation/", "..." + $REQ.$VAR("...") + "...", ...)
-          - pattern: |
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": $REQ.$VAR }, ...);
-          - pattern: >
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": "..." + $REQ.$VAR, },
-              ...)
-          - pattern: |
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": $REQ.$VAR + "..."}, ...)
-          - pattern: >
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": "..." + $REQ.$VAR +
-              "..."}, ...)
-          - pattern: >
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": $REQ.$QUERY.$FOO },
-              ...);
-          - pattern: >
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": "..." +
-              $REQ.$QUERY.$FOO, }, ...)
-          - pattern: >
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": $REQ.$QUERY.$FOO +
-              "..."}, ...)
-          - pattern: >
-              $RES.writeHead(..., { "=~/[Ll]+ocation/": "..." + $REQ.$QUERY.$FOO
-              + "..."}, ...)
+        - pattern: |
+            $RES.header(..., "=~/[Ll]+ocation/", <... $REQ.$VAR ...>, ...)
+        - pattern: |
+            $RES.header(..., "=~/[Ll]+ocation/", <... $REQ.$VAR.$VARR ...>, ...)
+        - pattern: |
+            $RES.writeHead(..., "=~/[Ll]+ocation/", <... $REQ.$VAR ...>, ...)
+        - pattern: |
+            $RES.writeHead(..., "=~/[Ll]+ocation/", <... $REQ.$VAR.$VARR ...>, ...)
+        - pattern: |
+            $RES.writeHead(..., {"=~/[Ll]+ocation/": <... $REQ.$VAR ...> }, ...)
+        - pattern: |
+            $RES.writeHead(..., {"=~/[Ll]+ocation/": <... $REQ.$VAR.$VARR ...> }, ...)
     message: >-
       Untrusted user input in response header('Location') can result in Open
       Redirect vulnerability.
