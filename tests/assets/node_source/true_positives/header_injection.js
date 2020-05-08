@@ -11,7 +11,6 @@ var server = http.createServer(function (req, res) {
             res.writeHead(200, { test: 'foo \rinvalid: bar' + req.foo + 'asdadasd', foo: bar });
             break;
         case 3:
-            // sgrep can't detect this!
             res.writeHead(200, { test: bla + 'foo \n\n\ninvalid: bar' + req.foo });
             break;
         case 4:
@@ -34,6 +33,8 @@ app.get('/', function (req, res) {
     res.set('foo', 'asdad' + req.query.foo);
     res.set(req.query.foo, 'asdadad');
     res.set('asda' + req.query.foo, 'asdadad');
+    res.set('asda' + req.query["foo"], 'asdadad');
+    res.set('asda' + req.query("foo"), 'asdadad');
     res.set({
         'Content-Type': 'text/plain',
         'Content-Length': req.query.foo,

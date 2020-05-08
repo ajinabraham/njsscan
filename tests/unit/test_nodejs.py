@@ -25,7 +25,7 @@ TRIGGERED = {
     'eval_warning': 4,
     'express_open_redirect2': 5,
     'express_open_redirect': 11,
-    'generic_header_injection': 13,
+    'generic_header_injection': 16,
     'express_cors': 5,
     'admzip_path_overwrite': 2,
     'node_aes_ecb': 5,
