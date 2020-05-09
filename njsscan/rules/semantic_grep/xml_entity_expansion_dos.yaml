@@ -7,67 +7,15 @@ rules:
           - pattern: |
               var $PARSER = new expat.Parser();
               ...
-              $PARSER.write(..., $REQ.$QUERY("..."), ...);
+              $PARSER.write(..., <... $REQ.$QUERY ...>, ...);
           - pattern: |
               var $PARSER = new expat.Parser();
               ...
-              $PARSER.write(..., $REQ.$QUERY("...") + "...", ...);
+              $PARSER.write(..., <... $REQ.$QUERY.$FOO ...>, ...);
           - pattern: |
               var $PARSER = new expat.Parser();
               ...
-              $PARSER.write(..., $REQ.$QUERY("...") + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., "..." + $REQ.$QUERY("...") + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY["..."], ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY["..."] + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY["..."] + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., "..." + $REQ.$QUERY["..."] + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY, ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., "..." + $REQ.$QUERY + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY.$VAR, ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY.$VAR + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., $REQ.$QUERY.$VAR + "...", ...);
-          - pattern: |
-              var $PARSER = new expat.Parser();
-              ...
-              $PARSER.write(..., "..." + $REQ.$QUERY.$VAR + "...", ...);
+              $PARSER.write(..., <... $REQ.$QUERY.$FOO.$FILE ...>, ...);
     message: >-
       User controlled data in XML Parsers can result in
       XML Internal Entity Processing vulnerabilities like in DoS.

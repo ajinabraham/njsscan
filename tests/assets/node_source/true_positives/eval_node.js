@@ -6,7 +6,7 @@ app.get('/', function (req, res) {
     z(1, 2);
     setTimeout('alert(' + req.body.name, 0);
     setInterval(req.body.name, 0);
-    res.send('Response</br>' + resp);
+    res.send('Response</br>');
 });
 app.listen(8000);
 eval("outside_express" + req.foo)

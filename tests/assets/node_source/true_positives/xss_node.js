@@ -15,6 +15,17 @@ app.get('/3', function (req, res) {
     res.write('Response</br>' + resp);
 });
 
+app.get('/xss', function (req, res) {
+    var html = "ASadad" + req.query.name + "Asdadads"
+    res.write('Response</br>' + html);
+});
+app.get('/xss', function (req, res) {
+    res.write('Response</br>' + req.query('doo'));
+});
+app.get('/xss', function (req, res) {
+    res.write('Response</br>' + req.query.name );
+});
+
 app.get('/noxss', function (req, res) {
     var resp = req.query.name;
     res.write('Response</br>');

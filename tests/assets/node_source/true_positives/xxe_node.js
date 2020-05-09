@@ -27,6 +27,5 @@ app.get('/sax', function (req, res) {
     // SAX parser expands external entities
     const parser = new libxmljs.SaxParser();
     const x = 1
-    var products = libxmljs.parseXmlString(req.files.products.data, { noent: true, noblanks: true })
+    var products = parser.parseXmlString(req.files.products.data, { noent: true, noblanks: true })
 })
-

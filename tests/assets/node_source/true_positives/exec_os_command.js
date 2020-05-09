@@ -42,6 +42,13 @@ app.get('/', function (req, res) {
         { stdio: 'inherit' });
 
     res.send('Hello World!')
+
+
+    var foo = req.query.ping;
+    var x;
+    child_process.exec('ping -c 2 ' + foo, function (err, data) {
+        response.end();
+    });
 })
 
 var foo = '1';
@@ -75,6 +82,3 @@ http.createServer(function (request, response) {
 
 }).listen(8888);
 
-exe.exec('ping -c 2 ' + parsedUrl.query.ping, function (err, data) {
-    response.end();
-});

@@ -1,5 +1,6 @@
 var handlebars = require('handlebars'),
-    fs = require('fs');
+    fs = require('fs'),
+    Sqrl = require('squirrelly');
 // do not match
 var template = handlebars.compile(source);
 
@@ -11,8 +12,7 @@ app.get('/', function (req, res) {
     var scope = {
         getStoreName: getStoreName
     }
-    //do not match
-    var template = handlebars.compile(source);
+
     fs.readFile('example.html', 'utf-8', function (error, source) {
         var template = handlebars.compile(source + req.foo);
         handlebars.compile(source + req.foo.bar);
@@ -21,8 +21,6 @@ app.get('/', function (req, res) {
         var myTemplate = 'Hi, my name is {{name}}'
         var temp = myTemplate + req.foo['bar']
         var compiled = Sqrl.Compile(temp)
-
-
 
 
         var xx = source.replace('<!-->', req.foo)
@@ -36,4 +34,7 @@ app.get('/', function (req, res) {
         var html = template(data);
         console.log(html)
     });
+
+    //do not match
+    var template = handlebars.compile(source);
 });

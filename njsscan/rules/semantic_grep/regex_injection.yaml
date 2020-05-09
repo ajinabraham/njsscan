@@ -5,197 +5,53 @@ rules:
           app.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
       - pattern-either:
           - pattern: |
-              var $INP = $REQ.$PARAM("...");
+              var $INP = <... $REQ.$PARAM ...>;
               ...
-              var $RE = new RegExp("..." + $INP + "...");
+              var $RE = new RegExp(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM("...");
+              var $INP = <... $REQ.$PARAM.$BAR ...>;
               ...
-              var $RE = new RegExp("..." + $INP);
+              var $RE = new RegExp(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM["..."];
+              new RegExp(<... $REQ.$PARAM ...>);
+          - pattern: |
+              new RegExp(<... $REQ.$PARAM.$BAR ...>);
+          - pattern: |
+              var $INP = <... $REQ.$PARAM ...>;
               ...
-              var $RE = new RegExp("..." + $INP);
+              var $RE = $STR.search(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM["..."];
+              var $INP = <... $REQ.$PARAM.$FOO ...>;
               ...
-              var $RE = new RegExp("..." + $INP + "...");
+              var $RE = $STR.search(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
+              $STR.search(<... $REQ.$PARAM ...>);
+          - pattern: |
+              $STR.search(<... $REQ.$PARAM.$BAR ...>);
+          - pattern: |
+              var $INP = <... $REQ.$PARAM ...>;
               ...
-              var $RE = new RegExp("..." + $INP);
+              var $RE = $STR.match(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
+              var $INP = <... $REQ.$PARAM.$FOO ...>;
               ...
-              var $RE = new RegExp("..." + $INP + "...");
+              var $RE = $STR.match(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM;
+              $STR.match(<... $REQ.$PARAM ...>);
+          - pattern: |
+              $STR.match(<... $REQ.$PARAM.$BAR ...>);
+          - pattern: |
+              var $INP = <... $REQ.$PARAM ...>;
               ...
-              var $RE = new RegExp("..." + $INP);
+              var $RE = $STR.split(<... $INP ...>);
           - pattern: |
-              var $INP = $REQ.$PARAM;
+              var $INP = <... $REQ.$PARAM.$FOO ...>;
               ...
-              var $RE = new RegExp("..." + $INP + "...");
+              var $RE = $STR.split(<... $INP ...>);
           - pattern: |
-              new RegExp("..." + $REQ.$PARAM + "...");
+              $STR.split(<... $REQ.$PARAM ...>);
           - pattern: |
-              new RegExp("..." + $REQ.$PARAM);
-          - pattern: |
-              new RegExp("..." + $REQ.$PARAM.$BAR + "...");
-          - pattern: |
-              new RegExp("..." + $REQ.$PARAM.$BAR);
-          - pattern: |
-              new RegExp("..." + $REQ.$PARAM["..."] + "...");
-          - pattern: |
-              new RegExp("..." + $REQ.$PARAM["..."]);
-          - pattern: |
-              new RegExp("..." + $REQ.$PARAM("...") + "...");
-          - pattern: |
-              new RegExp("..." + $REQ.$PARAM("..."));
-          - pattern: |
-              var $INP = $REQ.$PARAM("...");
-              ...
-              var $RE = $STR.search("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM("...");
-              ...
-              var $RE = $STR.search("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM["..."];
-              ...
-              var $RE = $STR.search("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM["..."];
-              ...
-              var $RE = $STR.search("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
-              ...
-              var $RE = $STR.search("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
-              ...
-              var $RE = $STR.search("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM;
-              ...
-              var $RE = $STR.search("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM;
-              ...
-              var $RE = $STR.search("..." + $INP + "...");
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM + "...");
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM);
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM.$BAR + "...");
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM.$BAR);
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM["..."] + "...");
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM["..."]);
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM("...") + "...");
-          - pattern: |
-              $STR.search("..." + $REQ.$PARAM("..."));
-          - pattern: |
-              var $INP = $REQ.$PARAM("...");
-              ...
-              var $RE = $STR.match("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM("...");
-              ...
-              var $RE = $STR.match("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM["..."];
-              ...
-              var $RE = $STR.match("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM["..."];
-              ...
-              var $RE = $STR.match("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
-              ...
-              var $RE = $STR.match("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
-              ...
-              var $RE = $STR.match("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM;
-              ...
-              var $RE = $STR.match("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM;
-              ...
-              var $RE = $STR.match("..." + $INP + "...");
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM + "...");
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM);
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM.$BAR + "...");
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM.$BAR);
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM["..."] + "...");
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM["..."]);
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM("...") + "...");
-          - pattern: |
-              $STR.match("..." + $REQ.$PARAM("..."));
-          - pattern: |
-              var $INP = $REQ.$PARAM("...");
-              ...
-              var $RE = $STR.split("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM("...");
-              ...
-              var $RE = $STR.split("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM["..."];
-              ...
-              var $RE = $STR.split("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM["..."];
-              ...
-              var $RE = $STR.split("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
-              ...
-              var $RE = $STR.split("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM.$BAR;
-              ...
-              var $RE = $STR.split("..." + $INP + "...");
-          - pattern: |
-              var $INP = $REQ.$PARAM;
-              ...
-              var $RE = $STR.split("..." + $INP);
-          - pattern: |
-              var $INP = $REQ.$PARAM;
-              ...
-              var $RE = $STR.split("..." + $INP + "...");
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM + "...");
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM);
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM.$BAR + "...");
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM.$BAR);
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM["..."] + "...");
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM["..."]);
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM("...") + "...");
-          - pattern: |
-              $STR.split("..." + $REQ.$PARAM("..."));
+              $STR.split(<... $REQ.$PARAM.$BAR ...>); 
     message: >-
       User controlled data in RegExp() can make the application vulnerable to
       layer 7 DoS.

@@ -8,37 +8,29 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
       - pattern-either:
           - pattern: |
-              $EXEC.exec(..., $REQ.$QUERY.$VAR, ...)
+              $EXEC.exec(..., <... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              $EXEC.exec(..., "..." + $REQ.$QUERY.$VAR, ...)
+              $EXEC.exec(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              $EXEC.exec(..., $REQ.$QUERY.$VAR + "...", ...)
+              $EXEC.execSync(..., <... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              $EXEC.exec(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
+              $EXEC.execSync(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              $EXEC.exec(..., $REQ.$QUERY, ...)
+              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              ...
+              $EXEC.exec(..., <... $INP ...>, ...);
           - pattern: |
-              $EXEC.exec(..., "..." + $REQ.$QUERY, ...)
+              var $INP = <... $REQ.$QUERY ...>;
+              ...
+              $EXEC.exec(..., <... $INP ...>, ...);
           - pattern: |
-              $EXEC.exec(..., $REQ.$QUERY + "...", ...);
+              var $INP = <... $REQ.$QUERY ...>;
+              ...
+              $EXEC.execSync(..., <... $INP ...>, ...);
           - pattern: |
-              $EXEC.exec(..., "..." + $REQ.$QUERY + "...", ...)
-          - pattern: |
-              $EXEC.execSync(..., $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              $EXEC.execSync(..., "..." + $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              $EXEC.execSync(..., $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              $EXEC.execSync(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              $EXEC.execSync(..., $REQ.$QUERY, ...)
-          - pattern: |
-              $EXEC.execSync(..., "..." + $REQ.$QUERY, ...)
-          - pattern: |
-              $EXEC.execSync(..., $REQ.$QUERY + "...", ...)
-          - pattern: |
-              $EXEC.execSync(..., "..." + $REQ.$QUERY + "...", ...)
+              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              ...
+              $EXEC.execSync(..., <... $INP ...>, ...);
     message: >-
       User controlled data in 'child_process.exec()' can result in Remote OS
       Command Execution.

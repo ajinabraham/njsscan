@@ -34,22 +34,6 @@ rules:
               $RES.writeHead(...,
               {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/":
               '*' }, ...);
-    message: >-
-      Access-Control-Allow-Origin response header is set to "*". This will
-      disable CORS Same Origin Policy restrictions.
-    languages:
-      - js
-    severity: WARNING
-    metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-346: Origin Validation Error'
-  - id: express_cors2
-    patterns:
-      - pattern-inside: |
-          $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {
-              ...
-           });
-      - pattern-either:
           - pattern: >
               ...
               var $VAL = '*';

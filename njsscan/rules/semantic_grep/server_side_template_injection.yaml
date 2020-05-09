@@ -24,125 +24,45 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... });
       - pattern-either:
           - pattern: |
-              $HB.compile($SRC + $REQ.$FOO, ...)
+              $HB.compile(..., <... $REQ.$FOO ...>, ...)
           - pattern: |
-              $HB.compile($SRC + $REQ.$FOO.$BAR, ...)
+              $HB.compile(..., <... $REQ.$FOO.$BAR ...>, ...)
           - pattern: |
-              $HB.compile($SRC + $REQ['...'], ...)
-          - pattern: |
-              $HB.compile($SRC + $REQ('...'), ...)
-          - pattern: |
-              $HB.compile($SRC + $REQ.$FOO['...'], ...)
-          - pattern: |
-              $HB.compile($SRC + $REQ.$FOO('...'), ...)
-          - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO;
+              var $X = <... $REQ.$FOO ...>;
               ...
-              $HB.compile($X);
+              $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO.$BAR;
+              var $X = <... $REQ.$FOO.$BAR ...>;
               ...
-              $HB.compile($X);
+              $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO['...'];
+              var $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
               ...
-              $HB.compile($X);
+              $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO('...');
+              var $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
               ...
-              $HB.compile($X);
+              $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE  + $REQ['...'];
+              $HB.Compile(..., <... $REQ.$FOO ...>, ...)
+          - pattern: |
+              $HB.Compile(..., <... $REQ.$FOO.$BAR ...>, ...)
+          - pattern: |
+              var $X = <... $REQ.$FOO ...>;
               ...
-              $HB.compile($X);
+              $HB.Compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE  + $REQ('...');
+              var $X = <... $REQ.$FOO.$BAR ...>;
               ...
-              $HB.compile($X);
+              $HB.Compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO, ...);
+              var $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
               ...
-              $HB.compile($X);
+              $HB.Compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO.$BAR, ...);
+              var $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
               ...
-              $HB.compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO['...'], ...);
-              ...
-              $HB.compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO('...'), ...);
-              ...
-              $HB.compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ['...'], ...);
-              ...
-              $HB.compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ('...'), ...);
-              ...
-              $HB.compile($X);
-          - pattern: |
-              $HB.Compile($SRC + $REQ.$FOO, ...)
-          - pattern: |
-              $HB.Compile($SRC + $REQ.$FOO.$BAR, ...)
-          - pattern: |
-              $HB.Compile($SRC + $REQ['...'], ...)
-          - pattern: |
-              $HB.Compile($SRC + $REQ('...'), ...)
-          - pattern: |
-              $HB.Compile($SRC + $REQ.$FOO['...'], ...)
-          - pattern: |
-              $HB.Compile($SRC + $REQ.$FOO('...'), ...)
-          - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO;
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO.$BAR;
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO['...'];
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE  + $REQ.$FOO('...');
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE  + $REQ['...'];
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE  + $REQ('...');
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO, ...);
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO.$BAR, ...);
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO['...'], ...);
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ.$FOO('...'), ...);
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ['...'], ...);
-              ...
-              $HB.Compile($X);
-          - pattern: |
-              var $X = $SOURCE.replace('...', $REQ('...'), ...);
-              ...
-              $HB.Compile($X);
+              $HB.Compile(..., <... $X ...>, ...);
     message: >-
       Untrusted user input in templating engine's compile() function can result
       in Remote Code Execution via server side template injection.

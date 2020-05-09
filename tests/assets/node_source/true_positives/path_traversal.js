@@ -12,7 +12,6 @@ app.get('/', function (req, res) {
     console.log(fileSystem.readFileSync(req.query.nar, 'utf8'));
     var foo = req.query.y;
     fileSystem.readFile(foo);
-    //do not match
     fileSystem.readFile(foo + "bar");
     readStream.pipe(res);
 });

@@ -5,69 +5,21 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
       - pattern-either:
           - pattern: |
-              new Function(..., $REQ.$QUERY.$VAR, ...)
+              new Function(..., <... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              new Function(..., "..." + $REQ.$QUERY.$VAR, ...)
+              new Function(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              new Function(..., $REQ.$QUERY.$VAR + "...", ...)
+              eval(..., <... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              new Function(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
+              eval(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              new Function(..., $REQ.$QUERY, ...)
+              setTimeout(..., <... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              new Function(..., "..." + $REQ.$QUERY, ...)
+              setTimeout(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              new Function(..., $REQ.$QUERY + "...", ...);
+              setInterval(..., <... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              new Function(..., "..." + $REQ.$QUERY + "...", ...)
-          - pattern: |
-              eval(..., $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              eval(..., "..." + $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              eval(..., $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              eval(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              eval(..., $REQ.$QUERY, ...)
-          - pattern: |
-              eval(..., "..." + $REQ.$QUERY, ...)
-          - pattern: |
-              eval(..., $REQ.$QUERY + "...", ...);
-          - pattern: |
-              eval(..., "..." + $REQ.$QUERY + "...", ...)
-          - pattern: |
-              setTimeout(..., $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              setTimeout(..., "..." + $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              setTimeout(..., $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              setTimeout(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              setTimeout(..., $REQ.$QUERY, ...)
-          - pattern: |
-              setTimeout(..., "..." + $REQ.$QUERY, ...)
-          - pattern: |
-              setTimeout(..., $REQ.$QUERY + "...", ...);
-          - pattern: |
-              setTimeout(..., "..." + $REQ.$QUERY + "...", ...)
-          - pattern: |
-              setInterval(..., $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              setInterval(..., "..." + $REQ.$QUERY.$VAR, ...)
-          - pattern: |
-              $EXEC.setInterval(..., $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              setInterval(..., "..." + $REQ.$QUERY.$VAR + "...", ...)
-          - pattern: |
-              setInterval(..., $REQ.$QUERY, ...)
-          - pattern: |
-              setInterval(..., "..." + $REQ.$QUERY, ...)
-          - pattern: |
-              setInterval(..., $REQ.$QUERY + "...", ...)
-          - pattern: |
-              setInterval(..., "..." + $REQ.$QUERY + "...", ...)
+              setInterval(..., <... $REQ.$QUERY ...>, ...)
     message: >-
       User controlled data in eval() or similar functions may result in Server
       Side Injection or Remote Code Injection
@@ -93,13 +45,13 @@ rules:
           new Function(..., "...")
       - pattern-either:
           - pattern: |
-              eval(..., $X, ...)
+              eval(..., <... $X ...>, ...)
           - pattern: |
-              setTimeout(..., $X, ...)
+              setTimeout(..., <... $X ...>, ...)
           - pattern: |
-              setInterval(..., $X, ...)
+              setInterval(..., <... $X ...>, ...)
           - pattern: |
-              new Function(..., $X, ...)
+              new Function(..., <... $X ...>, ...)
     message: >-
       User controlled data in eval() or similar functions may result in Server
       Side Injection or Remote Code Injection

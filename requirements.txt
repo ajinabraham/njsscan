@@ -1,2 +1,2 @@
 -e git+https://github.com/ajinabraham/libsast.git#egg=libsast
--e "git+https://github.com/ajinabraham/semgrep.git@experimental#egg=semgrep&subdirectory=semgrep"
+-e "git+https://github.com/ajinabraham/semgrep.git@develop#egg=semgrep&subdirectory=semgrep"

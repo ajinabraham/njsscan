@@ -1,4 +1,3 @@
-# Needs QA
 rules:
   - id: generic_header_injection
     patterns:
