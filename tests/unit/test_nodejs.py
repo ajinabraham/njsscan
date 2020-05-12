@@ -59,6 +59,8 @@ TRIGGERED = {
     'handlebars_noescape': 2,
     'squirrelly_autoescape': 1,
     'node_sqli_injection': 6,
+    'node_nosqli_injection': 1,
+    'node_nosqli_js_injection': 2,
 }
 CONTROLS = {
     'anti_csrf_control': 0,

@@ -89,13 +89,3 @@
   input_case: exact
   cwe: "CWE-346: Origin Validation Error"
   owasp: "A6: Security Misconfiguration"
-
-# Move to Sgrep
-- id: node_nosql_injection
-  description: Untrusted user input in vulnerable MongoDB functions can cause NoSQLi JavaScript injection.
-  type: Regex
-  pattern: (\.)(find|drop|create|explain|delete|count|bulk|copy)(.{0,4000})({(.{0,4000})\$where:)(.{0,4000})(req\.|req\.query|req\.body|req\.param)
-  severity: ERROR
-  input_case: exact
-  cwe: "CWE-943: Improper Neutralization of Special Elements in Data Query Logic"
-  owasp: "A1: Injection"

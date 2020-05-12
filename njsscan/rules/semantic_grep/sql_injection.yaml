@@ -19,13 +19,13 @@ rules:
               ...
               var $SQL = <... $INP ...>;
               ...
-              connection.query(<... $SQL ...>, ...);  
+              $CON.query(<... $SQL ...>, ...);  
           - pattern: |
               var $INP = <... $REQ.$QUERY ...>;
               ...
               var $SQL = <... $INP ...>;
               ...
-              connection.query(<... $SQL ...>, ...);  
+              $CON.query(<... $SQL ...>, ...);  
     message: >-
       Untrusted input concatinated with raw SQL query can result in SQL
       Injection.
