@@ -3,7 +3,6 @@ const { JWK, JWT } = jose;
 const token = JWT.verify('token-here', JWK.None);
 
 function verifyJwt() {
-    // ruleid: jwt-none-alg
     let jwt = require("jsonwebtoken");
     let secret = 'some-secret';
     jwt.verify('token-here', secret, { algorithms: ['RS256', 'none'] }, function (err, payload) {

@@ -15,7 +15,7 @@ TRIGGERED = {
     'node_ssrf': 11,
     'node_xpath_injection': 4,
     'node_entity_expansion': 1,
-    'express_xss': 6,
+    'express_xss': 8,
     'node_xxe': 4,
     'eval_nodejs': 4,
     'header_xss_generic': 6,

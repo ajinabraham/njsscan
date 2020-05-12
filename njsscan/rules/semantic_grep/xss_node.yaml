@@ -30,6 +30,30 @@ rules:
               var $LOCALVAR = <... $REQ.$QUERY ...>;
               ...
               $RES.send(..., <... $LOCALVAR ...>, ...);
+          - pattern: |
+              var $LOCALVAR = <... $REQ.$QUERY ...>;
+              ...
+              var $OUT = <... $LOCALVAR ...>;
+              ...
+              $RES.write(..., <... $OUT ...>, ...);
+          - pattern: |
+              var $LOCALVAR = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              var $OUT = <... $LOCALVAR ...>;
+              ...
+              $RES.write(..., <... $OUT ...>, ...);
+          - pattern: |
+              var $LOCALVAR = <... $REQ.$QUERY.$VAR ...>;
+              ...
+              var $OUT = <... $LOCALVAR ...>;
+              ...
+              $RES.send(..., <... $OUT ...>, ...);
+          - pattern: |
+              var $LOCALVAR = <... $REQ.$QUERY ...>;
+              ...
+              var $OUT = <... $LOCALVAR ...>;
+              ...
+              $RES.send(..., <... $OUT ...>, ...);
     message: >-
       Untrusted User Input in Response will result in Reflected Cross Site
       Scripting Vulnerability.

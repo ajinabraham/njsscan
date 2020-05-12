@@ -14,7 +14,8 @@ app.get('/', function (req, res) {
         var obj = serialize.serialize(str);
         serialize2.serialize(str);
         if (obj.username) {
-            res.send("Hello " + escape(obj.username));
+            var x = escape(obj.username);
+            res.send("Hello " +x);
         }
     } else {
         res.cookie('profile', "eyJ1c2VybmFtZSI6ImFqaW4iLCJjb3VudHJ5IjoiaW5kaWEiLCJjaXR5IjoiYmFuZ2Fsb3JlIn0=", {
