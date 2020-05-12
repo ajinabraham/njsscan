@@ -11,7 +11,7 @@ TMPL_IDS = [
 ]
 
 NJS_IDS = [
-    'eval_warning',
+    'node_aes_ecb',
 ]
 
 

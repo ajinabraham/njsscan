@@ -20,7 +20,6 @@ TRIGGERED = {
     'eval_nodejs': 4,
     'header_xss_generic': 6,
     'generic_path_traversal': 4,
-    'eval_warning': 4,
     'express_open_redirect2': 5,
     'express_open_redirect': 15,
     'generic_header_injection': 17,

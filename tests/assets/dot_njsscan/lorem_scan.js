@@ -11,8 +11,7 @@ const lorem = new LoremIpsum({
         min: 4
     }
 });
-
+let decipher = crypto.createDecipheriv('aes-128-ecb', Buffer.from(ENCRYPTION_KEY), iv);
 lorem.generateWords(1);
 lorem.generateSentences(5);
 lorem.generateParagraphs(7);
-eval(xyz)
