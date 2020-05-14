@@ -8,7 +8,8 @@ from .setup_test import (
 TRIGGERED = {
     'zip_path_overwrite2': 1,
     'zip_path_overwrite': 3,
-    'tar_path_overwrite': 3,
+    'tar_path_overwrite': 2,
+    'admzip_path_overwrite': 2,
     'generic_os_command_exec': 8,
     'server_side_template_injection': 5,
     'node_error_disclosure': 1,
@@ -24,7 +25,6 @@ TRIGGERED = {
     'express_open_redirect': 15,
     'generic_header_injection': 17,
     'express_cors': 8,
-    'admzip_path_overwrite': 2,
     'node_aes_ecb': 5,
     'node_sha1': 1,
     'node_md5': 1,
