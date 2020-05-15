@@ -10,5 +10,5 @@ rules:
             var $LIMIT = require("@authentication/rate-limit");
     message: 'This application has API rate limiting controls.'
     languages:
-      - js
+      - javascript
     severity: WARNING

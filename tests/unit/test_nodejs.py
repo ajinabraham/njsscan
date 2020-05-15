@@ -60,6 +60,7 @@ TRIGGERED = {
     'node_sqli_injection': 6,
     'node_nosqli_injection': 1,
     'node_nosqli_js_injection': 2,
+    'host_header_injection': 9,
 }
 CONTROLS = {
     'anti_csrf_control': 0,

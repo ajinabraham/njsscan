@@ -56,7 +56,7 @@ rules:
       User controlled data in RegExp() can make the application vulnerable to
       layer 7 DoS.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A1: Injection'

@@ -34,7 +34,7 @@ rules:
       Insecure ZIP archive extraction can result in arbitrary path over write
       and can result in code injection.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A5: Broken Access Control'
@@ -74,7 +74,7 @@ rules:
       Insecure ZIP archive extraction can result in arbitrary path over write
       and can result in code injection.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A5: Broken Access Control'
@@ -109,7 +109,7 @@ rules:
       Insecure ZIP archive extraction using adm-zip can result in arbitrary path
       over write and can result in code injection.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A5: Broken Access Control'
@@ -149,7 +149,7 @@ rules:
       Insecure TAR archive extraction can result in arbitrary path over write
       and can result in code injection.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A5: Broken Access Control'

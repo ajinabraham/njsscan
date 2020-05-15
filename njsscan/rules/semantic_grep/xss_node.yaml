@@ -58,7 +58,7 @@ rules:
       Untrusted User Input in Response will result in Reflected Cross Site
       Scripting Vulnerability.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A1: Injection'

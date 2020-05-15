@@ -7,7 +7,7 @@ rules:
       Handlebars SafeString will not escape the data passed through it.
       Untrusted user input passing through SafeString can cause XSS.
     languages:
-      - js
+      - javascript
     severity: ERROR
   - id: handlebars_noescape
     patterns:
@@ -17,7 +17,7 @@ rules:
       Disabling Escaping in Handlebars is not a secure behaviour. This can
       introduce XSS vulnerabilties.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A1: Injection'
@@ -30,5 +30,5 @@ rules:
       Handlebars SafeString will not escape the data passed through it.
       Untrusted user input passing through SafeString can cause XSS.
     languages:
-      - js
+      - javascript
     severity: ERROR

@@ -38,7 +38,7 @@ rules:
       Algorithm is set to none for JWT token. This can nullify the integrity of
       JWT signature.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'

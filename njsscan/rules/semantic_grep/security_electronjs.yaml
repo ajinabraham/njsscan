@@ -10,7 +10,7 @@ rules:
       Disabling webSecurity will disable the same-origin policy and allows the
       execution of insecure code from any domain.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: A6 - Security Misconfiguration
@@ -27,7 +27,7 @@ rules:
       Application can load content over HTTP and that makes the app vulnerable
       to Man in the middle attacks.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: A6 - Security Misconfiguration
@@ -43,7 +43,7 @@ rules:
       Blink's expirimental features are enabled in this application. Some of the
       features may affect the security of the application.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: A6 - Security Misconfiguration
@@ -60,7 +60,7 @@ rules:
       introduce remote code execution vulnerabilities to the application if the
       app is vulnerable to Cross Site Scripting (XSS).
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: A6 - Security Misconfiguration
@@ -76,7 +76,7 @@ rules:
       Disabling context isolation can introduce Prototype Pollution
       vulnerabilities.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: A6 - Security Misconfiguration
@@ -92,7 +92,7 @@ rules:
       Experimental features are not expected to be in production ready
       applications.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: A6 - Security Misconfiguration

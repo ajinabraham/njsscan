@@ -20,7 +20,7 @@ rules:
       Error messages with stack traces can expose sensitive information about
       the application.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A3: Sensitive Data Exposure'
@@ -40,7 +40,7 @@ rules:
       Error messages with stack traces may expose sensitive information about
       the application.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: 'A3: Sensitive Data Exposure'

@@ -7,7 +7,7 @@ rules:
       MD5 is a a weak hash which is known to have collision. Use a strong
       hashing function.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
@@ -20,7 +20,7 @@ rules:
       SHA1 is a a weak hash which is known to have collision. Use a strong
       hashing function.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
@@ -36,7 +36,7 @@ rules:
       AES with ECB mode is deterministic in nature and not suitable for
       encrypting large amount of repetitive data.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
@@ -50,7 +50,7 @@ rules:
       A weak or broken cryptographic algorithm was identified. Using these
       functions will introduce vulnerabilities or downgrade the security of your application.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
@@ -65,7 +65,7 @@ rules:
     message: >-
       crypto.pseudoRandomBytes()/Math.random() is a cryptographically weak random number generator.
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'

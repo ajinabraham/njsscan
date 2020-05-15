@@ -35,7 +35,7 @@ rules:
       User controlled data in 'child_process.exec()' can result in Remote OS
       Command Execution.
     languages:
-      - js
+      - javascript
     severity: ERROR
     metadata:
       owasp: 'A1: Injection'

@@ -5,7 +5,7 @@ rules:
       Content Security Policy header is present. More Information:
       https://helmetjs.github.io/docs/csp/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -22,7 +22,7 @@ rules:
       X-Permitted-Cross-Domain-Policies header set to off. More information:
       https://helmetjs.github.io/docs/crossdomain/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -43,7 +43,7 @@ rules:
       Expect-CT header is present. More information:
       https://helmetjs.github.io/docs/expect-ct/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -64,7 +64,7 @@ rules:
       Feature-Policy header is present. More information:
       https://helmetjs.github.io/docs/feature-policy/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -81,7 +81,7 @@ rules:
       X-Frame-Options header is present. More information:
       https://helmetjs.github.io/docs/frameguard/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -101,7 +101,7 @@ rules:
       enabled. More information:
       https://helmetjs.github.io/docs/dns-prefetch-control/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -124,7 +124,7 @@ rules:
       Default X-Powered-By is removed or modified. More information:
       https://helmetjs.github.io/docs/hide-powered-by/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -145,7 +145,7 @@ rules:
       HSTS header is present. More information:
       https://helmetjs.github.io/docs/hsts/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -164,7 +164,7 @@ rules:
       X-Download-Options header is present. More information:
       https://helmetjs.github.io/docs/ienoopen/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -183,7 +183,7 @@ rules:
       Content-Type-Options header is present. More information:
       https://helmetjs.github.io/docs/dont-sniff-mimetype/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -202,7 +202,7 @@ rules:
       Referrer-Policy header is present. More information:
       https://helmetjs.github.io/docs/referrer-policy/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |
@@ -219,7 +219,7 @@ rules:
       X-XSS-Protection header is present. More information:
       https://helmetjs.github.io/docs/xss-filter/
     languages:
-      - js
+      - javascript
     severity: WARNING
     patterns:
       - pattern-not: |

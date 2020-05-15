@@ -15,5 +15,5 @@ rules:
               $APP.use(csurf(...));
     message: 'This application has anti CSRF protection which prevents cross site request forgery attacks.'
     languages:
-      - js
+      - javascript
     severity: WARNING

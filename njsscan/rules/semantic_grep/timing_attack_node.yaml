@@ -471,7 +471,7 @@ rules:
       String comparisons using '===', '!==', '!=' and '==' is vulnerable to timing attacks.
       More info: https://snyk.io/blog/node-js-timing-attack-ccc-ctf/
     languages:
-      - js
+      - javascript
     severity: WARNING
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
