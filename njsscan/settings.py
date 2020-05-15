@@ -43,6 +43,8 @@ IGNORE_PATHS = {
     'bower_components',
     'fixtures',
     'jquery',
+    'spec',
+    'example',
 }
 GOOD_CONTROLS_ID = {
     'anti_csrf_control',
