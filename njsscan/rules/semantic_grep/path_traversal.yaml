@@ -1,6 +1,19 @@
 rules:
   - id: generic_path_traversal
     patterns:
+      - pattern-either:
+        - pattern-inside: |
+            var $HTTP = require('http');
+            ...
+        - pattern-inside: |
+            var $EXPRESS = require('express');
+            ...
+        - pattern-inside: |
+            var $KOA = require('koa');
+            ...
+        - pattern-inside: |
+            var $ELEC = require('electron');
+            ...
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
       - pattern-either:

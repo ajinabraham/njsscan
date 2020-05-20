@@ -2,10 +2,18 @@ rules:
   - id: node_deserialize
     patterns:
       - pattern-either:
+          - pattern-inside: |
+              var $PKG =  require('serialize-to-js');
+              ...
+              $PKG.deserialize(...);
           - pattern: |
-              $X.deserialize(...)
+              var $PKG =  require('node-serialize');
+              ...
+              $PKG.unserialize(...);
           - pattern: |
-              $X.unserialize(...)
+              require('node-serialize').unserialize(...);
+          - pattern: |
+              require('serialize-to-js').deserialize(...);
     message: >-
       User controlled data in 'unserialize()' or 'deserialize()' function can
       result in Object Injection or Remote Code Injection.
