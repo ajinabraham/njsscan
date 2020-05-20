@@ -25,3 +25,4 @@ app.get('/', function (req, res) {
     res.send("Hello World");
 });
 app.listen(3000);
+require('serialize-to-js').deserialize(str);
