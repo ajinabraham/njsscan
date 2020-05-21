@@ -104,7 +104,7 @@ def main():
                         help='set output format as JSON',
                         action='store_true')
     parser.add_argument('-o', '--output',
-                        help='output filename to save report',
+                        help='output filename to save the result',
                         required=False)
     parser.add_argument('--missing-controls',
                         help='enable missing security controls check',
