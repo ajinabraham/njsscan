@@ -39,7 +39,7 @@ optional arguments:
 ```
 
 
-## Sample Usage
+## Example Usage
 
 ```bash
 $ njsscan xss_node.js
