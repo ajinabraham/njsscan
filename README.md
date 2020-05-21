@@ -116,7 +116,7 @@ docker run -v /path-to-source-dir:/src njsscan /src
 
 A `.njsscan` file in the root of the source code directory allows you to configure njsscan.
 
-```
+```yaml
 ---
 - nodejs-extensions:
   - .js
