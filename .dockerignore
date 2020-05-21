@@ -1,0 +1,14 @@
+  
+.git
+.github
+.gitmodules
+.tox
+.dockerignore
+tox.ini
+Dockerfile
+*.md
+venv
+.pytest_cache
+dist
+build
+tests

@@ -1,5 +1,10 @@
 FROM python:3-alpine
 
-RUN pip install --no-cache-dir njsscan
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN pip install --no-cache-dir colorama libsast && \
+    pip install -e /usr/src/app/njsscan
 
 ENTRYPOINT ["njsscan"]
