@@ -1,5 +1,4 @@
-name: Lint and Tests
-
+name: Build
 on:
   push:
     branches: [ master ]
@@ -12,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.6, 3.7, 3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,7 +31,7 @@ jobs:
         tox -e bandit
     - name: Run tests
       run: |
-        tox -e py38
+        tox -e py
     - name: Clean Up
       run: |
         tox -e clean
