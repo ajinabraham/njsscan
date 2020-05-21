@@ -20,6 +20,7 @@ def get_config(base_path):
         'ignore_filenames': config.IGNORE_FILENAMES,
         'ignore_extensions': config.IGNORE_EXTENSIONS,
         'ignore_paths': config.IGNORE_PATHS,
+        'ignore_rules': set(),
     }
     cfile = Path(base_path[0]) / config.NJSSCAN_CONFIG_FILE
     if cfile.is_file() and cfile.exists():
@@ -32,6 +33,7 @@ def get_config(base_path):
         usr_ignore_files = root.get('ignore-filenames')
         usr_igonre_paths = root.get('ignore-paths')
         usr_ignore_exts = root.get('ignore-extensions')
+        usr_ignore_rules = root.get('ignore-rules')
         if usr_njs_ext:
             options['nodejs_extensions'].update(usr_njs_ext)
         if usr_tmpl_ext:
@@ -42,6 +44,8 @@ def get_config(base_path):
             options['ignore_paths'].update(usr_igonre_paths)
         if usr_ignore_exts:
             options['ignore_extensions'].update(usr_ignore_exts)
+        if usr_ignore_rules:
+            options['ignore_rules'].update(usr_ignore_rules)
     return options
 
 
@@ -50,12 +54,8 @@ def read_missing_controls():
     return read_yaml(config.MISSING_CONTROLS)
 
 
-def find_sgrep_bin():
-    """Find Semantic Grep Binary."""
-    return None
-
-
 def read_yaml(file_obj, text=False):
+    """Read Yaml."""
     try:
         if text:
             return yaml.safe_load(file_obj)

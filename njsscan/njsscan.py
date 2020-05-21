@@ -4,7 +4,6 @@ from libsast import Scanner
 
 from njsscan import settings
 from njsscan.utils import (
-    find_sgrep_bin,
     get_config,
     read_missing_controls,
 )
@@ -17,12 +16,12 @@ class NJSScan:
         self.options = {
             'match_rules': settings.PATTERN_RULES_DIR,
             'sgrep_rules': settings.SGREP_RULES_DIR,
-            'sgrep_binary': find_sgrep_bin(),
             'sgrep_extensions': conf['nodejs_extensions'],
             'match_extensions': conf['template_extensions'],
             'ignore_filenames': conf['ignore_filenames'],
             'ignore_extensions': conf['ignore_extensions'],
             'ignore_paths': conf['ignore_paths'],
+            'ignore_rules': conf['ignore_rules'],
         }
         if not json:
             self.options['show_progress'] = True
@@ -45,6 +44,8 @@ class NJSScan:
         """Format to njsscan friendly output."""
         self.format_sgrep(results['semantic_grep'])
         self.format_matches(results['pattern_matcher'])
+        self.post_ignore_rules()
+        self.post_ignore_files()
 
     def missing_controls(self, result):
         """Check for missing controls."""
@@ -72,3 +73,28 @@ class NJSScan:
     def format_matches(self, matcher_out):
         """Format Pattern Matcher output."""
         self.result['templates'] = matcher_out
+
+    def post_ignore_rules(self):
+        """Ignore findings by rules."""
+        for rule_id in self.options['ignore_rules']:
+            if rule_id in self.result['nodejs']:
+                del self.result['nodejs'][rule_id]
+            if rule_id in self.result['templates']:
+                del self.result['templates'][rule_id]
+
+    def post_ignore_files(self):
+        """Ignore file by rule."""
+        del_keys = set()
+        for rule_id, details in self.result['nodejs'].items():
+            files = details.get('files')
+            if not files:
+                continue
+            for file in files:
+                mstr = file.get('match_string')
+                if 'ignore:' in mstr and rule_id in mstr:
+                    details['files'].remove(file)
+                if len(details['files']) == 0:
+                    del_keys.add(rule_id)
+        for rid in del_keys:
+            if rid in self.result['nodejs']:
+                del self.result['nodejs'][rid]

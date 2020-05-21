@@ -7,11 +7,11 @@ from .setup_test import (
 
 TMPL_IDS = [
     'underscore_template',
-    'pug_jade_template',
 ]
 
 NJS_IDS = [
     'node_aes_ecb',
+    'generic_path_traversal',
 ]
 
 

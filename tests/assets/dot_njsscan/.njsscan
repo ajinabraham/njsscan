@@ -17,3 +17,7 @@
 
   ignore-extensions:
   - .hbs
+
+  ignore-rules:
+  - regex_injection_dos
+  - pug_jade_template

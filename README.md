@@ -96,6 +96,23 @@ Match String:     var html = "Hello" + req.query.name + ". How are you?"
 }
 ```
 
+## Docker
+
+### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
+
+```bash
+docker pull opensecurity/njsscan
+docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
+```
+
+### Build Locally
+
+```
+docker build -t njsscan .
+docker run -v /path-to-source-dir:/src njsscan /src
+```
+
+
 ## Configure njsscan
 
 A `.njsscan` file in the root directory allows you to configure the scan.
@@ -121,20 +138,21 @@ A `.njsscan` file in the root directory allows you to configure the scan.
   ignore-extensions:
   - .jsx
 
-```
-
-## Docker
-
-### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
-
-```bash
-docker pull opensecurity/njsscan
-docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
-```
-
-### Build Locally
+  ignore-rules:
+  - regex_injection_dos
+  - pug_jade_template
 
 ```
-docker build -t njsscan .
-docker run -v /path-to-source-dir:/src njsscan /src
+
+## Supress Findings
+
+You can suppress findings from javascript source files by adding the comment `//ignore: rule_id, rule_id` to the line that trigger the findings.
+
+Example:
+
+```javascript
+app.get('/some/redirect', function (req, res) {
+    var target = req.param("target");
+    res.redirect(target); //ignore: express_open_redirect
+});
 ```
