@@ -95,6 +95,26 @@ Match String:     var html = "Hello" + req.query.name + ". How are you?"
 }
 ```
 
+### Github Action
+
+Add the following file at `.github/workflows/njsscan.yml`:
+
+```yaml
+name: njsscan
+on: [pull_request]
+jobs:
+  njsscan:
+    runs-on: ubuntu-latest
+    name: njsscan check
+    steps:
+    - uses: actions/checkout@v1
+    - name: njsscan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@v5
+      with:
+        args: '.'
+```
+
 ## Docker
 
 ### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
