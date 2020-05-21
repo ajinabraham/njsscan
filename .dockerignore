@@ -3,12 +3,12 @@
 .github
 .gitmodules
 .tox
+.tox-semgrep
+.pytest_cache
 .dockerignore
 tox.ini
 Dockerfile
-*.md
 venv
-.pytest_cache
 dist
 build
 tests

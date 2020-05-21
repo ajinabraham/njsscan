@@ -1,10 +1,9 @@
-FROM python:3-alpine
+FROM python:3.8-slim-buster
 
-WORKDIR /usr/src/app
+COPY . /usr/src/njsscan
 
-COPY . .
+WORKDIR /usr/src/njsscan
 
-RUN pip install --no-cache-dir colorama libsast && \
-    pip install -e /usr/src/app/njsscan
+RUN pip install -e .
 
 ENTRYPOINT ["njsscan"]
