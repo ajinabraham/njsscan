@@ -1,5 +1,5 @@
 # njsscan
-njsscan is a static application testing (SAST) tool that can find insecure code patterns in your node.js applications using simple pattern matcher from [libsast](https://github.com/ajinabraham/libsast) and powerful syntax-aware semantic code pattern search tool [semgrep](https://github.com/returntocorp/semgrep).
+**njsscan** is a static application testing (SAST) tool that can find insecure code patterns in your node.js applications using simple pattern matcher from [libsast](https://github.com/ajinabraham/libsast) and powerful syntax-aware semantic code pattern search tool [semgrep](https://github.com/returntocorp/semgrep).
 
 [![PyPI version](https://badge.fury.io/py/njsscan.svg)](https://badge.fury.io/py/njsscan)
 [![platform](https://img.shields.io/badge/platform-osx%2Flinux-green.svg)](https://github.com/ajinabraham/njsscan)
@@ -114,7 +114,7 @@ docker run -v /path-to-source-dir:/src njsscan /src
 
 ## Configure njsscan
 
-A `.njsscan` file in the root directory allows you to configure the scan.
+A `.njsscan` file in the root of the source code directory allows you to configure njsscan.
 
 ```
 ---
