@@ -118,3 +118,19 @@ A `.njsscan` file in the root directory allows you to configure the scan.
   - .jsx
 
 ```
+
+## Docker
+
+### Prebuilt image from DockerHub
+
+```bash
+docker pull opensecurity/njsscan
+docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
+```
+
+### Build Locally
+
+```
+docker build -t njsscan .
+docker run -v /path-to-source-dir:/src njsscan /src
+```
