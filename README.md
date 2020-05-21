@@ -1,6 +1,7 @@
 # njsscan
 njsscan is a SAST CLI tool that can find insecure code patterns in your node.js applications using simple pattern matcher from [libsast](https://github.com/ajinabraham/libsast) and powerful syntax-aware semantic code pattern search tool [semgrep](https://github.com/returntocorp/semgrep).
 
+[![PyPI version](https://badge.fury.io/py/njsscan.svg)](https://badge.fury.io/py/njsscan)
 [![platform](https://img.shields.io/badge/platform-osx%2Flinux-green.svg)](https://github.com/ajinabraham/njsscan)
 [![License](https://img.shields.io/:license-lgpl2.1-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 [![python](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/)
