@@ -47,29 +47,37 @@ def cli_out(rule_id, details):
     return '\n'.join(items)
 
 
-def format_output(output):
+def format_output(outfile, scan_results):
     """Format output printing."""
-    if not output:
+    if not scan_results:
         return
-    if output.get('errors'):
-        logger.critical(output.get('errors'))
-    output.pop('errors', None)
-    for out in output:
-        for rule_id, details in output[out].items():
+    if scan_results.get('errors'):
+        logger.critical(scan_results.get('errors'))
+    scan_results.pop('errors', None)
+    buffer = []
+    for out in scan_results:
+        for rule_id, details in scan_results[out].items():
             formatted = cli_out(rule_id, details)
-            if details['metadata']['severity'].lower() == 'error':
-                logger.error(formatted)
-            elif details['metadata']['severity'].lower() == 'warning':
-                logger.warning(formatted)
+            if outfile:
+                buffer.append(formatted)
             else:
-                logger.info(formatted)
+                if details['metadata']['severity'].lower() == 'error':
+                    logger.error(formatted)
+                elif details['metadata']['severity'].lower() == 'warning':
+                    logger.warning(formatted)
+                else:
+                    logger.info(formatted)
+    if buffer:
+        outdata = '\n'.join(buffer)
+        with open(outfile, 'w') as of:
+            of.write(outdata)
 
 
-def handle_output(out, scan_results):
-    """Output."""
-    if out:
-        with open(out, 'w') as outfile:
-            json.dump(scan_results, outfile, sort_keys=True,
+def json_output(outfile, scan_results):
+    """JSON Output."""
+    if outfile:
+        with open(outfile, 'w') as of:
+            json.dump(scan_results, of, sort_keys=True,
                       indent=2, separators=(',', ': '))
     else:
         json_output = (json.dumps(scan_results, sort_keys=True,
@@ -112,10 +120,10 @@ def main():
             args.json,
             args.missing_controls,
         ).scan()
-        if args.json or args.output:
-            handle_output(args.output, scan_results)
+        if args.json:
+            json_output(args.output, scan_results)
         else:
-            format_output(scan_results)
+            format_output(args.output, scan_results)
         handle_exit(scan_results)
     elif args.version:
         print('njsscan: v' + __version__)

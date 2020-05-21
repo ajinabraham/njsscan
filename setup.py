@@ -19,7 +19,8 @@ def get_version(rel_path):
     raise RuntimeError('Unable to find version string.')
 
 
-description = ('Something awesome is coming')
+description = ('njsscan is a SAST tool that can find insecure code'
+               ' patterns in your Node.js applications.')
 setup(
     name='njsscan',
     version=get_version('njsscan/__init__.py'),
@@ -31,7 +32,7 @@ setup(
         'Intended Audience :: Developers',
         ('License :: OSI Approved :: '
          'GNU Lesser General Public License v2 (LGPLv2)'),
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.6',
     ],
     packages=find_packages(include=[
         'njsscan', 'njsscan.*',
@@ -44,8 +45,10 @@ setup(
     },
     include_package_data=True,
     url='https://github.com/ajinabraham/njsscan',
-    long_description=description,
+    long_description=read('README.md'),
+    long_description_content_type='text/markdown',
     install_requires=[
         'colorama>=0.4.3',
+        'libsast>=1.0.3',
     ],
 )

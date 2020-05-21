@@ -30,11 +30,8 @@ jobs:
     - name: Bandit
       run: |
         tox -e bandit
-    - name: Download semgrep binary and run tests
+    - name: Run tests
       run: |
-        wget https://github.com/returntocorp/semgrep/releases/download/v0.6.1/semgrep-v0.6.1-ubuntu-16.04.tgz
-        tar -xvzf semgrep-v0.6.1-ubuntu-16.04.tgz
-        export PATH="$(pwd)/semgrep-files/:$PATH"
         tox -e py38
     - name: Clean Up
       run: |
