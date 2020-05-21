@@ -27,16 +27,15 @@ usage: njsscan [-h] [--json] [-o OUTPUT] [--missing-controls] [-v]
                [path [path ...]]
 
 positional arguments:
-  path                  Path can be file(s) or directories with Node.js source
-                        code
+  path                  Path can be file(s) or directories with source code
 
 optional arguments:
   -h, --help            show this help message and exit
-  --json                Print JSON output
+  --json                set output format as JSON
   -o OUTPUT, --output OUTPUT
-                        Output filename to save JSON report.
-  --missing-controls    Enable missing security controls check.
-  -v, --version         Show njsscan version
+                        output filename to save report
+  --missing-controls    enable missing security controls check
+  -v, --version         show njsscan version
 ```
 
 

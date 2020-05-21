@@ -99,18 +99,18 @@ def main():
     parser.add_argument('path',
                         nargs='*',
                         help=('Path can be file(s) or '
-                              'directories with Node.js source code'))
+                              'directories with source code'))
     parser.add_argument('--json',
-                        help='Print JSON output',
+                        help='set output format as JSON',
                         action='store_true')
     parser.add_argument('-o', '--output',
-                        help='Output filename to save JSON report.',
+                        help='output filename to save report',
                         required=False)
     parser.add_argument('--missing-controls',
-                        help='Enable missing security controls check.',
+                        help='enable missing security controls check',
                         action='store_true')
     parser.add_argument('-v', '--version',
-                        help='Show njsscan version',
+                        help='show njsscan version',
                         required=False,
                         action='store_true')
     args = parser.parse_args()
