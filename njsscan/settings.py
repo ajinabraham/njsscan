@@ -26,12 +26,11 @@ TEMPLATE_FILE_EXTENSIONS = {
     '.ect', '.sh', '.yml', '.toml', '.jade',
 }
 IGNORE_FILENAMES = {
-    '.DS_Store', 'jquery.min.js', 'axios.min.js',
+    '.DS_Store', 'jquery.js', 'axios.js',
     'bootstrap-tour.js', 'raphael-min.js', 'react.js',
-    'tinymce.min.js', 'tinymce.js', 'vue.min.js',
-    'codemirror-compressed.js', 'codemirror.js',
-    'react.production.min.js', 'react-dom.production.min.js',
-    'bootstrap.min.js', 'd3.min.js', 'angular.min.js',
+    'tinymce.js', 'vue.js', 'codemirror-compressed.js',
+    'codemirror.js', 'bootstrap.js', 'angular.js',
+    'react-dom.production.js', 'react.production.js',
 }
 IGNORE_EXTENSIONS = {
     '.zip', '.7z', '.tz',
@@ -45,6 +44,7 @@ IGNORE_PATHS = {
     'jquery',
     'spec',
     'example',
+    '.min.js',
 }
 GOOD_CONTROLS_ID = {
     'anti_csrf_control',
