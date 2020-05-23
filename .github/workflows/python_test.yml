@@ -31,7 +31,7 @@ jobs:
         tox -e bandit
     - name: Semgrep validate
       run: |
-        semgrep --validate --strict --config=./njsscan/rules/semantic_grep/
+        semgrep --validate --strict --config=./njsscan/rules/
     - name: Run tests
       run: |
         tox -e py
