@@ -7,10 +7,10 @@ on:
 
 jobs:
   build:
-
-    runs-on: [ubuntu-latest, macos-latest]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
+        os: [ubuntu-latest, macos-latest]
         python-version: [3.6, 3.7, 3.8]
 
     steps:
@@ -19,22 +19,28 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install tox semgrep
+
     - name: Lint
       run: |
         tox -e lint
+
     - name: Bandit
       run: |
         tox -e bandit
+
     - name: Semgrep validate
       run: |
         semgrep --validate --strict --config=./njsscan/rules/semantic_grep/
+
     - name: Run tests
       run: |
         tox -e py
+
     - name: Clean Up
       run: |
         tox -e clean
