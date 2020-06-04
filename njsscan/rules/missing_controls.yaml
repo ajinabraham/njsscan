@@ -30,8 +30,8 @@ controls:
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
   helmet_header_frame_guard:
-    description: 'Helmet X Frame Options header is not configured for this application.'
     metadata:
+      description: 'Helmet X Frame Options header is not configured for this application.'
       severity: INFO
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
@@ -42,8 +42,8 @@ controls:
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
   helmet_header_x_powered_by:
-    description: 'Helmet X Powered By header is not configured for this application.'
     metadata:
+      description: 'Helmet X Powered By header is not configured for this application.'
       severity: INFO
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
@@ -66,8 +66,8 @@ controls:
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
   helmet_header_referrer_policy:
-    description: 'Helmet Referrer Policy header is not configured for this application.'
     metadata:
+      description: 'Helmet Referrer Policy header is not configured for this application.'
       severity: INFO
       owasp: 'A6: Security Misconfiguration'
       cwe: 'CWE-693: Protection Mechanism Failure'
