@@ -20,7 +20,7 @@ TRIGGERED = {
     'node_xxe': 4,
     'eval_nodejs': 4,
     'header_xss_generic': 6,
-    'generic_path_traversal': 4,
+    'generic_path_traversal': 5,
     'express_open_redirect2': 5,
     'express_open_redirect': 15,
     'generic_header_injection': 17,
@@ -38,7 +38,7 @@ TRIGGERED = {
     'node_deserialize': 1,
     'serializetojs_deserialize': 2,
     'yaml_deserialize': 3,
-    'hardcoded_jwt_secret': 6,
+    'hardcoded_jwt_secret': 8,
     'node_secret': 2,
     'node_password': 9,
     'node_api_key': 1,
@@ -60,7 +60,7 @@ TRIGGERED = {
     'node_sqli_injection': 6,
     'node_nosqli_injection': 1,
     'node_nosqli_js_injection': 2,
-    'host_header_injection': 9,
+    'host_header_injection': 11,
 }
 CONTROLS = {
     'anti_csrf_control': 0,
