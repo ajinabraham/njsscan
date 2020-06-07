@@ -4,11 +4,13 @@
 [![PyPI version](https://badge.fury.io/py/njsscan.svg)](https://badge.fury.io/py/njsscan)
 [![platform](https://img.shields.io/badge/platform-osx%2Flinux-green.svg)](https://github.com/ajinabraham/njsscan)
 [![License](https://img.shields.io/:license-lgpl2.1-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
-[![python](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/)
+[![python](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
 
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/ajinabraham/njsscan.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ajinabraham/njsscan/context:python)
 [![Requirements Status](https://requires.io/github/ajinabraham/njsscan/requirements.svg?branch=master)](https://requires.io/github/ajinabraham/njsscan/requirements/?branch=master)
 [![Build](https://github.com/ajinabraham/njsscan/workflows/Build/badge.svg)](https://github.com/ajinabraham/njsscan/actions?query=workflow%3ABuild)
+
+Made with ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63c-4813-11e6-9430-6015d98aeaab.png) in India
 
 ### e-Learning Courses & Certifications
 [![OpSecX Video Course](https://user-images.githubusercontent.com/4301109/82597198-99fa8600-9b76-11ea-8243-c604bc7b06b1.png)](https://opsecx.com/index.php/product/node-js-security-pentesting-and-exploitation/?uid=github) [OpSecX Node.js Security: Pentesting and Exploitation - NJS](https://opsecx.com/index.php/product/node-js-security-pentesting-and-exploitation/?uid=github)
@@ -65,6 +67,9 @@ Match String:     var html = "Hello" + req.query.name + ". How are you?"
     res.write('Response</br>' + html);
 ```
 
+## nodejsscan SAST
+
+**nodejsscan**, built on top of **njsscan** provides a full fledged vulnerability management user interface along with other nifty integrations. See [nodejsscan](https://github.com/ajinabraham/nodejsscan)
 
 ## Python API
 
