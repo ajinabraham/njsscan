@@ -12,8 +12,6 @@ Made with ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82
 [![Requirements Status](https://requires.io/github/ajinabraham/njsscan/requirements.svg?branch=master)](https://requires.io/github/ajinabraham/njsscan/requirements/?branch=master)
 [![Build](https://github.com/ajinabraham/njsscan/workflows/Build/badge.svg)](https://github.com/ajinabraham/njsscan/actions?query=workflow%3ABuild)
 
-Made with ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63c-4813-11e6-9430-6015d98aeaab.png) in India
-
 ### e-Learning Courses & Certifications
 [![OpSecX Video Course](https://user-images.githubusercontent.com/4301109/82597198-99fa8600-9b76-11ea-8243-c604bc7b06b1.png)](https://opsecx.com/index.php/product/node-js-security-pentesting-and-exploitation/?uid=github) [OpSecX Node.js Security: Pentesting and Exploitation - NJS](https://opsecx.com/index.php/product/node-js-security-pentesting-and-exploitation/?uid=github)
 
