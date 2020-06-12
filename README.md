@@ -124,6 +124,8 @@ jobs:
         args: '.'
 ```
 
+Example: [dvna with njsscan action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
+
 ## Docker
 
 ### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
