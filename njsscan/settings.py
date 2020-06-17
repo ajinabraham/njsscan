@@ -45,6 +45,8 @@ IGNORE_PATHS = {
     'spec',
     'example',
     '.min.js',
+    '.git',
+    '.svn',
 }
 GOOD_CONTROLS_ID = {
     'anti_csrf_control',
