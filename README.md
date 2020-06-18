@@ -25,7 +25,7 @@ Requires Python 3.6+ and supports only Mac and Linux
 
 ```bash
 $ njsscan
-usage: njsscan [-h] [--json] [-o OUTPUT] [--missing-controls] [-v]
+usage: njsscan [-h] [--json] [-o OUTPUT] [--missing-controls] [-w] [-v]
                [path [path ...]]
 
 positional arguments:
@@ -37,6 +37,7 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         output filename to save the result
   --missing-controls    enable missing security controls check
+  -w, --exit-warning    non zero exit code on warning
   -v, --version         show njsscan version
 ```
 
@@ -100,49 +101,6 @@ Match String:     var html = "Hello" + req.query.name + ". How are you?"
 }
 ```
 
-### Github Action
-
-Add the following file `.github/workflows/njsscan.yml` to your node.js repositories in Github to enable njsscan in your CI/CD or DevSecOps pipeline.
-
-```yaml
-name: njsscan
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-jobs:
-  njsscan:
-    runs-on: ubuntu-latest
-    name: njsscan check
-    steps:
-    - uses: actions/checkout@v1
-    - name: njsscan
-      id: njsscan
-      uses: ajinabraham/njsscan-action@v5
-      with:
-        args: '.'
-```
-
-Example: [dvna with njsscan action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
-
-## Docker
-
-### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
-
-```bash
-docker pull opensecurity/njsscan
-docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
-```
-
-### Build Locally
-
-```
-docker build -t njsscan .
-docker run -v /path-to-source-dir:/src njsscan /src
-```
-
-
 ## Configure njsscan
 
 A `.njsscan` file in the root of the source code directory allows you to configure njsscan.
@@ -186,3 +144,50 @@ app.get('/some/redirect', function (req, res) {
     res.redirect(target); //ignore: express_open_redirect
 });
 ```
+
+### CI/CD Integrations
+
+#### Github Action
+
+Add the following file `.github/workflows/njsscan.yml` to your node.js repositories in Github to enable njsscan in your CI/CD or DevSecOps pipeline.
+
+```yaml
+name: njsscan
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  njsscan:
+    runs-on: ubuntu-latest
+    name: njsscan check
+    steps:
+    - uses: actions/checkout@v1
+    - name: njsscan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@v5
+      with:
+        args: '.'
+```
+
+Example: [dvna with njsscan action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
+
+## Docker
+
+### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
+
+```bash
+docker pull opensecurity/njsscan
+docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
+```
+
+### Build Locally
+
+```
+docker build -t njsscan .
+docker run -v /path-to-source-dir:/src njsscan /src
+```
+
+
+

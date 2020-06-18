@@ -114,7 +114,8 @@ def main():
                         required=False)
     parser.add_argument('--missing-controls',
                         help='enable missing security controls check',
-                        action='store_true')
+                        action='store_true',
+                        required=False)
     parser.add_argument('-w', '--exit-warning',
                         help='non zero exit code on warning',
                         action='store_true',
