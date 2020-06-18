@@ -3,11 +3,11 @@ rules:
     patterns:
       - pattern-either:
         - pattern:
-            var $LIMIT = require("express-rate-limit");
+            require("express-rate-limit");
         - pattern:
-            var $LIMIT = require("express-limiter");
+            require("express-limiter");
         - pattern:
-            var $LIMIT = require("@authentication/rate-limit");
+            require("@authentication/rate-limit");
     message: 'This application has API rate limiting controls.'
     languages:
       - javascript

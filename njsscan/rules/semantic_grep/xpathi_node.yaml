@@ -16,6 +16,30 @@ rules:
               $XPATH.parse(<... "=~/[\/\/].+/" + $REQ["..."] ...>, ...)
           - pattern: |
               $XPATH.parse(<... "=~/[\/\/].+/" + $REQ("...") ...>, ...)
+          - pattern: |
+              $INP = <... $REQ.$QUERY.$VAR ...>;
+              ...
+              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+          - pattern: |
+              $INP = <... $REQ.$PARAM...>;
+              ...
+              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+          - pattern: |
+              $INP = <... $REQ.$PARAM["..."] ...>;
+              ...
+              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+          - pattern: |
+              $INP = <... $REQ.$PARAM("...") ...>;
+              ...
+              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+          - pattern: |
+              $INP = <... $REQ["..."] ...>;
+              ...
+              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+          - pattern: |
+              $INP = <... $REQ("...") ...>;
+              ...
+              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
     message: >-
       User controlled data in xpath.parse() can result in XPATH injection
       vulnerability.

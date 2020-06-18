@@ -5,15 +5,15 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
       - pattern-either:
           - pattern: |
-              var $PARSER = new expat.Parser();
+              $PARSER = new expat.Parser();
               ...
               $PARSER.write(..., <... $REQ.$QUERY ...>, ...);
           - pattern: |
-              var $PARSER = new expat.Parser();
+              $PARSER = new expat.Parser();
               ...
               $PARSER.write(..., <... $REQ.$QUERY.$FOO ...>, ...);
           - pattern: |
-              var $PARSER = new expat.Parser();
+              $PARSER = new expat.Parser();
               ...
               $PARSER.write(..., <... $REQ.$QUERY.$FOO.$FILE ...>, ...);
     message: >-

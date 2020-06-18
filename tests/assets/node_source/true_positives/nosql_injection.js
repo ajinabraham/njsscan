@@ -6,6 +6,7 @@ timelineRouter.route("/api/timeline")
         try {
             var foo = req.foo.bar;
             const startDate = "01/01/2000";
+            // ruleid:node_nosqli_js_injection
             const endDate = req.query.end;
             const query = { $where: "this.hidden == false" };
 
@@ -26,6 +27,7 @@ timelineRouter.route("/api/timeline")
     });
 
 // https://nullsweep.com/a-nosql-injection-primer-with-mongo/
+// ruleid:node_nosqli_js_injection
 let username = req.query.username;
 var query = { $where: `this.username == '${username}'` }
 User.find(query, function (err, users) {
@@ -39,6 +41,7 @@ User.find(query, function (err, users) {
 
 
 app.post('/login', function (req, res) {
+    // ruleid:node_nosqli_injection
     User.findOne({ 'email': req.body.email, 'password': req.body.password }, function (err, data) {
         if (err) {
             res.send(err);

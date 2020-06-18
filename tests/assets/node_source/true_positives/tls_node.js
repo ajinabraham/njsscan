@@ -6,6 +6,7 @@ var use_key = 'e0ee2bc6d1979f49c6437e27b06a0101';
 module.exports = {
 
     'status': function (callback) {
+        // ruleid:node_tls_reject
         process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
         request.get('https://dev.app.idt.net/v1/status?user_key=' + use_key, function (err, response, body) {
             if (err) callback(err);
@@ -15,6 +16,7 @@ module.exports = {
         })
     },
     'fund': function (json, callback) {
+        // ruleid:node_tls_reject
         process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
         request.post({
             uri: 'https://dev.app.idt.net/v1/charges?user_key=' + use_key,
@@ -42,6 +44,7 @@ http.createServer(function (request, response) {
     console.log(url);
 
 
+    // ruleid:node_curl_ssl_verify_disable
     curl(url,
         {
             SSL_VERIFYPEER: 0

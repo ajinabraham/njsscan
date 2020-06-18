@@ -3,22 +3,22 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              var $HB =  require('handlebars');
+              $HB =  require('handlebars');
               ...
           - pattern-inside: |
-              var $HB = require('pug');
+              $HB = require('pug');
               ...
           - pattern-inside: |
-              var $HB = require('hamljs');
+              $HB = require('hamljs');
               ...
           - pattern-inside: |
-              var $HB = require('ejs');
+              $HB = require('ejs');
               ...
           - pattern-inside: |
-              var $HB = require('squirrelly');
+              $HB = require('squirrelly');
               ...
           - pattern-inside: |
-              var $HB = require('eta');
+              $HB = require('eta');
               ...
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... });
@@ -28,19 +28,19 @@ rules:
           - pattern: |
               $HB.compile(..., <... $REQ.$FOO.$BAR ...>, ...)
           - pattern: |
-              var $X = <... $REQ.$FOO ...>;
+              $X = <... $REQ.$FOO ...>;
               ...
               $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = <... $REQ.$FOO.$BAR ...>;
+              $X = <... $REQ.$FOO.$BAR ...>;
               ...
               $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
               ...
               $HB.compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
               ...
               $HB.compile(..., <... $X ...>, ...);
           - pattern: |
@@ -48,19 +48,19 @@ rules:
           - pattern: |
               $HB.Compile(..., <... $REQ.$FOO.$BAR ...>, ...)
           - pattern: |
-              var $X = <... $REQ.$FOO ...>;
+              $X = <... $REQ.$FOO ...>;
               ...
               $HB.Compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = <... $REQ.$FOO.$BAR ...>;
+              $X = <... $REQ.$FOO.$BAR ...>;
               ...
               $HB.Compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
               ...
               $HB.Compile(..., <... $X ...>, ...);
           - pattern: |
-              var $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
               ...
               $HB.Compile(..., <... $X ...>, ...);
     message: >-

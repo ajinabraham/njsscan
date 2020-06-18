@@ -14,19 +14,24 @@ app.get('/', function (req, res) {
     }
 
     fs.readFile('example.html', 'utf-8', function (error, source) {
+        // ruleid:server_side_template_injection
         var template = handlebars.compile(source + req.foo);
+        // ruleid:server_side_template_injection
         handlebars.compile(source + req.foo.bar);
 
 
         var myTemplate = 'Hi, my name is {{name}}'
+        // ruleid:server_side_template_injection
         var temp = myTemplate + req.foo['bar']
         var compiled = Sqrl.Compile(temp)
 
 
+        // ruleid:server_side_template_injection
         var xx = source.replace('<!-->', req.foo)
         handlebars.compile(xx)
 
 
+        // ruleid:server_side_template_injection
         var x = source + req.foo;
         var z = 2;
         handlebars.compile(x);

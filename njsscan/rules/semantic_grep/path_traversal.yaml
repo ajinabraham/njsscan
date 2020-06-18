@@ -3,16 +3,16 @@ rules:
     patterns:
       - pattern-either:
         - pattern-inside: |
-            var $HTTP = require('http');
+            $HTTP = require('http');
             ...
         - pattern-inside: |
-            var $EXPRESS = require('express');
+            $EXPRESS = require('express');
             ...
         - pattern-inside: |
-            var $KOA = require('koa');
+            $KOA = require('koa');
             ...
         - pattern-inside: |
-            var $ELEC = require('electron');
+            $ELEC = require('electron');
             ...
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... })
@@ -30,27 +30,27 @@ rules:
           - pattern: |
               $X.readFileSync(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               $X.createReadStream(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               $X.createReadStream(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               $X.readFile(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               $X.readFile(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               $X.readFileSync(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               $X.readFileSync(..., <... $INP ...>, ...);
     message: >-

@@ -5,11 +5,11 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
       - pattern-either:
           - pattern: |
-              var $ERR = $ERROR.stack;
+              $ERR = $ERROR.stack;
               ...
               $RES.end($ERR);
           - pattern: |
-              var $ERR = $ERROR.stack;
+              $ERR = $ERROR.stack;
               ...
               $RES.send($ERR);
           - pattern: |

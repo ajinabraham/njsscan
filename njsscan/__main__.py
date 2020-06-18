@@ -51,8 +51,6 @@ def format_output(outfile, scan_results):
     """Format output printing."""
     if not scan_results:
         return
-    if scan_results.get('errors'):
-        logger.critical(scan_results.get('errors'))
     scan_results.pop('errors', None)
     buffer = []
     for out in scan_results:
@@ -86,10 +84,18 @@ def json_output(outfile, scan_results):
         return json_output
 
 
-def handle_exit(results):
+def handle_exit(results, exit_warn):
     """Handle Exit."""
-    if results.get('nodejs') or results.get('templates'):
-        sys.exit(1)
+    combined = {}
+    if results.get('nodejs'):
+        combined.update(results['nodejs'])
+    if results.get('templates'):
+        combined.update(results['templates'])
+    for meta in combined.values():
+        severity = meta['metadata']['severity']
+        ewarn = severity == 'WARNING' and exit_warn
+        if severity == 'ERROR' or ewarn:
+            sys.exit(1)
     sys.exit(0)
 
 
@@ -108,7 +114,12 @@ def main():
                         required=False)
     parser.add_argument('--missing-controls',
                         help='enable missing security controls check',
-                        action='store_true')
+                        action='store_true',
+                        required=False)
+    parser.add_argument('-w', '--exit-warning',
+                        help='non zero exit code on warning',
+                        action='store_true',
+                        required=False)
     parser.add_argument('-v', '--version',
                         help='show njsscan version',
                         required=False,
@@ -124,7 +135,7 @@ def main():
             json_output(args.output, scan_results)
         else:
             format_output(args.output, scan_results)
-        handle_exit(scan_results)
+        handle_exit(scan_results, args.exit_warning)
     elif args.version:
         print('njsscan: v' + __version__)
     else:

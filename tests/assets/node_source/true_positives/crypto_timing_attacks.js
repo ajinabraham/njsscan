@@ -2,18 +2,22 @@ if (name == 'test') {
     acces = 1;
 }
 
+// ruleid:node_timing_attack
 if (password == 'mypass') {
     correct = 1;
 }
 
+// ruleid:node_timing_attack
 if ('test' == password) {
     correct = 2;
 }
 
+// ruleid:node_timing_attack
 if ('test' === password) {
     correct = 2;
 }
 
+// ruleid:node_timing_attack
 if (password == test)
     x = 1;
 
@@ -23,11 +27,11 @@ if (password == test)
 import { pbkdf2Sync, randomBytes } from 'crypto';
 
 export class Auth {
-    private iters = 1e1; // TODO: increase later
-    private keylen = 64;
-    private digest = 'sha512';
+    iters = 1e1; // TODO: increase later
+    keylen = 64;
+    digest = 'sha512';
 
-    create(password: string) {
+    create(password) {
         const salt = randomBytes(128).toString('base64'); // <- salt 
         // salt was not base64 before being used by pbkdf2
 
@@ -36,15 +40,17 @@ export class Auth {
         return [salt, hash, this.iters].join('::');
     }
 
-    verify(stored: string, password: string) {
+    verify(stored, password) {
         const [salt, hash, iters] = stored.split('::');
         const verify = pbkdf2Sync(password, salt, parseInt(iters, 10), this.keylen, this.digest);
 
+        // ruleid:node_timing_attack
         return hash === verify.toString('base64');
     }
 }
 
 function isAuthenticated(user, token) {
     var correctToken = FetchUserTokenFromDB(user);
+    // ruleid:node_timing_attack
     return token === correctToken;
 }
