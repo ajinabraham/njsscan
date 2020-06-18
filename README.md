@@ -70,7 +70,11 @@ Match String:     var html = "Hello" + req.query.name + ". How are you?"
 
 ## nodejsscan SAST
 
-**nodejsscan**, built on top of **njsscan** provides a full fledged vulnerability management user interface along with other nifty integrations. See [nodejsscan](https://github.com/ajinabraham/nodejsscan)
+**nodejsscan**, built on top of **njsscan** provides a full fledged vulnerability management user interface along with other nifty integrations.
+
+![nodejsscan web ui](https://user-images.githubusercontent.com/4301109/83994121-74fe6500-a923-11ea-9ad7-012113f1bb12.png)
+
+See [nodejsscan](https://github.com/ajinabraham/nodejsscan)
 
 ## Python API
 
