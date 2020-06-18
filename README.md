@@ -149,7 +149,7 @@ app.get('/some/redirect', function (req, res) {
 });
 ```
 
-### CI/CD Integrations
+## CI/CD Integrations
 
 You can enable njsscan in your CI/CD or DevSecOps pipelines.
 
@@ -178,7 +178,7 @@ jobs:
 ```
 Example: [dvna with njsscan github action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
 
-### Gitlab CI/CD
+#### Gitlab CI/CD
 
 Add the following to the file `.gitlab-ci.yml`.
 
@@ -195,7 +195,7 @@ njsscan:
 Example: [dvna with njsscan gitlab](https://gitlab.com/ajinabraham/dvna/-/pipelines)
 
 
-### Travis CI
+#### Travis CI
 
 Add the following to the file `.travis.yml`.
 
