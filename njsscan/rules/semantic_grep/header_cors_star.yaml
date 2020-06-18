@@ -35,27 +35,23 @@ rules:
               {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/":
               '*' }, ...);
           - pattern: >
-              ...
-              var $VAL = '*';
+              $VAL = '*';
               ...
               $RES.set("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
               $VAL, ...);
           - pattern: >
-              ...
-              var $VAL = '*';
+              $VAL = '*';
               ...
               $RES.set(..., {
               "=~/[Access-Control-Allow-Origin|access-control-allow-origin]/" :
               $VAL }, ...);
           - pattern: >
-              ...
-              var $VAL = '*';
+              $VAL = '*';
               ...
               $RES.header("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
               $VAL, ...);
           - pattern: >
-              ...
-              var $VAL = '*';
+              $VAL = '*';
               ...
               $RES.writeHead(...,
               {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/":

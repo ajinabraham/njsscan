@@ -2,13 +2,13 @@ rules:
   - id: anti_csrf_control
     patterns:
       - pattern-inside: |
-          var $CSRUF = require('csurf');
+          $CSRUF = require('csurf');
           ...
       - pattern-either:
           - pattern:
-              var $X = csrf(...);
+              $X = csrf(...);
           - pattern:
-              var $X = csurf(...);
+              $X = csurf(...);
           - pattern: 
               $APP.use(csrf(...));
           - pattern: 

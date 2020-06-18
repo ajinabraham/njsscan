@@ -7,12 +7,11 @@ router.post("/list-users", (req, res) => {
     var someArr = [];
 
     // Potential DoS if obj.length is large.
+    // ruleid:layer7_object_dos
     for (var i = 0; i < obj.length; i++) {
         someArr.push(obj[i]);
     }
 
-    //doing something with the code
-    res.send(someArr.join(','));
 });
 
 
@@ -25,6 +24,7 @@ app.post("/foo", (req, res) => {
     var ret = [];
 
     // Potential DoS if obj.length is large.
+    // ruleid:layer7_object_dos
     for (var i = 0; i < obj.length; i++) {
         ret.push(obj[i]);
     }

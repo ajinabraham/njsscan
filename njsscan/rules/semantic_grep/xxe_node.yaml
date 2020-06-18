@@ -36,61 +36,61 @@ rules:
               ...
               $LIBXML.parseXml(..., <... $FOO ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxParser();
+              $PARSER = new libxmljs.SaxParser();
               ...
               $PARSER.parseString(..., <... $REQ.$QUERY ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxParser();
+              $PARSER = new libxmljs.SaxParser();
               ...
               $PARSER.parseString(..., <... $REQ.$QUERY.$BAR ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxParser();
+              $PARSER = new libxmljs.SaxParser();
               ...
               $PARSER.parseString(..., <... $REQ.$QUERY.$BAR.$FILE ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxPushParser();
+              $PARSER = new libxmljs.SaxPushParser();
               ...
               $PARSER.push(..., <... $REQ.$QUERY ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxPushParser();
+              $PARSER = new libxmljs.SaxPushParser();
               ...
               $PARSER.push(..., <... $REQ.$QUERY.$FOO ...> , ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxPushParser();
+              $PARSER = new libxmljs.SaxPushParser();
               ...
               $PARSER.push(..., <... $REQ.$QUERY.$FOO.$FILE ...> , ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxParser();
+              $PARSER = new libxmljs.SaxParser();
               ...
               $FOO = <... $REQ.$QUERY ...>;
               ...
               $PARSER.parseString(..., <... $FOO ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxParser();
+              $PARSER = new libxmljs.SaxParser();
               ...
               $FOO = <... $REQ.$QUERY.$BAR ...>;
               ...
               $PARSER.parseString(..., <... $FOO ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxParser();
+              $PARSER = new libxmljs.SaxParser();
               ...
               $FOO = <... $REQ.$QUERY.$BAR.$FILE ...>;
               ...
               $PARSER.parseString(..., <... $FOO ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxPushParser();
+              $PARSER = new libxmljs.SaxPushParser();
               ...
               $FOO = <... $REQ.$QUERY ...>;
               ...
               $PARSER.push(..., <... $FOO ...>, ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxPushParser();
+              $PARSER = new libxmljs.SaxPushParser();
               ...
               $FOO = <... $REQ.$QUERY.$BAR ...>;
               ...
               $PARSER.push(..., <... $FOO ...> , ...);
           - pattern: |
-              var $PARSER = new libxmljs.SaxPushParser();
+              $PARSER = new libxmljs.SaxPushParser();
               ...
               $FOO = <... $REQ.$QUERY.$BAR.$FILE ...>;
               ...

@@ -7,6 +7,7 @@ fs.createReadStream('archive.zip')
     .on('entry', entry => {
         const fileName = entry.path;
         // Arbitrary file overwrite
+        // ruleid:zip_path_overwrite
         entry.pipe(fs.createWriteStream(fileName));
     });
 
@@ -15,6 +16,7 @@ fs.createReadStream('archive.zip')
     .on('entry', entry => {
         const fileName = entry.path;
         // Arbitrary file overwrite
+        // ruleid:zip_path_overwrite
         entry.pipe(fs.writeFileSync(fileName));
     });
 
@@ -22,6 +24,7 @@ fs.readFile('path/to/archive.zip', function (err, zipContents) {
     unzip.Parse(zipContents).on('entry', function (entry) {
         var fileName = 'output/path/' + entry.path;
         // Arbitrary file overwrite
+        // ruleid:zip_path_overwrite2
         fs.writeFileSync(fileName, entry.contents);
     });
 });
@@ -31,10 +34,12 @@ const fs = require('fs');
 var AdmZip = require('adm-zip');
 var zip = new AdmZip("archive.zip");
 var zipEntries = zip.getEntries();
+// ruleid:admzip_path_overwrite
 zipEntries.forEach(function (zipEntry) {
     fs.createWriteStream(zipEntry.entryName);
 });
 
+// ruleid:admzip_path_overwrite
 zip.getEntries().forEach(function (zipEntry) {
     fs.writeFileSync(zipEntry.entryName);
 });
@@ -44,6 +49,7 @@ const tar = require('tar-stream');
 const extract = tar.extract();
 
 extract.on('entry', (header, stream, next) => {
+    // ruleid:tar_path_overwrite
     const out = fs.createWriteStream(header.name);
     stream.pipe(out);
     stream.on('end', () => {
@@ -53,6 +59,7 @@ extract.on('entry', (header, stream, next) => {
 })
 
 tar.extract().on('entry', (header, stream, next) => {
+    // ruleid:tar_path_overwrite
     const out = fs.writeFileSync(header.name);
     stream.pipe(out);
     stream.on('end', () => {
@@ -70,5 +77,6 @@ fs.createReadStream('path/to/archive.zip')
     .pipe(unzipper.Parse())
     .on('entry', function (entry) {
         var fileName = entry.path;
+        // ruleid:zip_path_overwrite
         entry.pipe(fs.createWriteStream(fileName));
     });

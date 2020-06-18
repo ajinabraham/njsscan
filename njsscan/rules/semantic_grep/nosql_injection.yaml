@@ -7,37 +7,37 @@ rules:
           - pattern: |
               $OBJ.$FUNC({$where: <... $REQ.$QUERY ...>}, ...);
           - pattern: |
-              var $NSQL = <... $REQ.$QUERY.$VAR ...>;
+              $NSQL = <... $REQ.$QUERY.$VAR ...>;
               ...
               $OBJ.$FUNC({$where: <... $NSQL ...>}, ...);
           - pattern: |
-              var $NSQL = <... $REQ.$QUERY ...>;
+              $NSQL = <... $REQ.$QUERY ...>;
               ...
               $OBJ.$FUNC({$where: <... $NSQL ...>}, ...);
           - pattern: |
-              var $INP = $REQ.$FOO.$BAR;
+              $INP = $REQ.$FOO.$BAR;
               ...
-              var $QRY = {$where: <... $INP ...>};
-              ...
-              $OBJ.$FUNC(<... $QRY ...>, ...);
-          - pattern: |
-              var $INP = $REQ.$FOO;
-              ...
-              var $QRY = {$where: <... $INP ...>};
+              $QRY = {$where: <... $INP ...>};
               ...
               $OBJ.$FUNC(<... $QRY ...>, ...);
           - pattern: |
-              var $INP = $REQ.$FOO;
+              $INP = $REQ.$FOO;
               ...
-              var $QRY = {$where: ...};
+              $QRY = {$where: <... $INP ...>};
+              ...
+              $OBJ.$FUNC(<... $QRY ...>, ...);
+          - pattern: |
+              $INP = $REQ.$FOO;
+              ...
+              $QRY = {$where: ...};
               ...
               $QRY["$where"] = <... $INP ...>;
               ...
               $OBJ.$FUNC(<... $QRY ...>, ...);
           - pattern: |
-              var $INP = $REQ.$FOO.$BAR;
+              $INP = $REQ.$FOO.$BAR;
               ...
-              var $QRY = {$where: ...};
+              $QRY = {$where: ...};
               ...
               $QRY["$where"] = <... $INP ...>;
               ...
@@ -59,31 +59,31 @@ rules:
           - pattern: |
               $OBJ.findOne({$KEY: <... $REQ.$FOO ...> }, ...);
           - pattern: |
-              var $INP = <... $REQ.$FOO.$BAR ...>;
+              $INP = <... $REQ.$FOO.$BAR ...>;
               ...
               $OBJ.findOne({$KEY : <... $INP ...> }, ...);
           - pattern: |
-              var $INP = <... $REQ.$FOO ...>;
+              $INP = <... $REQ.$FOO ...>;
               ...
               $OBJ.findOne({$KEY: <... $INP ...> }, ...);
           - pattern: |
-              var $QUERY = {$KEY: <... $REQ.$FOO.$BAR ...>};
+              $QUERY = {$KEY: <... $REQ.$FOO.$BAR ...>};
               ...
               $OBJ.findOne($QUERY, ...);
           - pattern: |
-              var $QUERY = {$KEY: <... $REQ.$FOO ...>};
+              $QUERY = {$KEY: <... $REQ.$FOO ...>};
               ...
               $OBJ.findOne($QUERY, ...);
           - pattern: |
-              var $INP = <... $REQ.$FOO.$BAR ...>;
+              $INP = <... $REQ.$FOO.$BAR ...>;
               ...
-              var $QUERY = {$KEY : <... $INP ...> };
+              $QUERY = {$KEY : <... $INP ...> };
               ...
               $OBJ.findOne(<... $QUERY  ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$FOO ...>;
+              $INP = <... $REQ.$FOO ...>;
               ...
-              var $QUERY = {$KEY : <... $INP ...> };
+              $QUERY = {$KEY : <... $INP ...> };
               ...
               $OBJ.findOne(<... $QUERY  ...>, ...);
     message: Untrusted user input in findOne() function can result in NoSQL Injection.

@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/greeting', (req, res) => {
+    // ruleid:express_xss
     const { name } = req.query;
     res.send('<h1> Hello :' + name + "</h1>")
 })
@@ -17,6 +18,7 @@ module.exports = router
 
 
 app.get('/', function (req, res) {
+    // ruleid:express_xss
     var user = req.query.name;
 
     msg = "Hi " + user
@@ -26,6 +28,7 @@ app.get('/', function (req, res) {
 
 var msg = '';
 app.get('/3', function (req, res) {
+    // ruleid:express_xss
     var user = req.query.name;
 
     msg = "Hi " + user
@@ -33,11 +36,13 @@ app.get('/3', function (req, res) {
 });
 
 app.get('/2', function (req, res) {
+    // ruleid:express_xss
     var user = { user: req.query.name };
     res.send('Response</br>' + user.name);
 });
 
 app.get('/1', function (req, res) {
+    // ruleid:express_xss
     var user = req.query.name;
     var msg = [];
     msg.push(user);
@@ -60,28 +65,34 @@ app.get('/4', function (req, res) {
 var express = require('express');
 var app = express();
 app.get('/', function (req, res) {
+    // ruleid:express_xss
     var resp = req.query.name;
     res.send('Response</br>' + resp);
 });
 app.get('/3', function (req, res) {
+    // ruleid:express_xss
     var resp = req.query.name;
     res.write('Response</br>' + resp);
 });
 
 app.get('/3', function (req, res) {
+    // ruleid:express_xss
     var resp = req.foo;
     var x = 1;
     res.write('Response</br>' + resp);
 });
 
 app.get('/xss', function (req, res) {
+    // ruleid:express_xss
     var html = "ASadad" + req.query.name + "Asdadads"
     res.write('Response</br>' + html);
 });
 app.get('/xss', function (req, res) {
+    // ruleid:express_xss
     res.write('Response</br>' + req.query('doo'));
 });
 app.get('/xss', function (req, res) {
+    // ruleid:express_xss
     res.write('Response</br>' + req.query.name);
 });
 
@@ -96,6 +107,7 @@ app.get('/noxs2s', function (req, res) {
 });
 
 app.get('/xss', function (req, res) {
+    // ruleid:express_xss
     var resp = req.query.name;
     var html = "ASadad" + resp + "Asdadads"
     res.write('Response</br>' + html);

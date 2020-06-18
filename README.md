@@ -147,9 +147,11 @@ app.get('/some/redirect', function (req, res) {
 
 ### CI/CD Integrations
 
+You can enable njsscan in your CI/CD or DevSecOps pipelines.
+
 #### Github Action
 
-Add the following file `.github/workflows/njsscan.yml` to your node.js repositories in Github to enable njsscan in your CI/CD or DevSecOps pipeline.
+Add the following to the file `.github/workflows/njsscan.yml`.
 
 ```yaml
 name: njsscan
@@ -170,8 +172,36 @@ jobs:
       with:
         args: '.'
 ```
+Example: [dvna with njsscan github action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
 
-Example: [dvna with njsscan action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
+### Gitlab CI/CD
+
+Add the following to the file `.gitlab-ci.yml`.
+
+```yaml
+stages:
+    - test
+njsscan:
+    image: python
+    before_script:
+        - pip3 install --upgrade njsscan
+    script:
+        - njsscan .
+```
+Example: [dvna with njsscan gitlab](https://gitlab.com/ajinabraham/dvna/-/pipelines)
+
+
+### Travis CI
+
+Add the following to the file `.travis.yml`.
+
+```yaml
+language: python
+install:
+    - pip3 install --upgrade njsscan
+script:
+    - njsscan .
+```
 
 ## Docker
 

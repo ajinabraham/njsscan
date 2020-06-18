@@ -1,3 +1,4 @@
+// ruleid:hardcoded_jwt_secret
 const jsonwt = require('jsonwebtoken')
 const jose = require('jose')
 const { JWK, JWT } = jose
@@ -30,6 +31,7 @@ const token9 = JWT.sign(payload, 'secret-again')
 
 
 
+// ruleid:hardcoded_jwt_secret
 const $jwt = require('jsonwebtoken');
 
 const cert = 'hardcoded-secret';
@@ -46,6 +48,7 @@ module.exports = (app) => {
     });
 };
 
+// ruleid:hardcoded_jwt_secret
 const jwt = require('jsonwebtoken')
 
 const jwtSign = (payload = { id: 1 }) =>
@@ -69,6 +72,7 @@ export default { jwtSign, jwtVerify }
 
         'use strict';
 
+        // ruleid:hardcoded_jwt_secret
         let User = require('./user'),
             jwt = require('jsonwebtoken');
 
@@ -91,6 +95,7 @@ export default { jwtSign, jwtVerify }
 const config = require('./app.config');
 const privateMethods = {
     initialize(USER) {
+        // ruleid:hardcoded_jwt_secret
         const router = require('express').Router(),
             jwt = require('jsonwebtoken');
         if (config) {

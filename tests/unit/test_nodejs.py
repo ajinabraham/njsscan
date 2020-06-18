@@ -17,7 +17,7 @@ TRIGGERED = {
     'node_ssrf': 11,
     'node_xpath_injection': 4,
     'node_entity_expansion': 1,
-    'express_xss': 14,
+    'express_xss': 13,
     'node_xxe': 5,
     'eval_nodejs': 4,
     'header_xss_generic': 6,
@@ -25,7 +25,7 @@ TRIGGERED = {
     'express_open_redirect2': 5,
     'express_open_redirect': 15,
     'generic_header_injection': 17,
-    'express_cors': 8,
+    'express_cors': 6,
     'node_aes_ecb': 5,
     'node_sha1': 1,
     'node_md5': 1,
@@ -63,7 +63,7 @@ TRIGGERED = {
     'node_sqli_injection': 6,
     'node_nosqli_injection': 1,
     'node_nosqli_js_injection': 2,
-    'host_header_injection': 11,
+    'host_header_injection': 12,
 }
 CONTROLS = {
     'anti_csrf_control': 0,

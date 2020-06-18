@@ -2,7 +2,7 @@ rules:
   - id: generic_os_command_exec
     patterns:
       - pattern-inside: |
-          var $EXEC = require('child_process');
+          $EXEC = require('child_process');
           ...
       - pattern-inside: |
           $APP.$METHOD(..., function $FUNC($REQ, $RES, ...){ ... });
@@ -16,19 +16,19 @@ rules:
           - pattern: |
               $EXEC.execSync(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               $EXEC.exec(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               $EXEC.exec(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               $EXEC.execSync(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               $EXEC.execSync(..., <... $INP ...>, ...);
     message: >-
@@ -59,19 +59,19 @@ rules:
           - pattern: |
               execSync(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               exec(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               exec(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY ...>;
+              $INP = <... $REQ.$QUERY ...>;
               ...
               execSync(..., <... $INP ...>, ...);
           - pattern: |
-              var $INP = <... $REQ.$QUERY.$VAR ...>;
+              $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               execSync(..., <... $INP ...>, ...);
     message: >-
