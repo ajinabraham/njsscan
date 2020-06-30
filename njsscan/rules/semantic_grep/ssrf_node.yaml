@@ -29,8 +29,12 @@ rules:
           - pattern-inside: |
               $PKG =  require('got');
               ...
-      - pattern-inside: |
-          $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) { ... });
+      - pattern-either:
+        - pattern-inside: function ($REQ, $RES, ...) {...}
+        - pattern-inside: function $FUNC($REQ, $RES, ...) {...}
+        - pattern-inside: $X = function $FUNC($REQ, $RES, ...) {...}
+        - pattern-inside: var $X = function $FUNC($REQ, $RES, ...) {...};
+        - pattern-inside: $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})
       - pattern-either:
           - pattern: |
               $PKG.get(<... $REQ.$VAR ...>, ...)
