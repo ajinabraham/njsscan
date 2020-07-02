@@ -21,7 +21,7 @@ TRIGGERED = {
     'node_xxe': 5,
     'eval_nodejs': 4,
     'header_xss_generic': 6,
-    'generic_path_traversal': 5,
+    'generic_path_traversal': 6,
     'express_open_redirect2': 5,
     'express_open_redirect': 15,
     'generic_header_injection': 17,
@@ -61,8 +61,8 @@ TRIGGERED = {
     'handlebars_noescape': 2,
     'squirrelly_autoescape': 1,
     'node_sqli_injection': 6,
-    'node_nosqli_injection': 1,
-    'node_nosqli_js_injection': 2,
+    'node_nosqli_injection': 2,
+    'node_nosqli_js_injection': 3,
     'host_header_injection': 12,
 }
 CONTROLS = {
