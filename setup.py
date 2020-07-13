@@ -20,7 +20,7 @@ def get_version(rel_path):
 
 
 description = ('njsscan is a SAST tool that can find insecure code'
-               ' patterns in your Node.js applications.')
+               ' patterns in your Node.js applications. Is it the real life?')
 setup(
     name='njsscan',
     version=get_version('njsscan/__init__.py'),

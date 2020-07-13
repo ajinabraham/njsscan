@@ -84,6 +84,58 @@ def json_output(outfile, scan_results):
         return json_output
 
 
+def sonarqube_output(outfile, scan_results):
+    """SonarQube JSON Output."""
+    sonarqube_issues = []
+    secondary_locations = []
+    for k, v in scan_results['nodejs'].items():
+        issue_data = v['metadata']
+        for ix, file in enumerate(v['files']):
+            text_range = {
+                'startLine': file['match_lines'][0],
+                'endLine': file['match_lines'][1],
+                'startColumn': file['match_position'][0],
+                'endColumn': file['match_position'][1]
+            }
+            location = {
+                'message': issue_data['description'],
+                'filePath': file['file_path'],
+                'textRange': text_range
+            }
+            if ix == 0:
+                primary_location = location
+            else:
+                secondary_locations.append(location)
+        issue = {
+            'engineId': 'njsscan',
+            'ruleId': k,
+            'type': 'VULNERABILITY',
+            'severity': translate_to_sonarqube_severity(issue_data['severity']),
+            'primaryLocation': primary_location,
+        }
+        if secondary_locations:
+            issue['secondaryLocations'] = secondary_locations
+        sonarqube_issues.append(issue)
+    sonarqube_report = {
+        'issues': sonarqube_issues
+    }
+    if outfile:
+        with open(outfile + '.sonarqube', 'w') as of:
+            json.dump(sonarqube_report, of, sort_keys=True,
+                      indent=2, separators=(',', ': '))
+    else:
+        json_output = (json.dumps(sonarqube_report, sort_keys=True,
+                                  indent=2, separators=(',', ': ')))
+        print(json_output)
+        return json_output
+
+def translate_to_sonarqube_severity(severity):
+    d = {
+        'ERROR': 'CRITICAL',
+        'WARNING': 'MAJOR'
+    }
+    return d[severity]
+
 def handle_exit(results, exit_warn):
     """Handle Exit."""
     combined = {}
@@ -106,8 +158,11 @@ def main():
                         nargs='*',
                         help=('Path can be file(s) or '
                               'directories with source code'))
-    parser.add_argument('--json',
+    parser.add_argument('-j', '--json',
                         help='set output format as JSON',
+                        action='store_true')
+    parser.add_argument('--sonarqube',
+                        help='set output format compatible with SonarQube',
                         action='store_true')
     parser.add_argument('-o', '--output',
                         help='output filename to save the result',
@@ -121,21 +176,30 @@ def main():
                         action='store_true',
                         required=False)
     parser.add_argument('-v', '--version',
-                        help='show njsscan version',
+                        help="show njsscan version",
                         required=False,
                         action='store_true')
     args = parser.parse_args()
     if args.path:
+        show_progress = False
+        if args.json or args.sonarqube:
+            show_progress = True
+
         scan_results = NJSScan(
             args.path,
-            args.json,
+            show_progress,
             args.missing_controls,
         ).scan()
+
         if args.json:
             json_output(args.output, scan_results)
+        elif args.sonarqube:
+            sonarqube_output(args.output, scan_results)
         else:
             format_output(args.output, scan_results)
+
         handle_exit(scan_results, args.exit_warning)
+
     elif args.version:
         print('njsscan: v' + __version__)
     else:
