@@ -13,12 +13,17 @@ class NJSScan:
     def __init__(self, paths, show_progress, check_controls) -> None:
         conf = get_config(paths)
         self.check_controls = check_controls
-        self.options = {'match_rules': settings.PATTERN_RULES_DIR, 'sgrep_rules': settings.SGREP_RULES_DIR,
-                        'sgrep_extensions': conf['nodejs_extensions'], 'match_extensions': conf['template_extensions'],
-                        'ignore_filenames': conf['ignore_filenames'], 'ignore_extensions': conf['ignore_extensions'],
-                        'ignore_paths': conf['ignore_paths'], 'ignore_rules': conf['ignore_rules'],
-                        'show_progress': show_progress}
-
+        self.options = {
+            'match_rules': settings.PATTERN_RULES_DIR,
+            'sgrep_rules': settings.SGREP_RULES_DIR,
+            'sgrep_extensions': conf['nodejs_extensions'],
+            'match_extensions': conf['template_extensions'],
+            'ignore_filenames': conf['ignore_filenames'],
+            'ignore_extensions': conf['ignore_extensions'],
+            'ignore_paths': conf['ignore_paths'],
+            'ignore_rules': conf['ignore_rules'],
+            'show_progress': show_progress,
+        }
         self.paths = paths
         self.result = {
             'templates': {},

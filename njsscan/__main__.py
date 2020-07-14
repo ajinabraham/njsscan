@@ -85,14 +85,14 @@ def json_output(outfile, scan_results):
 
 
 def sonarqube_output(outfile, scan_results):
-    """SonarQube JSON Output."""
+    """Sonarqube JSON Output."""
     sonarqube_issues = []
     for k, v in scan_results['nodejs'].items():
         issue = get_sonarqube_issue(v)
         issue['ruleId'] = k
         sonarqube_issues.append(issue)
     sonarqube_report = {
-        'issues': sonarqube_issues
+        'issues': sonarqube_issues,
     }
     if outfile:
         with open(outfile, 'w') as of:
@@ -113,12 +113,12 @@ def get_sonarqube_issue(njsscan_issue):
             'startLine': file['match_lines'][0],
             'endLine': file['match_lines'][1],
             'startColumn': file['match_position'][0],
-            'endColumn': file['match_position'][1]
+            'endColumn': file['match_position'][1],
         }
         location = {
             'message': issue_data['description'],
             'filePath': file['file_path'],
-            'textRange': text_range
+            'textRange': text_range,
         }
         if ix == 0:
             primary_location = location
@@ -138,9 +138,10 @@ def get_sonarqube_issue(njsscan_issue):
 def translate_to_sonarqube_severity(severity):
     d = {
         'ERROR': 'CRITICAL',
-        'WARNING': 'MAJOR'
+        'WARNING': 'MAJOR',
     }
     return d[severity]
+
 
 def handle_exit(results, exit_warn):
     """Handle Exit."""
@@ -182,7 +183,7 @@ def main():
                         action='store_true',
                         required=False)
     parser.add_argument('-v', '--version',
-                        help="show njsscan version",
+                        help='show njsscan version',
                         required=False,
                         action='store_true')
     args = parser.parse_args()
