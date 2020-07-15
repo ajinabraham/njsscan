@@ -1,0 +1,35 @@
+rules:
+  - id: wkhtmltopdf_ssrf
+    patterns:
+      - pattern-inside: |
+          $PKG =  require('wkhtmltopdf');
+          ...
+      - pattern-either:
+          - pattern-inside: 'function ($REQ, $RES, ...) {...}'
+          - pattern-inside: 'function $FUNC($REQ, $RES, ...) {...}'
+          - pattern-inside: '$X = function $FUNC($REQ, $RES, ...) {...}'
+          - pattern-inside: 'var $X = function $FUNC($REQ, $RES, ...) {...};'
+          - pattern-inside: '$APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})'
+      - pattern-either:
+          - pattern: |
+              $INP = <...$REQ.$VAR...>;
+              ...
+              $PKG(<... $INP ...>, ...);
+          - pattern: |
+              $INP = <...$REQ.$VAR.$FOO...>;
+              ...
+              $PKG(<... $INP ...>, ...);
+          - pattern: |
+              $PKG(<... $REQ.$VAR ...>, ...)
+          - pattern: |
+              $PKG(<... $REQ.$VAR.$FOO ...>, ...)
+      - pattern-not: $PKG("...", ...)
+    message: >-
+      User controlled URL reached to `wkhtmltopdf` can result in Server Side
+      Request Forgery (SSRF).
+    languages:
+      - javascript
+    severity: ERROR
+    metadata:
+      owasp: 'A1: Injection'
+      cwe: 'CWE-918: Server-Side Request Forgery (SSRF)'
