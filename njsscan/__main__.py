@@ -87,7 +87,6 @@ def json_output(outfile, scan_results):
 def sonarqube_output(outfile, scan_results):
     """Sonarqube JSON Output."""
     sonarqube_issues = []
-
     for k, v in scan_results['nodejs'].items():
         issue = get_sonarqube_issue(v)
         issue['ruleId'] = k
@@ -96,13 +95,10 @@ def sonarqube_output(outfile, scan_results):
         issue = get_sonarqube_issue(v)
         issue['ruleId'] = k
         sonarqube_issues.append(issue)
-
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
     json_output(outfile, sonarqube_report)
-    print(json_output)
-    return json_output
 
 
 def get_sonarqube_issue(njsscan_issue):
