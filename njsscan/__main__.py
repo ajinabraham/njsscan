@@ -87,25 +87,30 @@ def json_output(outfile, scan_results):
 def sonarqube_output(outfile, scan_results):
     """Sonarqube JSON Output."""
     sonarqube_issues = []
+
     for k, v in scan_results['nodejs'].items():
         issue = get_sonarqube_issue(v)
         issue['ruleId'] = k
         sonarqube_issues.append(issue)
+    for k, v in scan_results['templates'].items():
+        issue = get_sonarqube_issue(v)
+        issue['ruleId'] = k
+        sonarqube_issues.append(issue)
+
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
-    if outfile:
-        with open(outfile, 'w') as of:
-            json.dump(sonarqube_report, of, sort_keys=True,
-                      indent=2, separators=(',', ': '))
-    else:
-        json_output = (json.dumps(sonarqube_report, sort_keys=True,
-                                  indent=2, separators=(',', ': ')))
-        print(json_output)
-        return json_output
+    json_output(outfile, sonarqube_report)
+    print(json_output)
+    return json_output
 
 
 def get_sonarqube_issue(njsscan_issue):
+    sonarqube_severity_mapping = {
+        'ERROR': 'CRITICAL',
+        'WARNING': 'MAJOR',
+        'INFO': 'MINOR',
+    }
     secondary_locations = []
     issue_data = njsscan_issue['metadata']
     for ix, file in enumerate(njsscan_issue['files']):
@@ -127,20 +132,12 @@ def get_sonarqube_issue(njsscan_issue):
     issue = {
         'engineId': 'njsscan',
         'type': 'VULNERABILITY',
-        'severity': translate_to_sonarqube_severity(issue_data['severity']),
+        'severity': sonarqube_severity_mapping[issue_data['severity']],
         'primaryLocation': primary_location,
     }
     if secondary_locations:
         issue['secondaryLocations'] = secondary_locations
     return issue
-
-
-def translate_to_sonarqube_severity(severity):
-    d = {
-        'ERROR': 'CRITICAL',
-        'WARNING': 'MAJOR',
-    }
-    return d[severity]
 
 
 def handle_exit(results, exit_warn):
@@ -188,9 +185,9 @@ def main():
                         action='store_true')
     args = parser.parse_args()
     if args.path:
-        show_progress = False
+        show_progress = True
         if args.json or args.sonarqube:
-            show_progress = True
+            show_progress = False
 
         scan_results = NJSScan(
             args.path,
@@ -198,10 +195,10 @@ def main():
             args.missing_controls,
         ).scan()
 
-        if args.json:
-            json_output(args.output, scan_results)
-        elif args.sonarqube:
+        if args.sonarqube:
             sonarqube_output(args.output, scan_results)
+        elif args.json:
+            json_output(args.output, scan_results)
         else:
             format_output(args.output, scan_results)
 
