@@ -91,10 +91,6 @@ def sonarqube_output(outfile, scan_results):
         issue = get_sonarqube_issue(v)
         issue['ruleId'] = k
         sonarqube_issues.append(issue)
-    for k, v in scan_results['templates'].items():
-        issue = get_sonarqube_issue(v)
-        issue['ruleId'] = k
-        sonarqube_issues.append(issue)
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
