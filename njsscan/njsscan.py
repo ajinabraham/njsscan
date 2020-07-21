@@ -22,7 +22,7 @@ class NJSScan:
             'ignore_extensions': conf['ignore_extensions'],
             'ignore_paths': conf['ignore_paths'],
             'ignore_rules': conf['ignore_rules'],
-            'show_progress': json,
+            'show_progress': not json,
         }
         self.paths = paths
         self.result = {
