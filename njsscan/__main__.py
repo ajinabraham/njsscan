@@ -91,6 +91,10 @@ def sonarqube_output(outfile, scan_results):
         issue = get_sonarqube_issue(v)
         issue['ruleId'] = k
         sonarqube_issues.append(issue)
+    for k, v in scan_results['templates'].items():
+        issue = get_sonarqube_issue(v)
+        issue['ruleId'] = k
+        sonarqube_issues.append(issue)
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
@@ -177,16 +181,12 @@ def main():
                         action='store_true')
     args = parser.parse_args()
     if args.path:
-        show_progress = True
-        if args.json or args.sonarqube:
-            show_progress = False
-
+        is_json = args.json or args.sonarqube
         scan_results = NJSScan(
             args.path,
-            show_progress,
+            is_json,
             args.missing_controls,
         ).scan()
-
         if args.sonarqube:
             sonarqube_output(args.output, scan_results)
         elif args.json:
