@@ -36,10 +36,9 @@ def cli_out(rule_id, details):
         position = match['match_position']
         items.append(f'Match Position: {position[0]} - {position[1]}')
         lines = match.get('match_lines')
-        if lines:
-            line = (lines[0] if lines[0] == lines[1]
-                    else f'{lines[0]}: {lines[1]}')
-            items.append(f'Line Number(s): {line}')
+        line = (lines[0] if lines[0] == lines[1]
+                else f'{lines[0]}: {lines[1]}')
+        items.append(f'Line Number(s): {line}')
         match_string = match['match_string']
         if isinstance(match_string, list):
             match_string = '\n'.join(ln.strip() for ln in match_string)

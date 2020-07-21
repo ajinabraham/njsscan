@@ -1,16 +1,16 @@
 rules:
   - id: grpc_insecure_connection
-    pattern-either:
-      - pattern: |
+    patterns:
+      - pattern-inside: |
           require('grpc');
           ...
-          $GRPC($ADDR,...,$CREDENTIALS.createInsecure(),...);
-      - pattern: |-
-          require('grpc');
-          ...
-          $CREDS = <... $CREDENTIALS.createInsecure() ...>;
-          ...
-          $GRPC($ADDR,...,$CREDS,...);
+      - pattern-either:
+          - pattern: |
+              $GRPC($ADDR, ..., $CREDENTIALS.createInsecure(), ...);
+          - pattern: |
+              $CREDS = <... $CREDENTIALS.createInsecure() ...>;
+              ...
+              $GRPC($ADDR, ..., $CREDS, ...);
     message: >-
       Found an insecure gRPC connection. This creates a connection without
       encryption to a gRPC client/server. A malicious attacker could 

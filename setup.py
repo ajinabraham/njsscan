@@ -49,6 +49,6 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'colorama>=0.4.3',
-        'libsast>=1.0.6',
+        'libsast>=1.0.7',
     ],
 )
