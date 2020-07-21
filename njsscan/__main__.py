@@ -158,7 +158,7 @@ def main():
                         nargs='*',
                         help=('Path can be file(s) or '
                               'directories with source code'))
-    parser.add_argument('-j', '--json',
+    parser.add_argument('--json',
                         help='set output format as JSON',
                         action='store_true')
     parser.add_argument('--sonarqube',
