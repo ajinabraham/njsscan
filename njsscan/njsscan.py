@@ -10,7 +10,7 @@ from njsscan.utils import (
 
 
 class NJSScan:
-    def __init__(self, paths, show_progress, check_controls) -> None:
+    def __init__(self, paths, json, check_controls) -> None:
         conf = get_config(paths)
         self.check_controls = check_controls
         self.options = {
@@ -22,7 +22,7 @@ class NJSScan:
             'ignore_extensions': conf['ignore_extensions'],
             'ignore_paths': conf['ignore_paths'],
             'ignore_rules': conf['ignore_rules'],
-            'show_progress': show_progress,
+            'show_progress': json,
         }
         self.paths = paths
         self.result = {
