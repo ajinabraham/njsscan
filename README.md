@@ -25,7 +25,8 @@ Requires Python 3.6+ and supports only Mac and Linux
 
 ```bash
 $ njsscan
-usage: njsscan [-h] [--json] [-o OUTPUT] [--missing-controls] [-w] [-v]
+usage: njsscan [-h] [--json] [--sonarqube] [-o OUTPUT] [--missing-controls]
+               [-w] [-v]
                [path [path ...]]
 
 positional arguments:
@@ -34,6 +35,7 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   --json                set output format as JSON
+  --sonarqube           set output format compatible with SonarQube
   -o OUTPUT, --output OUTPUT
                         output filename to save the result
   --missing-controls    enable missing security controls check

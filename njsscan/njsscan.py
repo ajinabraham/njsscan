@@ -22,9 +22,8 @@ class NJSScan:
             'ignore_extensions': conf['ignore_extensions'],
             'ignore_paths': conf['ignore_paths'],
             'ignore_rules': conf['ignore_rules'],
+            'show_progress': not json,
         }
-        if not json:
-            self.options['show_progress'] = True
         self.paths = paths
         self.result = {
             'templates': {},

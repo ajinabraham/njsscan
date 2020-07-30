@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 .tox-semgrep
 .vscode
+.idea
 
 # mac
 .DS_Store
