@@ -10,7 +10,6 @@ rules:
         - pattern-inside: $X = function $FUNC($REQ, $RES, ...) {...}
         - pattern-inside: var $X = function $FUNC($REQ, $RES, ...) {...};
         - pattern-inside: $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})
-      - pattern-not: $SHELL.exec("...", ...)
       - pattern-either:
           - pattern: |
               $EXEC.exec(<... $REQ.$QUERY.$VAR ...>, ...)

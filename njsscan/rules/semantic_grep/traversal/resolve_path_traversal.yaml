@@ -2,7 +2,7 @@ rules:
   - id: join_resolve_path_traversal
     patterns:
       - pattern-inside: |
-          $PATH = require('path');
+          require('path');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'

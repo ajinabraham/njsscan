@@ -2,7 +2,7 @@ rules:
   - id: sandbox_code_injection
     patterns:
       - pattern-inside: |
-          $SANDBOX = require('sandbox');
+          require('sandbox');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -12,19 +12,9 @@ rules:
           - pattern-inside: '$APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})'
       - pattern-either:
           - pattern: |
-              $S = new $SANDBOX(...);
-              ...
               $S.run(<... $REQ.$QUERY.$FOO ...>,...);
           - pattern: |
-              $S = new $SANDBOX(...);
-              ...
               $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              $S.run(<... $CODE ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              $S = new $SANDBOX(...);
               ...
               $S.run(<... $CODE ...>,...);
           - pattern: |
@@ -34,19 +24,9 @@ rules:
               ...
               new $SANDBOX(...).run(<... $CODE ...>,...);
           - pattern: |
-              $S = new $SANDBOX(...);
-              ...
               $S.run(<... $REQ.$BODY ...>,...);
           - pattern: |
-              $S = new $SANDBOX(...);
-              ...
               $CODE = <... $REQ.$BODY ...>;
-              ...
-              $S.run(<... $CODE ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$BODY ...>;
-              ...
-              $S = new $SANDBOX(...);
               ...
               $S.run(<... $CODE ...>,...);
           - pattern: |

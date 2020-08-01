@@ -2,7 +2,7 @@ rules:
   - id: vm_runincontext_injection
     patterns:
       - pattern-inside: |
-          $VM = require('vm');
+          require('vm');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -93,7 +93,7 @@ rules:
   - id: vm_runinnewcontext_injection
     patterns:
       - pattern-inside: |
-          $VM = require('vm');
+          require('vm');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -154,7 +154,7 @@ rules:
   - id: vm_compilefunction_injection
     patterns:
       - pattern-inside: |
-          $VM = require('vm');
+          require('vm');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -164,24 +164,25 @@ rules:
           - pattern-inside: '$APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})'
       - pattern-either:
           - pattern: >
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <...
-              $REQ.$QUERY.$FOO ...>},...);
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $REQ.$QUERY.$FOO ...>},...);
           - pattern: >
-              $CONTEXT = <... $REQ.$QUERY.$FOO ...>; ...
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT
-              ...>},...);
+              $CONTEXT = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: >
-              $CONTEXT = <... {$NAME:$REQ.$QUERY.$FOO} ...>; ...
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT
-              ...>},...);
+              $CONTEXT = <... {$NAME:$REQ.$QUERY.$FOO} ...>;
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: >
-              $CONTEXT = {$NAME: <... $REQ.$QUERY.$FOO ...>}; ...
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT
-              ...>},...);
+              $CONTEXT = {$NAME: <... $REQ.$QUERY.$FOO ...>};
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: >
-              $VAR = <... $REQ.$QUERY.$FOO ...>; ... $CONTEXT = {$NAME: <...
-              $VAR ...>}; ... $VM.compileFunction($CODE,$PARAMS,{parsingContext:
-              <... $CONTEXT ...>},...);
+              $VAR = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              $CONTEXT = {$NAME: <... $VAR ...>};
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: |
               $OPTS = {parsingContext: <... $REQ.$QUERY.$FOO ...>};
               ...
@@ -207,24 +208,25 @@ rules:
               ...
               $VM.compileFunction($CODE,$PARAMS,$OPTS,...);
           - pattern: >
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $REQ.$BODY
-              ...>},...);
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $REQ.$BODY ...>},...);
           - pattern: >
-              $CONTEXT = <... $REQ.$BODY ...>; ...
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT
-              ...>},...);
+              $CONTEXT = <... $REQ.$BODY ...>;
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: >
-              $CONTEXT = <... {$NAME:$REQ.$BODY} ...>; ...
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT
-              ...>},...);
+              $CONTEXT = <... {$NAME:$REQ.$BODY} ...>;
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: >
-              $CONTEXT = {$NAME: <... $REQ.$BODY ...>}; ...
-              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT
-              ...>},...);
+              $CONTEXT = {$NAME: <... $REQ.$BODY ...>};
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: >
-              $VAR = <... $REQ.$BODY ...>; ... $CONTEXT = {$NAME: <... $VAR
-              ...>}; ... $VM.compileFunction($CODE,$PARAMS,{parsingContext: <...
-              $CONTEXT ...>},...);
+              $VAR = <... $REQ.$BODY ...>;
+              ...
+              $CONTEXT = {$NAME: <... $VAR ...>};
+              ...
+              $VM.compileFunction($CODE,$PARAMS,{parsingContext: <... $CONTEXT ...>},...);
           - pattern: |
               $OPTS = {parsingContext: <... $REQ.$BODY ...>};
               ...

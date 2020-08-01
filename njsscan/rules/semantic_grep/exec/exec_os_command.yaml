@@ -2,7 +2,7 @@ rules:
   - id: generic_os_command_exec
     patterns:
       - pattern-inside: |
-          $EXEC = require('child_process');
+          require('child_process');
           ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}

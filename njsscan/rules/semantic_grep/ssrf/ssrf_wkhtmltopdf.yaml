@@ -2,7 +2,7 @@ rules:
   - id: wkhtmltopdf_ssrf
     patterns:
       - pattern-inside: |
-          $PKG =  require('wkhtmltopdf');
+          require('wkhtmltopdf');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -14,16 +14,15 @@ rules:
           - pattern: |
               $INP = <...$REQ.$VAR...>;
               ...
-              $PKG(<... $INP ...>, ...);
+              wkhtmltopdf(<... $INP ...>, ...);
           - pattern: |
               $INP = <...$REQ.$VAR.$FOO...>;
               ...
-              $PKG(<... $INP ...>, ...);
+              wkhtmltopdf(<... $INP ...>, ...);
           - pattern: |
-              $PKG(<... $REQ.$VAR ...>, ...)
+              wkhtmltopdf(<... $REQ.$VAR ...>, ...)
           - pattern: |
-              $PKG(<... $REQ.$VAR.$FOO ...>, ...)
-      - pattern-not: $PKG("...", ...)
+              wkhtmltopdf(<... $REQ.$VAR.$FOO ...>, ...)
     message: >-
       User controlled URL reached to `wkhtmltopdf` can result in Server Side
       Request Forgery (SSRF).

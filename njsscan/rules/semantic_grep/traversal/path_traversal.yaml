@@ -3,16 +3,16 @@ rules:
     patterns:
       - pattern-either:
         - pattern-inside: |
-            $HTTP = require('http');
+            require('http');
             ...
         - pattern-inside: |
-            $EXPRESS = require('express');
+            require('express');
             ...
         - pattern-inside: |
-            $KOA = require('koa');
+            require('koa');
             ...
         - pattern-inside: |
-            $ELEC = require('electron');
+            require('electron');
             ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}

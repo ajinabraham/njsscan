@@ -3,22 +3,22 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $HB =  require('handlebars');
+              require('handlebars');
               ...
           - pattern-inside: |
-              $HB = require('pug');
+              require('pug');
               ...
           - pattern-inside: |
-              $HB = require('hamljs');
+              require('hamljs');
               ...
           - pattern-inside: |
-              $HB = require('ejs');
+              require('ejs');
               ...
           - pattern-inside: |
-              $HB = require('squirrelly');
+              require('squirrelly');
               ...
           - pattern-inside: |
-              $HB = require('eta');
+              require('eta');
               ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}

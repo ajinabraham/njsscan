@@ -12,43 +12,13 @@ rules:
           - pattern-inside: '$APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})'
       - pattern-either:
           - pattern: |
-              $VM = new VM(...);
-              ...
               $VM.run(<... $REQ.$QUERY.$FOO ...>,...);
           - pattern: |
-              $VM = new VM(...);
-              ...
               $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              $VM.run(<... $CODE ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              $VM = new VM(...);
               ...
               $VM.run(<... $CODE ...>,...);
           - pattern: |
               new VM(...).run(<... $REQ.$QUERY.$FOO ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              new VM(...).run($CODE,...);
-          - pattern: |
-              $VM = new NodeVM(...);
-              ...
-              $VM.run(<... $REQ.$QUERY.$FOO ...>,...);
-          - pattern: |
-              $VM = new NodeVM(...);
-              ...
-              $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              $VM.run($CODE,...);
-          - pattern: |
-              $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              $VM = new NodeVM(...);
-              ...
-              $VM.run($CODE,...);
           - pattern: |
               new NodeVM(...).run(<... $REQ.$QUERY.$FOO ...>,...);
           - pattern: |
@@ -60,19 +30,9 @@ rules:
               ...
               new VMScript(<... $CODE ...>,...);
           - pattern: |
-              $VM = new VM(...);
-              ...
               $VM.run(<... $REQ.$BODY ...>,...);
           - pattern: |
-              $VM = new VM(...);
-              ...
               $CODE = <... $REQ.$BODY ...>;
-              ...
-              $VM.run(<... $CODE ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$BODY ...>;
-              ...
-              $VM = new VM(...);
               ...
               $VM.run(<... $CODE ...>,...);
           - pattern: |
@@ -81,22 +41,6 @@ rules:
               $CODE = <... $REQ.$BODY ...>;
               ...
               new VM(...).run($CODE,...);
-          - pattern: |
-              $VM = new NodeVM(...);
-              ...
-              $VM.run(<... $REQ.$BODY ...>,...);
-          - pattern: |
-              $VM = new NodeVM(...);
-              ...
-              $CODE = <... $REQ.$BODY ...>;
-              ...
-              $VM.run($CODE,...);
-          - pattern: |
-              $CODE = <... $REQ.$BODY ...>;
-              ...
-              $VM = new NodeVM(...);
-              ...
-              $VM.run($CODE,...);
           - pattern: |
               new NodeVM(...).run(<... $REQ.$BODY ...>,...);
           - pattern: |

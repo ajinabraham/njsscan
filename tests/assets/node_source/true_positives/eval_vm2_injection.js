@@ -35,8 +35,9 @@ app.get('/test2', function (req, res) {
         }
     };
 
-    // ruleid:vm2_code_injection
+
     const nodeVM = new NodeVM({ timeout: 40 * 1000, sandbox });
+    // ruleid:vm2_code_injection
     nodeVM.run('console.log(' + req.query.input + ')')
 
     res.send('hello world');
@@ -50,8 +51,8 @@ app.get('/test3', function (req, res) {
         }
     };
 
-    // ruleid:vm2_code_injection
     const nodeVM = new NodeVM({ timeout: 40 * 1000, sandbox });
+    // ruleid:vm2_code_injection
     const script = new VMScript(`console.log(${req.query.input})`)
     nodeVM.run(script)
 

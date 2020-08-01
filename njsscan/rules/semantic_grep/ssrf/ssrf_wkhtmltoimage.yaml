@@ -2,7 +2,7 @@ rules:
   - id: wkhtmltoimage_ssrf
     patterns:
       - pattern-inside: |
-          $PKG =  require('wkhtmltoimage');
+          require('wkhtmltoimage');
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -23,7 +23,6 @@ rules:
               $PKG.generate(<... $REQ.$VAR ...>, ...)
           - pattern: |
               $PKG.generate(<... $REQ.$VAR.$FOO ...>, ...)
-      - pattern-not: '$PKG.generate("...", ...)'
     message: >-
       User controlled URL reached to `wkhtmltoimage` can result in Server Side
       Request Forgery (SSRF).

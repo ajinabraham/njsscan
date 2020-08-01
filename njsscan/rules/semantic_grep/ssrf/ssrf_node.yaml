@@ -3,31 +3,31 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $PKG =  require('request');
+              require('request');
               ...
           - pattern-inside: |
-              $PKG =  require('axios');
+              require('axios');
               ...
           - pattern-inside: |
-              $PKG = require('needle');
+              require('needle');
               ...
           - pattern-inside: |
-              $PKG = require('bent');
+              require('bent');
               ...
           - pattern-inside: |
-              $PKG = require('urllib');
+              require('urllib');
               ...
           - pattern-inside: |
-              $PKG = require('net');
+              require('net');
               ...
           - pattern-inside: |
-              $PKG = require('https');
+              require('https');
               ...
           - pattern-inside: |
-              $PKG =  require('superagent');
+              require('superagent');
               ...
           - pattern-inside: |
-              $PKG =  require('got');
+              require('got');
               ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}
