@@ -3,7 +3,7 @@
   description: The Handlebar.js/Mustache.js template has an unescaped variable. Untrusted
     user input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
-  pattern: '{{{(?!.*body).*}}}|{{[ ]*&[\w]+.*}}
+  pattern: '{{{(?!.*body).+}}}|{{[ ]*&[\w]+.*}}
   severity: ERROR
   input_case: exact
   cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
