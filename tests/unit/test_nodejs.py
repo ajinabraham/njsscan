@@ -97,6 +97,7 @@ TRIGGERED = {
     'cookie_session_no_path': 1,
     'cookie_session_no_expires': 1,
     'shelljs_os_command_exec': 2,
+    'playwright_ssrf': 5,
 }
 CONTROLS = {
     'anti_csrf_control': 0,
