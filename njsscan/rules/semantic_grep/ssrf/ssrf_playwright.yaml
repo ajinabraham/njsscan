@@ -24,6 +24,8 @@ rules:
           - pattern: '$PAGE.evaluateHandle($CODE,..., <... $REQ.$BODY ...>, ...)'
           - pattern: '$PAGE.evaluateOnNewDocument(<... $REQ.$BODY ...>, ...)'
           - pattern: '$PAGE.evaluateOnNewDocument(<... $REQ.$BODY.$FOO ...>, ...)'
+          - pattern: '$CONTEXT.addInitScript(<... $REQ.$BODY ...>,...)'
+          - pattern: '$CONTEXT.addInitScript(<... $REQ.$BODY.$FOO ...>,...)'
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
@@ -80,6 +82,14 @@ rules:
               $INPUT = <... $REQ.$BODY ...>;
               ...
               $PAGE.evaluateOnNewDocument(<... $INPUT ...>,...);
+          - pattern: |
+              $INPUT = <... $REQ.$BODY ...>;
+              ...
+              $CONTEXT.addInitScript($INPUT,...);
+          - pattern: |
+              $INPUT = <... $REQ.$BODY ...>;
+              ...
+              $CONTEXT.addInitScript($INPUT,...);
     message: >-
       If unverified user data can reach the `puppeteer` methods it can result in
       Server-Side Request Forgery vulnerabilities.
