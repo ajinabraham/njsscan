@@ -14,11 +14,10 @@ rules:
         - pattern-inside: |
             $OBJ = $REQ.body.$FOO;
             ...
-      - pattern-either:
-          - pattern-inside: |
-              for(...){...};
-          - pattern: |
-              $OBJ.length;
+      - pattern-inside: |
+          for(...){...};
+      - pattern: |
+          $OBJ.length;
     message: Layer7 Denial of Service. Looping over user controlled objects can result in DoS.
     languages:
       - javascript

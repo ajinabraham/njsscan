@@ -88,12 +88,15 @@ class NJSScan:
             files = details.get('files')
             if not files:
                 continue
+            tmp_files = files.copy()
             for file in files:
                 mstr = file.get('match_string')
                 if 'ignore:' in mstr and rule_id in mstr:
-                    details['files'].remove(file)
-                if len(details['files']) == 0:
+                    tmp_files.remove(file)
+                if len(tmp_files) == 0:
                     del_keys.add(rule_id)
+            details['files'] = tmp_files
+        # Remove Rule IDs marked for deletion.
         for rid in del_keys:
             if rid in self.result['nodejs']:
                 del self.result['nodejs'][rid]
