@@ -194,7 +194,7 @@ njsscan:
     script:
         - njsscan .
 ```
-Example: [dvna with njsscan gitlab](https://gitlab.com/ajinabraham/dvna/-/pipelines)
+Example: [dvna with njsscan gitlab](https://gitlab.com/ajinabraham/dvna/-/jobs/602110439)
 
 
 #### Travis CI
