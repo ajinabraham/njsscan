@@ -9,41 +9,41 @@ rules:
         - pattern-inside: $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})
       - pattern-either:
           - pattern: |
-              $XPATH.parse(<... "=~/[\/\/].+/" + $REQ.$QUERY.$VAR ...>, ...)
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
-              $XPATH.parse(<... "=~/[\/\/].+/" + $REQ.$PARAM ...>, ...)
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $REQ.$PARAM ...>, ...)
           - pattern: |
-              $XPATH.parse(<... "=~/[\/\/].+/" + $REQ.$PARAM["..."] ...>, ...)
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $REQ.$PARAM["..."] ...>, ...)
           - pattern: |
-              $XPATH.parse(<... "=~/[\/\/].+/" + $REQ.$PARAM("...") ...>, ...)
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $REQ.$PARAM("...") ...>, ...)
           - pattern: |
-              $XPATH.parse(<... "=~/[\/\/].+/" + $REQ["..."] ...>, ...)
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $REQ["..."] ...>, ...)
           - pattern: |
-              $XPATH.parse(<... "=~/[\/\/].+/" + $REQ("...") ...>, ...)
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $REQ("...") ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ.$PARAM...>;
               ...
-              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ.$PARAM["..."] ...>;
               ...
-              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ.$PARAM("...") ...>;
               ...
-              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ["..."] ...>;
               ...
-              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ("...") ...>;
               ...
-              $XPATH.parse(<... "=~/[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+$/" + $INP ...>, ...);
     message: >-
       User controlled data in xpath.parse() can result in XPATH injection
       vulnerability.
