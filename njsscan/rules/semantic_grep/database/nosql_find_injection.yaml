@@ -1,6 +1,11 @@
 rules:
 - id: node_nosqli_injection
   patterns:
+  - pattern-not-inside: |
+      $SANITIZE = require('mongo-sanitize');
+      ...
+      $SANITIZE(...);
+      ...
   - pattern-either:
     - pattern: |
         $OBJ.findOne({$KEY : <... $REQ.$FOO.$BAR ...> }, ...);

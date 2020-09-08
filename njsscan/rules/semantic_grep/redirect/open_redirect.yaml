@@ -36,41 +36,41 @@ rules:
           $APP.$METHOD(..., function $FUNC($REQ, $RES) { ... })
       - pattern-either:
         - pattern: |
-            $RES.header(..., "=~/[Ll]+ocation/", <... $REQ.$VAR ...>, ...)
+            $RES.header(..., "=~/location/i", <... $REQ.$VAR ...>, ...)
         - pattern: |
-            $RES.header(..., "=~/[Ll]+ocation/", <... $REQ.$VAR.$VARR ...>, ...)
+            $RES.header(..., "=~/location/i", <... $REQ.$VAR.$VARR ...>, ...)
         - pattern: |
-            $RES.writeHead(..., "=~/[Ll]+ocation/", <... $REQ.$VAR ...>, ...)
+            $RES.writeHead(..., "=~/location/i", <... $REQ.$VAR ...>, ...)
         - pattern: |
-            $RES.writeHead(..., "=~/[Ll]+ocation/", <... $REQ.$VAR.$VARR ...>, ...)
+            $RES.writeHead(..., "=~/location/i", <... $REQ.$VAR.$VARR ...>, ...)
         - pattern: |
-            $RES.writeHead(..., {"=~/[Ll]+ocation/": <... $REQ.$VAR ...> }, ...)
+            $RES.writeHead(..., {"=~/location/i": <... $REQ.$VAR ...> }, ...)
         - pattern: |
-            $RES.writeHead(..., {"=~/[Ll]+ocation/": <... $REQ.$VAR.$VARR ...> }, ...)
-        - pattern: |
-            $INP = <... $REQ.$VAR ...>;
-            ...
-            $RES.header(..., "=~/[Ll]+ocation/", <... $INP ...>, ...);
-        - pattern: |
-            $INP = <... $REQ.$VAR.$VARR ...>;
-            ...
-            $RES.header(..., "=~/[Ll]+ocation/", <... $INP ...>, ...);
+            $RES.writeHead(..., {"=~/location/i": <... $REQ.$VAR.$VARR ...> }, ...)
         - pattern: |
             $INP = <... $REQ.$VAR ...>;
             ...
-            $RES.writeHead(..., "=~/[Ll]+ocation/", <... $INP ...>, ...);
+            $RES.header(..., "=~/location/i", <... $INP ...>, ...);
         - pattern: |
             $INP = <... $REQ.$VAR.$VARR ...>;
             ...
-            $RES.writeHead(..., "=~/[Ll]+ocation/", <... $INP ...>, ...);
+            $RES.header(..., "=~/location/i", <... $INP ...>, ...);
         - pattern: |
             $INP = <... $REQ.$VAR ...>;
             ...
-            $RES.writeHead(..., {"=~/[Ll]+ocation/": <... $INP ...> }, ...);
+            $RES.writeHead(..., "=~/location/i", <... $INP ...>, ...);
         - pattern: |
             $INP = <... $REQ.$VAR.$VARR ...>;
             ...
-            $RES.writeHead(..., {"=~/[Ll]+ocation/": <... $INP ...> }, ...);
+            $RES.writeHead(..., "=~/location/i", <... $INP ...>, ...);
+        - pattern: |
+            $INP = <... $REQ.$VAR ...>;
+            ...
+            $RES.writeHead(..., {"=~/location/i": <... $INP ...> }, ...);
+        - pattern: |
+            $INP = <... $REQ.$VAR.$VARR ...>;
+            ...
+            $RES.writeHead(..., {"=~/location/i": <... $INP ...> }, ...);
     message: >-
       Untrusted user input in response header('Location') can result in Open
       Redirect vulnerability.

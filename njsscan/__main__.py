@@ -55,19 +55,20 @@ def format_output(outfile, scan_results):
     for out in scan_results:
         for rule_id, details in scan_results[out].items():
             formatted = cli_out(rule_id, details)
-            if outfile:
-                buffer.append(formatted)
-            else:
-                if details['metadata']['severity'].lower() == 'error':
+            buffer.append(formatted)
+            severity = details['metadata']['severity'].lower()
+            if not outfile:
+                if severity == 'error':
                     logger.error(formatted)
-                elif details['metadata']['severity'].lower() == 'warning':
+                elif severity == 'warning':
                     logger.warning(formatted)
                 else:
                     logger.info(formatted)
-    if buffer:
+    if outfile and buffer:
         outdata = '\n'.join(buffer)
         with open(outfile, 'w') as of:
             of.write(outdata)
+    return buffer
 
 
 def json_output(outfile, scan_results):
@@ -94,7 +95,7 @@ def sonarqube_output(outfile, scan_results):
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
-    json_output(outfile, sonarqube_report)
+    return json_output(outfile, sonarqube_report)
 
 
 def get_sonarqube_issue(njsscan_issue):
@@ -105,22 +106,26 @@ def get_sonarqube_issue(njsscan_issue):
     }
     secondary_locations = []
     issue_data = njsscan_issue['metadata']
-    for ix, file in enumerate(njsscan_issue['files']):
-        text_range = {
-            'startLine': file['match_lines'][0],
-            'endLine': file['match_lines'][1],
-            'startColumn': file['match_position'][0],
-            'endColumn': file['match_position'][1],
-        }
-        location = {
-            'message': issue_data['description'],
-            'filePath': file['file_path'],
-            'textRange': text_range,
-        }
-        if ix == 0:
-            primary_location = location
-        else:
-            secondary_locations.append(location)
+    # Handle missing controls
+    if not njsscan_issue.get('files'):
+        primary_location = None
+    else:
+        for ix, file in enumerate(njsscan_issue['files']):
+            text_range = {
+                'startLine': file['match_lines'][0],
+                'endLine': file['match_lines'][1],
+                'startColumn': file['match_position'][0],
+                'endColumn': file['match_position'][1],
+            }
+            location = {
+                'message': issue_data['description'],
+                'filePath': file['file_path'],
+                'textRange': text_range,
+            }
+            if ix == 0:
+                primary_location = location
+            else:
+                secondary_locations.append(location)
     issue = {
         'engineId': 'njsscan',
         'type': 'VULNERABILITY',

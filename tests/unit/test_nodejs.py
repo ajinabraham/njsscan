@@ -4,6 +4,8 @@ from .setup_test import (
     scanner,
 )
 
+from njsscan import __main__
+
 
 TRIGGERED = {
     'zip_path_overwrite2': 1,
@@ -134,6 +136,8 @@ def test_nodejs_rules():
     neg_res = scanner(neg_files, True)
     assert neg_res['nodejs'] == {}
     nodejs_rule_trigger_count(res)
+    json_output(res)
+    sonar_output(res)
 
 
 def nodejs_rule_trigger_count(res):
@@ -142,3 +146,13 @@ def nodejs_rule_trigger_count(res):
     for rule_id, det in res['nodejs'].items():
         actual[rule_id] = len(det.get('files', []))
     assert TRIGGERED == actual
+
+
+def json_output(res):
+    json_out = __main__.json_output(None, res)
+    assert json_out is not None
+
+
+def sonar_output(res):
+    sonar_out = __main__.sonarqube_output(None, res)
+    assert sonar_out is not None

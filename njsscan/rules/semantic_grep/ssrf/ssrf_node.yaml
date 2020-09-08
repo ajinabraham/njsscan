@@ -49,9 +49,9 @@ rules:
           - pattern: |
               $PKG.put(<... $REQ.$VAR.$FOO ...>, ...)
           - pattern: |
-              needle("=~/[get|post|put|GET|POST|PUT]+/", <... $REQ.$VAR.$FOO ...>, ...)
+              needle("=~/^[get|post|put]+$/i", <... $REQ.$VAR.$FOO ...>, ...)
           - pattern: |
-              needle("=~/[get|post|put|GET|POST|PUT]+/", <... $REQ.$VAR ...>, ...)
+              needle("=~/^[get|post|put]+$/i", <... $REQ.$VAR ...>, ...)
           - pattern: |
               request(<... $REQ.$VAR ...>, ...)
           - pattern: |
@@ -111,11 +111,11 @@ rules:
           - pattern: |
               $INP = <... $REQ.$VAR.$FOO ...>;
               ...
-              needle("=~/[get|post|put|GET|POST|PUT]+/", <... $INP ...>, ...);
+              needle("=~/^[get|post|put]+$/i", <... $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ.$VAR ...>;
               ...
-              needle("=~/[get|post|put|GET|POST|PUT]+/", <... $INP ...>, ...);
+              needle("=~/^[get|post|put]+$/i", <... $INP ...>, ...);
           - pattern: |
               $INP = <... $REQ.$VAR ...>;
               ...

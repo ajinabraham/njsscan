@@ -37,14 +37,12 @@ app.get('/', function (req, res) {
     res.set('x-xss-protection', 1);
     // ruleid:header_xss_generic
     res.set('X-XSS-Protection', 0);
-    //sgrep bug - https://github.com/returntocorp/sgrep/issues/512
     // ruleid:header_xss_generic
     res.set({
         'Content-Length': req.query.foo,
         'x-xss-protection': 0,
         'ETag': '12345'
     })
-    //sgrep bug - https://github.com/returntocorp/sgrep/issues/512
     // ruleid:header_xss_generic
     res.writeHead(200, { 'x-xss-protection': 0 })
     res.set('X-XSS-Protection', x);
