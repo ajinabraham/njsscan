@@ -24,40 +24,40 @@ rules:
           - pattern: |
               $APP.options('*', cors(...))
           - pattern: >
-              $RES.set("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
+              $RES.set("=~/access-control-allow-origin/i",
               '*', ...)
           - pattern: >
               $RES.set(..., {
-              "=~/[Access-Control-Allow-Origin|access-control-allow-origin]/" :
+              "=~/access-control-allow-origin/i" :
               '*' }, ...)
           - pattern: >
-              $RES.header("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
+              $RES.header("=~/access-control-allow-origin/i",
               '*', ...)
           - pattern: >
               $RES.writeHead(...,
-              {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/":
+              {"=~/access-control-allow-origin/i":
               '*' }, ...);
           - pattern: >
               $VAL = '*';
               ...
-              $RES.set("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
+              $RES.set("=~/access-control-allow-origin/i",
               $VAL, ...);
           - pattern: >
               $VAL = '*';
               ...
               $RES.set(..., {
-              "=~/[Access-Control-Allow-Origin|access-control-allow-origin]/" :
+              "=~/access-control-allow-origin/i" :
               $VAL }, ...);
           - pattern: >
               $VAL = '*';
               ...
-              $RES.header("=~/[Access-Control-Allow-Origin|access-control-allow-origin]/",
+              $RES.header("=~/access-control-allow-origin/i",
               $VAL, ...);
           - pattern: >
               $VAL = '*';
               ...
               $RES.writeHead(...,
-              {"=~/[Access-Control-Allow-Origin|access-control-allow-origin]/":
+              {"=~/access-control-allow-origin/i":
               $VAL }, ...);
     message: >-
       Access-Control-Allow-Origin response header is set to "*". This will
