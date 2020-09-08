@@ -55,16 +55,16 @@ def format_output(outfile, scan_results):
     for out in scan_results:
         for rule_id, details in scan_results[out].items():
             formatted = cli_out(rule_id, details)
-            if outfile:
-                buffer.append(formatted)
-            else:
-                if details['metadata']['severity'].lower() == 'error':
+            buffer.append(formatted)
+            severity = details['metadata']['severity'].lower()
+            if not outfile:
+                if severity == 'error':
                     logger.error(formatted)
-                elif details['metadata']['severity'].lower() == 'warning':
+                elif severity == 'warning':
                     logger.warning(formatted)
                 else:
                     logger.info(formatted)
-    if buffer:
+    if outfile and buffer:
         outdata = '\n'.join(buffer)
         with open(outfile, 'w') as of:
             of.write(outdata)

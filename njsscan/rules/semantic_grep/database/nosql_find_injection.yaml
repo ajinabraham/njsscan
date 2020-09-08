@@ -1,6 +1,9 @@
 rules:
 - id: node_nosqli_injection
   patterns:
+  - pattern-not-inside: |
+      sanitize(...);
+      ...
   - pattern-either:
     - pattern: |
         $OBJ.findOne({$KEY : <... $REQ.$FOO.$BAR ...> }, ...);

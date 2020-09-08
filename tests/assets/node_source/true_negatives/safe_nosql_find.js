@@ -21,3 +21,16 @@ app.post('/login', function (req, res) {
         }
     })
 });
+
+
+async function removeContent(params) {
+    logger.log('info', `Removing content for id: ${params.correlationId}`);
+    const clean = sanitize(params.correlationId);
+
+    const result = await db.collection('queue-items').findOne({ correlationId: clean }); //ignore: node_nosqli_injection
+    if (result) {
+        const { _id: fileId } = await getFileMetadata({ gridFSBucket, filename: clean });
+        await gridFSBucket.delete(fileId);
+        return true;
+    }
+}
