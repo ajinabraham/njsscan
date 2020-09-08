@@ -136,7 +136,6 @@ def test_nodejs_rules():
     neg_res = scanner(neg_files, True)
     assert neg_res['nodejs'] == {}
     nodejs_rule_trigger_count(res)
-    cli_output(res)
     json_output(res)
     sonar_output(res)
 
@@ -152,11 +151,6 @@ def nodejs_rule_trigger_count(res):
 def json_output(res):
     json_out = __main__.json_output(None, res)
     assert json_out is not None
-
-
-def cli_output(res):
-    cli_out = __main__.format_output(None, res)
-    assert cli_out is not None
 
 
 def sonar_output(res):
