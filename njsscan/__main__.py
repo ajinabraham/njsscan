@@ -68,6 +68,7 @@ def format_output(outfile, scan_results):
         outdata = '\n'.join(buffer)
         with open(outfile, 'w') as of:
             of.write(outdata)
+    return buffer
 
 
 def json_output(outfile, scan_results):
