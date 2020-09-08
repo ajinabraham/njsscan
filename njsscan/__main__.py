@@ -105,22 +105,26 @@ def get_sonarqube_issue(njsscan_issue):
     }
     secondary_locations = []
     issue_data = njsscan_issue['metadata']
-    for ix, file in enumerate(njsscan_issue['files']):
-        text_range = {
-            'startLine': file['match_lines'][0],
-            'endLine': file['match_lines'][1],
-            'startColumn': file['match_position'][0],
-            'endColumn': file['match_position'][1],
-        }
-        location = {
-            'message': issue_data['description'],
-            'filePath': file['file_path'],
-            'textRange': text_range,
-        }
-        if ix == 0:
-            primary_location = location
-        else:
-            secondary_locations.append(location)
+    # Handle missing controls
+    if not njsscan_issue.get('files'):
+        primary_location = None
+    else:  
+        for ix, file in enumerate(njsscan_issue['files']):
+            text_range = {
+                'startLine': file['match_lines'][0],
+                'endLine': file['match_lines'][1],
+                'startColumn': file['match_position'][0],
+                'endColumn': file['match_position'][1],
+            }
+            location = {
+                'message': issue_data['description'],
+                'filePath': file['file_path'],
+                'textRange': text_range,
+            }
+            if ix == 0:
+                primary_location = location
+            else:
+                secondary_locations.append(location)
     issue = {
         'engineId': 'njsscan',
         'type': 'VULNERABILITY',
