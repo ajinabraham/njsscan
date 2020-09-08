@@ -94,7 +94,7 @@ def sonarqube_output(outfile, scan_results):
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
-    json_output(outfile, sonarqube_report)
+    return json_output(outfile, sonarqube_report)
 
 
 def get_sonarqube_issue(njsscan_issue):
@@ -108,7 +108,7 @@ def get_sonarqube_issue(njsscan_issue):
     # Handle missing controls
     if not njsscan_issue.get('files'):
         primary_location = None
-    else:  
+    else:
         for ix, file in enumerate(njsscan_issue['files']):
             text_range = {
                 'startLine': file['match_lines'][0],
