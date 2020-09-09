@@ -4,6 +4,8 @@ foo = "adasd";
 x = 1;
 password = x;
 password = '';
+// ruleid:node_username
+username = 'ajin-test-user'
 x.password = 123
 x["password"] = 1;
 pass = 123;
