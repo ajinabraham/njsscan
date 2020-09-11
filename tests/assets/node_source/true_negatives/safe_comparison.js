@@ -16,12 +16,12 @@ if ('test' == key) {
 
 
 const bcrypt = require("bcrypt");
-const plainTextPassword1 = "DFGh5546*%^__90";
+const plainTextPas = "DFGh5546*%^__90";
 
 const hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
 
 bcrypt
-    .compare(plainTextPassword1, hash)
+    .compare(plainTextPas, hash)
     .then(res => {
         console.log(res);
     })
