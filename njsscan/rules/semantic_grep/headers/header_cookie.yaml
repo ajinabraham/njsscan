@@ -193,35 +193,36 @@ rules:
           - pattern-inside: |
               $SESSION = require('express-session');
               ...
-      - pattern-inside: '$SESSION(<... {cookie:{httpOnly:false}} ...>,...)'
-      - pattern-inside: |
-          $OPTS = <... {cookie:{httpOnly:false}} ...>;
-          ...
-          $SESSION($OPTS,...);
-      - pattern-inside: |
-          $OPTS = ...;
-          ...
-          $COOKIE = <... {httpOnly:false} ...>;
-          ...
-          $SESSION($OPTS,...);
-      - pattern-inside: |
-          $OPTS = ...;
-          ...
-          $OPTS.cookie = <... {httpOnly:false} ...>;
-          ...
-          $SESSION($OPTS,...);
-      - pattern-inside: |
-          $OPTS = ...;
-          ...
-          $COOKIE.httpOnly = false;
-          ...
-          $SESSION($OPTS,...);
-      - pattern-inside: |
-          $OPTS = ...;
-          ...
-          $OPTS.cookie.httpOnly = false;
-          ...
-          $SESSION($OPTS,...);
+      - pattern-either:
+          - pattern-inside: '$SESSION(<... {cookie:{httpOnly:false}} ...>,...)'
+          - pattern-inside: |
+              $OPTS = <... {cookie:{httpOnly:false}} ...>;
+              ...
+              $SESSION($OPTS,...);
+          - pattern-inside: |
+              $OPTS = ...;
+              ...
+              $COOKIE = <... {httpOnly:false} ...>;
+              ...
+              $SESSION($OPTS,...);
+          - pattern-inside: |
+              $OPTS = ...;
+              ...
+              $OPTS.cookie = <... {httpOnly:false} ...>;
+              ...
+              $SESSION($OPTS,...);
+          - pattern-inside: |
+              $OPTS = ...;
+              ...
+              $COOKIE.httpOnly = false;
+              ...
+              $SESSION($OPTS,...);
+          - pattern-inside: |
+              $OPTS = ...;
+              ...
+              $OPTS.cookie.httpOnly = false;
+              ...
+              $SESSION($OPTS,...);
     message: >-
       Session middleware settings: `httpOnly` is explicitly set to false. 
       It ensures that sensitive cookies cannot be accessed by client side 
