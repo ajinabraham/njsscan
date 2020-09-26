@@ -9,7 +9,6 @@ function samestite() {
         name: 'foo',
         cookie: {
             secure: true,
-            httpOnly: true,
             sameSite: 'strict',
             domain: 'example.com',
             path: 'foo/bar',

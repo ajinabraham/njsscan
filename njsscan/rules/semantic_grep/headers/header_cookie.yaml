@@ -75,7 +75,7 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
+      cwe: 'CWE-614: Sensitive Cookie in HTTPS Session Without ''Secure'' Attribute'
       owasp: 'A2: Broken Authentication'
   - id: cookie_session_no_samesite
     patterns:
@@ -182,7 +182,7 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
+      cwe: 'CWE-1275: Sensitive Cookie with Improper SameSite Attribute'
       owasp: 'A2: Broken Authentication'
   - id: cookie_session_no_httponly
     patterns:
@@ -193,45 +193,44 @@ rules:
           - pattern-inside: |
               $SESSION = require('express-session');
               ...
-      - pattern: $SESSION(...)
-      - pattern-not-inside: '$SESSION(<... {cookie:{httpOnly:true}} ...>,...)'
-      - pattern-not-inside: |
-          $OPTS = <... {cookie:{httpOnly:true}} ...>;
+      - pattern-inside: '$SESSION(<... {cookie:{httpOnly:false}} ...>,...)'
+      - pattern-inside: |
+          $OPTS = <... {cookie:{httpOnly:false}} ...>;
           ...
           $SESSION($OPTS,...);
-      - pattern-not-inside: |
+      - pattern-inside: |
           $OPTS = ...;
           ...
-          $COOKIE = <... {httpOnly:true} ...>;
+          $COOKIE = <... {httpOnly:false} ...>;
           ...
           $SESSION($OPTS,...);
-      - pattern-not-inside: |
+      - pattern-inside: |
           $OPTS = ...;
           ...
-          $OPTS.cookie = <... {httpOnly:true} ...>;
+          $OPTS.cookie = <... {httpOnly:false} ...>;
           ...
           $SESSION($OPTS,...);
-      - pattern-not-inside: |
+      - pattern-inside: |
           $OPTS = ...;
           ...
-          $COOKIE.httpOnly = true;
+          $COOKIE.httpOnly = false;
           ...
           $SESSION($OPTS,...);
-      - pattern-not-inside: |
+      - pattern-inside: |
           $OPTS = ...;
           ...
-          $OPTS.cookie.httpOnly = true;
+          $OPTS.cookie.httpOnly = false;
           ...
           $SESSION($OPTS,...);
     message: >-
-      Default session middleware settings: `httpOnly` not set. It ensures the
-      sensitive cookies cannot be accessed by client side JavaScript and helps
-      to protect against cross-site scripting attacks.
+      Session middleware settings: `httpOnly` is explicitly set to false. 
+      It ensures that sensitive cookies cannot be accessed by client side 
+      JavaScript and helps to protect against cross-site scripting attacks.
     severity: WARNING
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
+      cwe: 'CWE-1004: Sensitive Cookie Without ''HttpOnly'' Flag'
       owasp: 'A2: Broken Authentication'
   - id: cookie_session_no_domain
     patterns:
@@ -378,5 +377,5 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
+      cwe: 'CWE-613: Insufficient Session Expiration'
       owasp: 'A2: Broken Authentication'

@@ -41,6 +41,7 @@ function test3() {
         keys: ['key1', 'key2'],
         name: 'foo',
         cookie: {
+            httpOnly: false,
             secure: true,
             sameSite: 'lax',
             domain: 'example.com',
