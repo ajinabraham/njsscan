@@ -220,7 +220,7 @@ script:
 
 ```bash
 docker pull opensecurity/njsscan
-docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
+docker run -v /path-to-source-dir:/src opensecurity/njsscan njsscan /src
 ```
 
 ### Build Locally
