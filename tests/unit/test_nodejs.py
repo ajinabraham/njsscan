@@ -5,7 +5,7 @@ from .setup_test import (
 )
 
 from njsscan import __main__
-
+from njsscan import __version__
 
 TRIGGERED = {
     'zip_path_overwrite2': 1,
@@ -137,8 +137,10 @@ def test_nodejs_rules():
     neg_res = scanner(neg_files, True)
     assert neg_res['nodejs'] == {}
     nodejs_rule_trigger_count(res)
+    cli_output(res)
     json_output(res)
     sonar_output(res)
+    sarif_output(res)
 
 
 def nodejs_rule_trigger_count(res):
@@ -149,11 +151,21 @@ def nodejs_rule_trigger_count(res):
     assert TRIGGERED == actual
 
 
+def cli_output(res):
+    cli_out = __main__.cli.cli_output(None, res)
+    assert cli_out is not None
+
+
 def json_output(res):
-    json_out = __main__.json_output(None, res)
+    json_out = __main__.json.json_output(None, res)
     assert json_out is not None
 
 
 def sonar_output(res):
-    sonar_out = __main__.sonarqube_output(None, res)
+    sonar_out = __main__.sonarqube.sonarqube_output(None, res)
     assert sonar_out is not None
+
+
+def sarif_output(res):
+    sarif_out = __main__.sarif.sarif_output(None, res, __version__)
+    assert sarif_out is not None

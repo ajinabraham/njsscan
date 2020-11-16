@@ -12,7 +12,7 @@ EXPECTED = [
     'vue_template',
     'handlebar_mustache_template',
     'dust_template',
-    'squirrelly',
+    'squirrelly_template',
     'electronjs_node_integration',
     'electronjs_disable_websecurity',
 ]
