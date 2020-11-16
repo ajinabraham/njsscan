@@ -49,6 +49,8 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'colorama>=0.4.3',
-        'libsast>=1.3.1',
+        'libsast>=1.3.4',
+        'sarif-om>=1.0.4',
+        'jschema-to-python>=1.2.3',
     ],
 )

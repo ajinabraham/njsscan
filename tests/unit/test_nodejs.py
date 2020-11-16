@@ -4,7 +4,11 @@ from .setup_test import (
     scanner,
 )
 
-from njsscan import __main__
+from njsscan.formatters import (
+    json,
+    sarif,
+    sonarqube,
+)
 
 
 TRIGGERED = {
@@ -139,6 +143,7 @@ def test_nodejs_rules():
     nodejs_rule_trigger_count(res)
     json_output(res)
     sonar_output(res)
+    sarif_output(res)
 
 
 def nodejs_rule_trigger_count(res):
@@ -150,10 +155,15 @@ def nodejs_rule_trigger_count(res):
 
 
 def json_output(res):
-    json_out = __main__.json_output(None, res)
+    json_out = json.json_output(None, res)
     assert json_out is not None
 
 
 def sonar_output(res):
-    sonar_out = __main__.sonarqube_output(None, res)
+    sonar_out = sonarqube.sonarqube_output(None, res)
     assert sonar_out is not None
+
+
+def sarif_output(res):
+    sarif_out = sarif.sarif_output(None, res, '0.0.0')
+    assert sarif_out is not None
