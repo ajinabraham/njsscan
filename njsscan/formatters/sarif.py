@@ -94,8 +94,6 @@ def create_result(rule_id, issue_dict, rules, rule_indices):
         rule = om.ReportingDescriptor(
             id=rule_id,
             name=get_rule_name(rule_id),
-            full_description=issue_dict['metadata']['description'],
-            short_description=issue_dict['metadata']['description'],
             help_uri=doc,
         )
         rule_index = len(rules)
