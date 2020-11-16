@@ -5,7 +5,6 @@ from .setup_test import (
 )
 
 from njsscan.formatters import (
-    cli,
     json,
     sarif,
     sonarqube,
@@ -142,7 +141,6 @@ def test_nodejs_rules():
     neg_res = scanner(neg_files, True)
     assert neg_res['nodejs'] == {}
     nodejs_rule_trigger_count(res)
-    cli_output(res)
     json_output(res)
     sonar_output(res)
     sarif_output(res)
@@ -154,11 +152,6 @@ def nodejs_rule_trigger_count(res):
     for rule_id, det in res['nodejs'].items():
         actual[rule_id] = len(det.get('files', []))
     assert TRIGGERED == actual
-
-
-def cli_output(res):
-    cli_out = cli.cli_output(None, res)
-    assert cli_out is not None
 
 
 def json_output(res):
