@@ -177,14 +177,46 @@ jobs:
     runs-on: ubuntu-latest
     name: njsscan check
     steps:
-    - uses: actions/checkout@v1
-    - name: njsscan
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
       id: njsscan
-      uses: ajinabraham/njsscan-action@v5
+      uses: ajinabraham/njsscan-action@master
       with:
         args: '.'
 ```
-Example: [dvna with njsscan github action](https://github.com/ajinabraham/dvna/runs/765495811?check_suite_focus=true#step:4:1)
+Example: [dvna with njsscan github action](https://github.com/ajinabraham/dvna/actions?query=workflow%3Anjsscan)
+
+#### Github Code Scanning Integration
+
+Add the following to the file `.github/workflows/njsscan_sarif.yml`.
+
+```yaml
+name: njsscan sarif
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  njsscan:
+    runs-on: ubuntu-latest
+    name: njsscan code scanning
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@master
+      with:
+        args: '. --sarif --output results.sarif || true'
+    - name: Upload njsscan report
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: results.sarif
+```
+![nodejsscan web ui](https://user-images.githubusercontent.com/4301109/99230041-cfe29500-27bc-11eb-8baa-d5b30e21348d.png)
+
 
 #### Gitlab CI/CD
 
