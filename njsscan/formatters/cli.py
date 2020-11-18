@@ -42,7 +42,7 @@ def format_cli(rule_id, details):
 def cli_output(outfile, scan_results):
     """Format output printing."""
     if not scan_results:
-        return
+        return []
     scan_results.pop('errors', None)
     buffer = []
     for out in scan_results:

@@ -46,6 +46,8 @@ def level_from_severity(severity):
         return 'warning'
     elif severity == 'INFO':
         return 'note'
+    else:
+        return 'none'
 
 
 def to_uri(file_path):
