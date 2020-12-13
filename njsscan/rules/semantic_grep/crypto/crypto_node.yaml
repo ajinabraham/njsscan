@@ -29,15 +29,30 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              $X.createCipheriv("=~/^aes-([0-9]+)-ecb$/", ...)
+              $X.createCipheriv("=~/^aes-([0-9]+)-ecb$/i", ...)
           - pattern: |
-              $X.createDecipheriv("=~/^aes-([0-9]+)-ecb$/", ...)
+              $X.createDecipheriv("=~/^aes-([0-9]+)-ecb$/i", ...)
     message: >-
       AES with ECB mode is deterministic in nature and not suitable for
       encrypting large amount of repetitive data.
     languages:
       - javascript
     severity: ERROR
+    metadata:
+      owasp: 'A9: Using Components with Known Vulnerabilities'
+      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+  - id: node_aes_noiv
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $X.createCipheriv("=~/^aes-/i", $KEY, "", ...)
+    message: >-
+      AES algorithms requires an initialization vector (IV).  Providing no or
+      null IV in some implementation results to a 0 IV.  Use of a deterministic
+      IV makes dictionary attacks easier.
+    languages:
+      - javascript
+    severity: WARNING
     metadata:
       owasp: 'A9: Using Components with Known Vulnerabilities'
       cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
@@ -48,7 +63,8 @@ rules:
               $X.createCipher('des', ...)
     message: >-
       A weak or broken cryptographic algorithm was identified. Using these
-      functions will introduce vulnerabilities or downgrade the security of your application.
+      functions will introduce vulnerabilities or downgrade the security of your
+      application.
     languages:
       - javascript
     severity: ERROR
@@ -58,12 +74,13 @@ rules:
   - id: node_insecure_random_generator
     patterns:
       - pattern-either:
-        - pattern: |
-            $X.pseudoRandomBytes(...)
-        - pattern: |
-            Math.random(...)
+          - pattern: |
+              $X.pseudoRandomBytes(...)
+          - pattern: |
+              Math.random(...)
     message: >-
-      crypto.pseudoRandomBytes()/Math.random() is a cryptographically weak random number generator.
+      crypto.pseudoRandomBytes()/Math.random() is a cryptographically weak
+      random number generator.
     languages:
       - javascript
     severity: WARNING

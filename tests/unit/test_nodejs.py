@@ -33,6 +33,7 @@ TRIGGERED = {
     'generic_header_injection': 17,
     'express_cors': 6,
     'node_aes_ecb': 5,
+    'node_aes_noiv': 2,
     'node_sha1': 1,
     'node_md5': 1,
     'node_insecure_random_generator': 2,

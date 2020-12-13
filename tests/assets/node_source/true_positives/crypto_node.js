@@ -1,7 +1,7 @@
 var key = new Buffer('8CBDEC62EB4DCA778F842B02503011B2', 'hex')
 var src = new Buffer('0002123401010100000000000000c631', 'hex')
 // ruleid:node_aes_ecb
-cipher = crypto.createCipheriv("aes-128-ecb", key, '')
+cipher = crypto.createCipheriv("aes-128-ecb", key, iv)
 cipher.setAutoPadding(false)
 result = cipher.update(src).toString('hex');
 result += cipher.final().toString('hex');
@@ -27,6 +27,11 @@ function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-192-ecb', Buffer.from(ENCRYPTION_KEY), iv);
     // ruleid:node_aes_ecb
     let cipher = crypto.createCipheriv('aes-128-ecb', Buffer.from(ENCRYPTION_KEY), iv);
+
+    // ruleid:node_aes_noiv
+    let cipher = crypto.createCipheriv('aes-128-gcm', Buffer.from(ENCRYPTION_KEY), "");
+    // ruleid:node_aes_noiv
+    const token = crypto_1.default.createCipheriv("AES-128-GCM", "key", ""); // bad idea to not provide initialization vector
     let encrypted = cipher.update(text);
 
     encrypted = Buffer.concat([encrypted, cipher.final()]);
