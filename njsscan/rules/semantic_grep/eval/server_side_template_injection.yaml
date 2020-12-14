@@ -3,22 +3,22 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              require('handlebars');
+              require('handlebars')
               ...
           - pattern-inside: |
-              require('pug');
+              require('pug')
               ...
           - pattern-inside: |
-              require('hamljs');
+              require('hamljs')
               ...
           - pattern-inside: |
-              require('ejs');
+              require('ejs')
               ...
           - pattern-inside: |
-              require('squirrelly');
+              require('squirrelly')
               ...
           - pattern-inside: |
-              require('eta');
+              require('eta')
               ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}
@@ -34,19 +34,19 @@ rules:
           - pattern: |
               $X = <... $REQ.$FOO ...>;
               ...
-              $HB.compile(..., <... $X ...>, ...);
+              $HB.compile(..., <... $X ...>, ...)
           - pattern: |
               $X = <... $REQ.$FOO.$BAR ...>;
               ...
-              $HB.compile(..., <... $X ...>, ...);
+              $HB.compile(..., <... $X ...>, ...)
           - pattern: |
-              $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...)
               ...
-              $HB.compile(..., <... $X ...>, ...);
+              $HB.compile(..., <... $X ...>, ...)
           - pattern: |
-              $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...)
               ...
-              $HB.compile(..., <... $X ...>, ...);
+              $HB.compile(..., <... $X ...>, ...)
           - pattern: |
               $HB.Compile(..., <... $REQ.$FOO ...>, ...)
           - pattern: |
@@ -54,19 +54,19 @@ rules:
           - pattern: |
               $X = <... $REQ.$FOO ...>;
               ...
-              $HB.Compile(..., <... $X ...>, ...);
+              $HB.Compile(..., <... $X ...>, ...)
           - pattern: |
               $X = <... $REQ.$FOO.$BAR ...>;
               ...
-              $HB.Compile(..., <... $X ...>, ...);
+              $HB.Compile(..., <... $X ...>, ...)
           - pattern: |
-              $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO ...>, ...)
               ...
-              $HB.Compile(..., <... $X ...>, ...);
+              $HB.Compile(..., <... $X ...>, ...)
           - pattern: |
-              $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...);
+              $X = $SOURCE.replace('...', <... $REQ.$FOO.$BAR ...>, ...)
               ...
-              $HB.Compile(..., <... $X ...>, ...);
+              $HB.Compile(..., <... $X ...>, ...)
     message: >-
       Untrusted user input in templating engine's compile() function can result
       in Remote Code Execution via server side template injection.

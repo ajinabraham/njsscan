@@ -2,7 +2,7 @@ rules:
   - id: yaml_deserialize
     patterns:
       - pattern-inside: |
-          require('js-yaml');
+          require('js-yaml')
           ...
       - pattern: |
           $X.load(...)

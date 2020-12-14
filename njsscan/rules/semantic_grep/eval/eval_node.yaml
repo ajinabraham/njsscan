@@ -27,35 +27,35 @@ rules:
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              new Function(..., <... $INP ...>, ...);
+              new Function(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              new Function(..., <... $INP ...>, ...);
+              new Function(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              eval(..., <... $INP ...>, ...);
+              eval(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              eval(..., <... $INP ...>, ...);
+              eval(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              setTimeout(..., <... $INP ...>, ...);
+              setTimeout(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              setTimeout(..., <... $INP ...>, ...);
+              setTimeout(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              setInterval(..., <... $INP ...>, ...);
+              setInterval(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              setInterval(..., <... $INP ...>, ...);
+              setInterval(..., <... $INP ...>, ...)
     message: >-
       User controlled data in eval() or similar functions may result in Server
       Side Injection or Remote Code Injection

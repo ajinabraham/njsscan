@@ -2,13 +2,13 @@ rules:
   - id: xxe_sax
     pattern-either:
       - pattern: |
-          require('sax');
+          require('sax')
           ...
           $PARSER.ondoctype = ...;
       - pattern: |-
-          require('sax');
+          require('sax')
           ...
-          $PARSER.on('doctype',...);
+          $PARSER.on('doctype',...)
     severity: WARNING
     languages:
       - javascript

@@ -2,7 +2,7 @@ rules:
   - id: serializetojs_deserialize
     patterns:
       - pattern-inside: |
-          require('serialize-to-js');
+          require('serialize-to-js')
           ...
       - pattern: |
           $X.deserialize(...)
@@ -18,7 +18,7 @@ rules:
   - id: node_deserialize
     patterns:
       - pattern-inside: |
-          require('node-serialize');
+          require('node-serialize')
           ...
       - pattern: |
           $X.unserialize(...)

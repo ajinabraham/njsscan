@@ -2,7 +2,7 @@ rules:
   - id: phantom_ssrf
     patterns:
       - pattern-inside: |
-          require('phantom');
+          require('phantom')
           ...
       - pattern-either:
           - pattern-inside: 'function $FUNC($REQ, $RES, ...) {...}'
@@ -23,43 +23,43 @@ rules:
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PAGE.open(<... $INPUT ...>,...);
+              $PAGE.open(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$BODY ...>;
               ...
-              $PAGE.open(<... $INPUT ...>,...);
+              $PAGE.open(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PAGE.setContent(<... $INPUT ...>,...);
+              $PAGE.setContent(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$BODY ...>;
               ...
-              $PAGE.setContent(<... $INPUT ...>,...);
+              $PAGE.setContent(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PAGE.openUrl(<... $INPUT ...>,...);
+              $PAGE.openUrl(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$BODY ...>;
               ...
-              $PAGE.openUrl(<... $INPUT ...>,...);
+              $PAGE.openUrl(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PAGE.evaluateJavaScript(<... $INPUT ...>,...);
+              $PAGE.evaluateJavaScript(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$BODY ...>;
               ...
-              $PAGE.evaluateJavaScript(<... $INPUT ...>,...);
+              $PAGE.evaluateJavaScript(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PAGE.property("content",<... $INPUT ...>,...);
+              $PAGE.property("content",<... $INPUT ...>,...)
           - pattern: |-
               $INPUT = <... $REQ.$BODY ...>;
               ...
-              $PAGE.property("content",<... $INPUT ...>,...);
+              $PAGE.property("content",<... $INPUT ...>,...)
     message: >
       If unverified user data can reach the `phantom` methods it can result in
       Server-Side Request Forgery vulnerabilities.

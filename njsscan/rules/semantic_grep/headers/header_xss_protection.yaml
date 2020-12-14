@@ -2,7 +2,7 @@ rules:
   - id: header_xss_lusca
     patterns:
       - pattern-inside: |
-          $X = require('lusca');
+          $X = require('lusca')
           ...
       - pattern-not: |
           $X.use(helmet())
@@ -38,25 +38,25 @@ rules:
               ...)
           - pattern: >
               $RES.writeHead(..., {"=~/x-xss-protection/i": 0
-              }, ...);
+              }, ...)
           - pattern: |
               $VAL = 0;
               ...
-              $RES.header("=~/x-xss-protection/i", $VAL, ...);
+              $RES.header("=~/x-xss-protection/i", $VAL, ...)
           - pattern: |
               $VAL = 0;
               ...
-              $RES.set("=~/x-xss-protection/i", $VAL, ...);
+              $RES.set("=~/x-xss-protection/i", $VAL, ...)
           - pattern: >
               $VAL = 0;
               ...
               $RES.set(..., { "=~/x-xss-protection/i" : $VAL
-              }, ...);
+              }, ...)
           - pattern: >
               $VAL = 0;
               ...
               $RES.writeHead(..., {"=~/x-xss-protection/i":
-              $VAL }, ...);
+              $VAL }, ...)
     message: >-
       X-XSS-Protection header is set to 0. This will disable the browser's XSS
       Filter.

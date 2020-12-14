@@ -5,35 +5,35 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              $JWT = require("jsonwebtoken");
+              $JWT = require("jsonwebtoken")
               ...
-              $T = $JWT.verify($P, $X, {algorithms:[...,'none',...]},...);
+              $T = $JWT.verify($P, $X, {algorithms:[...,'none',...]},...)
           - pattern: |
-              $JWT = require("jsonwebtoken");
+              $JWT = require("jsonwebtoken")
               ...
-              $T = $JWT.verify($P, $X, {algorithms:[...,'none',...]},...);
+              $T = $JWT.verify($P, $X, {algorithms:[...,'none',...]},...)
           - pattern: |
-              $JWT = require("jsonwebtoken");
+              $JWT = require("jsonwebtoken")
               ...
-              $JWT.verify($P, $X, {algorithms:[...,'none',...]},...);
+              $JWT.verify($P, $X, {algorithms:[...,'none',...]},...)
           - pattern: |
-              $JOSE = require("jose");
+              $JOSE = require("jose")
               ...
               var { JWK, JWT } = $JOSE;
               ...
-              $T = JWT.verify($P, JWK.None,...);
+              $T = JWT.verify($P, JWK.None,...)
           - pattern: |
-              $JOSE = require("jose");
+              $JOSE = require("jose")
               ...
               var { JWK, JWT } = $JOSE;
               ...
-              $T = JWT.verify($P, JWK.None,...);
+              $T = JWT.verify($P, JWK.None,...)
           - pattern: |
-              $JOSE = require("jose");
+              $JOSE = require("jose")
               ...
               var { JWK, JWT } = $JOSE;
               ...
-              JWT.verify($P, JWK.None,...);
+              JWT.verify($P, JWK.None,...)
     message: >-
       Algorithm is set to none for JWT token. This can nullify the integrity of
       JWT signature.

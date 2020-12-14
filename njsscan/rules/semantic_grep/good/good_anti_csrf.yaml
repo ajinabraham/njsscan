@@ -2,17 +2,17 @@ rules:
   - id: anti_csrf_control
     patterns:
       - pattern-inside: |
-          $CSRUF = require('csurf');
+          $CSRUF = require('csurf')
           ...
       - pattern-either:
           - pattern:
-              $X = csrf(...);
+              $X = csrf(...)
           - pattern:
-              $X = csurf(...);
+              $X = csurf(...)
           - pattern: 
-              $APP.use(csrf(...));
+              $APP.use(csrf(...))
           - pattern: 
-              $APP.use(csurf(...));
+              $APP.use(csurf(...))
     message: 'This application has anti CSRF protection which prevents cross site request forgery attacks.'
     languages:
       - javascript

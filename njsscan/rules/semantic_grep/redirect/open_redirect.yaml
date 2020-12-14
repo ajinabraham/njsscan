@@ -15,11 +15,11 @@ rules:
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $X.redirect(..., <... $INP ...>, ...);
+              $X.redirect(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $X.redirect(..., <... $INP ...>, ...);
+              $X.redirect(..., <... $INP ...>, ...)
     message: >-
       Untrusted user input in redirect() can result in Open Redirect
       vulnerability.
@@ -50,27 +50,27 @@ rules:
         - pattern: |
             $INP = <... $REQ.$VAR ...>;
             ...
-            $RES.header(..., "=~/location/i", <... $INP ...>, ...);
+            $RES.header(..., "=~/location/i", <... $INP ...>, ...)
         - pattern: |
             $INP = <... $REQ.$VAR.$VARR ...>;
             ...
-            $RES.header(..., "=~/location/i", <... $INP ...>, ...);
+            $RES.header(..., "=~/location/i", <... $INP ...>, ...)
         - pattern: |
             $INP = <... $REQ.$VAR ...>;
             ...
-            $RES.writeHead(..., "=~/location/i", <... $INP ...>, ...);
+            $RES.writeHead(..., "=~/location/i", <... $INP ...>, ...)
         - pattern: |
             $INP = <... $REQ.$VAR.$VARR ...>;
             ...
-            $RES.writeHead(..., "=~/location/i", <... $INP ...>, ...);
+            $RES.writeHead(..., "=~/location/i", <... $INP ...>, ...)
         - pattern: |
             $INP = <... $REQ.$VAR ...>;
             ...
-            $RES.writeHead(..., {"=~/location/i": <... $INP ...> }, ...);
+            $RES.writeHead(..., {"=~/location/i": <... $INP ...> }, ...)
         - pattern: |
             $INP = <... $REQ.$VAR.$VARR ...>;
             ...
-            $RES.writeHead(..., {"=~/location/i": <... $INP ...> }, ...);
+            $RES.writeHead(..., {"=~/location/i": <... $INP ...> }, ...)
     message: >-
       Untrusted user input in response header('Location') can result in Open
       Redirect vulnerability.

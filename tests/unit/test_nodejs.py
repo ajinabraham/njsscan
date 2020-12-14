@@ -156,7 +156,7 @@ def nodejs_rule_trigger_count(res):
 
 
 def json_output(res):
-    json_out = json.json_output(None, res)
+    json_out = json.json_output(None, res, '0.0.0')
     assert json_out is not None
 
 

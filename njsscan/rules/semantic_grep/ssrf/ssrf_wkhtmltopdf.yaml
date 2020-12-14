@@ -2,7 +2,7 @@ rules:
   - id: wkhtmltopdf_ssrf
     patterns:
       - pattern-inside: |
-          require('wkhtmltopdf');
+          require('wkhtmltopdf')
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -14,11 +14,11 @@ rules:
           - pattern: |
               $INP = <... $REQ.$VAR ...>;
               ...
-              wkhtmltopdf(<... $INP ...>, ...);
+              wkhtmltopdf(<... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$VAR.$FOO ...>;
               ...
-              wkhtmltopdf(<... $INP ...>, ...);
+              wkhtmltopdf(<... $INP ...>, ...)
           - pattern: |
               wkhtmltopdf(<... $REQ.$VAR ...>, ...)
           - pattern: |

@@ -11,11 +11,11 @@ rules:
           - pattern: |
               $ERR = $ERROR.stack;
               ...
-              $RES.end($ERR);
+              $RES.end($ERR)
           - pattern: |
               $ERR = $ERROR.stack;
               ...
-              $RES.send($ERR);
+              $RES.send($ERR)
           - pattern: |
               $RES.end($ERR.stack)
           - pattern: |
@@ -38,7 +38,7 @@ rules:
               try {
                   ...
               } catch($ERR){
-                  console.error(<... $ERR ...>, ...);
+                  console.error(<... $ERR ...>, ...)
               }
     message: >-
       Error messages with stack traces may expose sensitive information about

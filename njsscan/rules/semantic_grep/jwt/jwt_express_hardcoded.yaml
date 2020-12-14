@@ -2,25 +2,25 @@ rules:
   - id: jwt_express_hardcoded
     patterns:
       - pattern-inside: |
-          $JWT = require('express-jwt');
+          $JWT = require('express-jwt')
           ...
       - pattern-either:
           - pattern: |
-              $JWT(<... {secret: "..."} ...>,...);
+              $JWT(<... {secret: "..."} ...>,...)
           - pattern: |
               $SECRET = "...";
               ...
-              $JWT(<... {secret: $SECRET} ...>,...);
+              $JWT(<... {secret: $SECRET} ...>,...)
           - pattern: |
               $OPTS = <... {secret: "..."} ...>;
               ...
-              $JWT($OPTS,...);
+              $JWT($OPTS,...)
           - pattern: |-
               $SECRET = "...";
               ...
               $OPTS = <... {secret: $SECRET} ...>;
               ...
-              $JWT($OPTS,...);
+              $JWT($OPTS,...)
     message: >-
       Hardcoded JWT secret or private key was found. Store it properly in 
       an environment variable.

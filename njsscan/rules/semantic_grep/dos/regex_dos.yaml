@@ -17,15 +17,15 @@ rules:
           - pattern: |
               $INP = <... $REQ ...>;
               ...
-              $REGEX.test(<... $INP ...>);
+              $REGEX.test(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $REGEX.test(<... $INP ...>);
+              $REGEX.test(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$BODY.$PARAM ...>;
               ...
-              $REGEX.test(<... $INP ...>);
+              $REGEX.test(<... $INP ...>)
           - pattern: |
               /.../g.exec(<... $REQ ...>)
           - pattern: |
@@ -35,27 +35,27 @@ rules:
           - pattern: |
               $INP = <... $REQ ...>;
               ...
-              /.../.exec(<... $INP ...>);
+              /.../.exec(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              /.../.exec(<... $INP ...>);
+              /.../.exec(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$BODY.$PARAM ...>;
               ...
-              /.../.exec(<... $INP ...>);
+              /.../.exec(<... $INP ...>)
           - pattern: |
               $RE = /.../;
               ...
-              $RE.exec(<... $REQ ...>);
+              $RE.exec(<... $REQ ...>)
           - pattern: |
               $RE = /.../;
               ...
-              $RE.exec(<... $REQ.$QUERY ...>);
+              $RE.exec(<... $REQ.$QUERY ...>)
           - pattern: |
               $RE = /.../;
               ...
-              $RE.exec(<... $REQ.$BODY.$PARAM ...>);
+              $RE.exec(<... $REQ.$BODY.$PARAM ...>)
     message: >-
       Ensure that the regex used to compare with user supplied input is safe
       from regular expression denial of service.

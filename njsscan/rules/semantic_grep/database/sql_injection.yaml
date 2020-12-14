@@ -9,23 +9,23 @@ rules:
           - pattern: |
               $SQL = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $CON.query(<... $SQL ...>, ...);
+              $CON.query(<... $SQL ...>, ...)
           - pattern: |
               $SQL = <... $REQ.$QUERY ...>;
               ...
-              $CON.query(<... $SQL ...>, ...);
+              $CON.query(<... $SQL ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
               $SQL = <... $INP ...>;
               ...
-              $CON.query(<... $SQL ...>, ...);  
+              $CON.query(<... $SQL ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
               $SQL = <... $INP ...>;
               ...
-              $CON.query(<... $SQL ...>, ...);  
+              $CON.query(<... $SQL ...>, ...)
     message: >-
       Untrusted input concatinated with raw SQL query can result in SQL
       Injection.

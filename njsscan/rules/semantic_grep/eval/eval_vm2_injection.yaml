@@ -2,7 +2,7 @@ rules:
   - id: vm2_code_injection
     patterns:
       - pattern-inside: |
-          require('vm2');
+          require('vm2')
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -12,45 +12,45 @@ rules:
           - pattern-inside: '$APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})'
       - pattern-either:
           - pattern: |
-              $VM.run(<... $REQ.$QUERY.$FOO ...>,...);
+              $VM.run(<... $REQ.$QUERY.$FOO ...>,...)
           - pattern: |
               $CODE = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $VM.run(<... $CODE ...>,...);
+              $VM.run(<... $CODE ...>,...)
           - pattern: |
-              new VM(...).run(<... $REQ.$QUERY.$FOO ...>,...);
+              new VM(...).run(<... $REQ.$QUERY.$FOO ...>,...)
           - pattern: |
-              new NodeVM(...).run(<... $REQ.$QUERY.$FOO ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$QUERY.$FOO ...>;
-              ...
-              new NodeVM(...).run(<... $CODE ...>,...);
+              new NodeVM(...).run(<... $REQ.$QUERY.$FOO ...>,...)
           - pattern: |
               $CODE = <... $REQ.$QUERY.$FOO ...>;
               ...
-              new VMScript(<... $CODE ...>,...);
+              new NodeVM(...).run(<... $CODE ...>,...)
           - pattern: |
-              $VM.run(<... $REQ.$BODY ...>,...);
+              $CODE = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              new VMScript(<... $CODE ...>,...)
+          - pattern: |
+              $VM.run(<... $REQ.$BODY ...>,...)
           - pattern: |
               $CODE = <... $REQ.$BODY ...>;
               ...
-              $VM.run(<... $CODE ...>,...);
+              $VM.run(<... $CODE ...>,...)
           - pattern: |
-              new VM(...).run(<... $REQ.$BODY ...>,...);
-          - pattern: |
-              $CODE = <... $REQ.$BODY ...>;
-              ...
-              new VM(...).run($CODE,...);
-          - pattern: |
-              new NodeVM(...).run(<... $REQ.$BODY ...>,...);
+              new VM(...).run(<... $REQ.$BODY ...>,...)
           - pattern: |
               $CODE = <... $REQ.$BODY ...>;
               ...
-              new NodeVM(...).run(<... $CODE ...>,...);
+              new VM(...).run($CODE,...)
+          - pattern: |
+              new NodeVM(...).run(<... $REQ.$BODY ...>,...)
           - pattern: |
               $CODE = <... $REQ.$BODY ...>;
               ...
-              new VMScript(<... $CODE ...>,...);
+              new NodeVM(...).run(<... $CODE ...>,...)
+          - pattern: |
+              $CODE = <... $REQ.$BODY ...>;
+              ...
+              new VMScript(<... $CODE ...>,...)
     message: Untrusted user input reaching `vm2` can result in code injection.
     severity: WARNING
     languages:
@@ -61,7 +61,7 @@ rules:
   - id: vm2_context_injection
     patterns:
       - pattern-inside: |
-          require('vm2');
+          require('vm2')
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -71,41 +71,41 @@ rules:
           - pattern-inside: '$APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})'
       - pattern-either:
           - pattern: |
-              new VM({sandbox: <... $REQ.$QUERY.$FOO ...>},...);
+              new VM({sandbox: <... $REQ.$QUERY.$FOO ...>},...)
           - pattern: |
               $CONTEXT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = <... {$NAME:$REQ.$QUERY.$FOO} ...>;
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$QUERY.$FOO ...>};
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $VAR = <... $REQ.$QUERY.$FOO ...>;
               ...
               $CONTEXT = {$NAME: <... $VAR ...>};
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $OPTS = {sandbox: <... $REQ.$QUERY.$FOO ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
               $CONTEXT = <... $REQ.$QUERY.$FOO ...>;
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$QUERY.$FOO ...>};
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
               $VAR = <... $REQ.$QUERY.$FOO ...>;
               ...
@@ -113,43 +113,43 @@ rules:
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
-              new NodeVM({sandbox: <... $REQ.$QUERY.$FOO ...>},...);
+              new NodeVM({sandbox: <... $REQ.$QUERY.$FOO ...>},...)
           - pattern: |
               $CONTEXT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = <... {$NAME:$REQ.$QUERY.$FOO} ...>;
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$QUERY.$FOO ...>};
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $VAR = <... $REQ.$QUERY.$FOO ...>;
               ...
               $CONTEXT = {$NAME: <... $VAR ...>};
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $OPTS = {sandbox: <... $REQ.$QUERY.$FOO ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |
               $CONTEXT = <... $REQ.$QUERY.$FOO ...>;
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$QUERY.$FOO ...>};
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |
               $VAR = <... $REQ.$QUERY.$FOO ...>;
               ...
@@ -157,43 +157,43 @@ rules:
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |
-              new VM({sandbox: <... $REQ.$BODY ...>},...);
+              new VM({sandbox: <... $REQ.$BODY ...>},...)
           - pattern: |
               $CONTEXT = <... $REQ.$BODY ...>;
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = <... {$NAME:$REQ.$BODY} ...>;
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$BODY ...>};
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $VAR = <... $REQ.$BODY ...>;
               ...
               $CONTEXT = {$NAME: <... $VAR ...>};
               ...
-              new VM({sandbox: <... $CONTEXT ...>},...);
+              new VM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $OPTS = {sandbox: <... $REQ.$BODY ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
               $CONTEXT = <... $REQ.$BODY ...>;
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$BODY ...>};
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
               $VAR = <... $REQ.$BODY ...>;
               ...
@@ -201,43 +201,43 @@ rules:
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new VM($OPTS,...);
+              new VM($OPTS,...)
           - pattern: |
-              new NodeVM({sandbox: <... $REQ.$BODY ...>},...);
+              new NodeVM({sandbox: <... $REQ.$BODY ...>},...)
           - pattern: |
               $CONTEXT = <... $REQ.$BODY ...>;
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = <... {$NAME:$REQ.$BODY} ...>;
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$BODY ...>};
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $VAR = <... $REQ.$BODY ...>;
               ...
               $CONTEXT = {$NAME: <... $VAR ...>};
               ...
-              new NodeVM({sandbox: <... $CONTEXT ...>},...);
+              new NodeVM({sandbox: <... $CONTEXT ...>},...)
           - pattern: |
               $OPTS = {sandbox: <... $REQ.$BODY ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |
               $CONTEXT = <... $REQ.$BODY ...>;
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |
               $CONTEXT = {$NAME: <... $REQ.$BODY ...>};
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
           - pattern: |-
               $VAR = <... $REQ.$BODY ...>;
               ...
@@ -245,7 +245,7 @@ rules:
               ...
               $OPTS = {sandbox: <... $CONTEXT ...>};
               ...
-              new NodeVM($OPTS,...);
+              new NodeVM($OPTS,...)
     message: >-
       Untrusted user input reaching `vm2` sandbox can result in context
       injection.

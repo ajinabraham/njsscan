@@ -2,7 +2,7 @@ rules:
   - id: wkhtmltoimage_ssrf
     patterns:
       - pattern-inside: |
-          require('wkhtmltoimage');
+          require('wkhtmltoimage')
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -14,11 +14,11 @@ rules:
           - pattern: |
               $INP = <... $REQ.$VAR ...>;
               ...
-              $PKG.generate(<... $INP ...>, ...);
+              $PKG.generate(<... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$VAR.$FOO ...>;
               ...
-              $PKG.generate(<... $INP ...>, ...);
+              $PKG.generate(<... $INP ...>, ...)
           - pattern: |
               $PKG.generate(<... $REQ.$VAR ...>, ...)
           - pattern: |

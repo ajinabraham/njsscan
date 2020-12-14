@@ -3,12 +3,12 @@ rules:
     patterns:
       - pattern-inside: |
           ...
-          $S = require('serialize-javascript');
+          $S = require('serialize-javascript')
           ...
       - pattern-not-inside: escape(...)
       - pattern-not-inside: encodeURI(...)
       - pattern: |
-          $S(..., {unsafe: true});
+          $S(..., {unsafe: true})
     message: >-
       Untrusted user input reaching `serialize-javascript` with `unsafe`
       attribute can cause Cross Site Scripting (XSS).

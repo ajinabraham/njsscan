@@ -11,51 +11,51 @@ rules:
           - pattern: |
               $INP = <... $REQ.$PARAM ...>;
               ...
-              $RE = new RegExp(<... $INP ...>);
+              $RE = new RegExp(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$PARAM.$BAR ...>;
               ...
-              $RE = new RegExp(<... $INP ...>);
+              $RE = new RegExp(<... $INP ...>)
           - pattern: |
-              new RegExp(<... $REQ.$PARAM ...>);
+              new RegExp(<... $REQ.$PARAM ...>)
           - pattern: |
-              new RegExp(<... $REQ.$PARAM.$BAR ...>);
-          - pattern: |
-              $INP = <... $REQ.$PARAM ...>;
-              ...
-              $RE = $STR.search(<... $INP ...>);
-          - pattern: |
-              $INP = <... $REQ.$PARAM.$FOO ...>;
-              ...
-              $RE = $STR.search(<... $INP ...>);
-          - pattern: |
-              $STR.search(<... $REQ.$PARAM ...>);
-          - pattern: |
-              $STR.search(<... $REQ.$PARAM.$BAR ...>);
+              new RegExp(<... $REQ.$PARAM.$BAR ...>)
           - pattern: |
               $INP = <... $REQ.$PARAM ...>;
               ...
-              $RE = $STR.match(<... $INP ...>);
+              $RE = $STR.search(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$PARAM.$FOO ...>;
               ...
-              $RE = $STR.match(<... $INP ...>);
+              $RE = $STR.search(<... $INP ...>)
           - pattern: |
-              $STR.match(<... $REQ.$PARAM ...>);
+              $STR.search(<... $REQ.$PARAM ...>)
           - pattern: |
-              $STR.match(<... $REQ.$PARAM.$BAR ...>);
+              $STR.search(<... $REQ.$PARAM.$BAR ...>)
           - pattern: |
               $INP = <... $REQ.$PARAM ...>;
               ...
-              $RE = $STR.split(<... $INP ...>);
+              $RE = $STR.match(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$PARAM.$FOO ...>;
               ...
-              $RE = $STR.split(<... $INP ...>);
+              $RE = $STR.match(<... $INP ...>)
           - pattern: |
-              $STR.split(<... $REQ.$PARAM ...>);
+              $STR.match(<... $REQ.$PARAM ...>)
           - pattern: |
-              $STR.split(<... $REQ.$PARAM.$BAR ...>); 
+              $STR.match(<... $REQ.$PARAM.$BAR ...>)
+          - pattern: |
+              $INP = <... $REQ.$PARAM ...>;
+              ...
+              $RE = $STR.split(<... $INP ...>)
+          - pattern: |
+              $INP = <... $REQ.$PARAM.$FOO ...>;
+              ...
+              $RE = $STR.split(<... $INP ...>)
+          - pattern: |
+              $STR.split(<... $REQ.$PARAM ...>)
+          - pattern: |
+              $STR.split(<... $REQ.$PARAM.$BAR ...>)
     message: >-
       User controlled data in RegExp() can make the application vulnerable to
       layer 7 DoS.

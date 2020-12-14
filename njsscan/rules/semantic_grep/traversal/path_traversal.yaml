@@ -3,16 +3,16 @@ rules:
     patterns:
       - pattern-either:
         - pattern-inside: |
-            require('http');
+            require('http')
             ...
         - pattern-inside: |
-            require('express');
+            require('express')
             ...
         - pattern-inside: |
-            require('koa');
+            require('koa')
             ...
         - pattern-inside: |
-            require('electron');
+            require('electron')
             ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}
@@ -40,83 +40,83 @@ rules:
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $X.createReadStream(..., <... $INP ...>, ...);
+              $X.createReadStream(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $X.createReadStream(..., <... $INP ...>, ...);
+              $X.createReadStream(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $X.readFile(..., <... $INP ...>, ...);
+              $X.readFile(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $X.readFile(..., <... $INP ...>, ...);
+              $X.readFile(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $X.readFileSync(..., <... $INP ...>, ...);
+              $X.readFileSync(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $X.readFileSync(..., <... $INP ...>, ...);
+              $X.readFileSync(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $X.readFileAsync(..., <... $INP ...>, ...);
+              $X.readFileAsync(..., <... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $X.readFileAsync(..., <... $INP ...>, ...);
+              $X.readFileAsync(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY.$VAR;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.createReadStream(..., <... $INP ...>, ...);
+              $X.createReadStream(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.createReadStream(..., <... $INP ...>, ...);
+              $X.createReadStream(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY.$VAR;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.readFile(..., <... $INP ...>, ...);
+              $X.readFile(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.readFile(..., <... $INP ...>, ...);
+              $X.readFile(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY.$VAR;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.readFileSync(..., <... $INP ...>, ...);
+              $X.readFileSync(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.readFileSync(..., <... $INP ...>, ...);
+              $X.readFileSync(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY.$VAR;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.readFileAsync(..., <... $INP ...>, ...);
+              $X.readFileAsync(..., <... $INP ...>, ...)
           - pattern: |
               $Y = $REQ.$QUERY;
               ...
               $INP = <... $Y ...>;
               ...
-              $X.readFileAsync(..., <... $INP ...>, ...);
+              $X.readFileAsync(..., <... $INP ...>, ...)
     message: >-
       Untrusted user input in readFile()/readFileSync() can endup in Directory
       Traversal Attacks.

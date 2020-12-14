@@ -3,7 +3,7 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              new BrowserWindow({webPreferences: {webSecurity: false}});
+              new BrowserWindow({webPreferences: {webSecurity: false}})
           - pattern: |
               var $X = {webPreferences: {webSecurity: false}};
     message: >-
@@ -20,7 +20,7 @@ rules:
       - pattern-either:
           - pattern: >
               new BrowserWindow({webPreferences: {allowRunningInsecureContent:
-              true}});
+              true}})
           - pattern: |
               var $X = {webPreferences: {allowRunningInsecureContent: true}};
     message: >-
@@ -36,7 +36,7 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              new BrowserWindow({webPreferences: {enableBlinkFeatures: '...'}});
+              new BrowserWindow({webPreferences: {enableBlinkFeatures: '...'}})
           - pattern: |
               var $X = {webPreferences: {enableBlinkFeatures: '...'}};
     message: >-
@@ -52,7 +52,7 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              new BrowserWindow({webPreferences: {nodeIntegration: true}});
+              new BrowserWindow({webPreferences: {nodeIntegration: true}})
           - pattern: |
               var $X = {webPreferences: {nodeIntegration: true}};
     message: >-
@@ -69,7 +69,7 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              new BrowserWindow({webPreferences: {contextIsolation: false}});
+              new BrowserWindow({webPreferences: {contextIsolation: false}})
           - pattern: |
               var $X = {webPreferences: {contextIsolation: false}};
     message: >-
@@ -85,7 +85,7 @@ rules:
     patterns:
       - pattern-either:
           - pattern: |
-              new BrowserWindow({webPreferences: {experimentalFeatures: true}});
+              new BrowserWindow({webPreferences: {experimentalFeatures: true}})
           - pattern: |
               var $X = {webPreferences: {experimentalFeatures: true}};
     message: >-

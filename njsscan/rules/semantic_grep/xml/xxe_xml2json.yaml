@@ -2,7 +2,7 @@ rules:
   - id: xxe_xml2json
     patterns:
       - pattern-inside: |
-          require('xml2json');
+          require('xml2json')
           ...
       - pattern-either:
           - pattern-inside: 'function $FUNC($REQ, $RES, ...) {...}'
@@ -15,11 +15,11 @@ rules:
           - pattern: |
               $INPUT = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $EXPAT.toJson(<... $INPUT ...>,...);
+              $EXPAT.toJson(<... $INPUT ...>,...)
           - pattern: |
               $INPUT = <... $REQ.$BODY ...>;
               ...
-              $EXPAT.toJson(<... $INPUT ...>,...);
+              $EXPAT.toJson(<... $INPUT ...>,...)
     message: >-
       Make sure that unverified user data can not reach the XML Parser, as it
       can result in XML External or Internal Entity (XXE) Processing

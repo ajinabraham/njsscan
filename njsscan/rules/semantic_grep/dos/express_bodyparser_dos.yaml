@@ -1,11 +1,11 @@
 rules:
   - id: express_bodyparser
     patterns:
-      - pattern-inside:
-          $APP = express();
+      - pattern-inside: |
+          $APP = express()
           ...
       - pattern-inside: |
-          $APP.use(...);
+          $APP.use(...)
       - pattern:
           $X.bodyParser(...)
     message: >-

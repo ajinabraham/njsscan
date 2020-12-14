@@ -2,7 +2,7 @@ rules:
   - id: shelljs_os_command_exec
     patterns:
       - pattern-inside: |
-          require('shelljs');
+          require('shelljs')
           ...
       - pattern-either:
         - pattern-inside: function ($REQ, $RES, ...) {...}
@@ -18,11 +18,11 @@ rules:
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $EXEC.exec(<... $INP ...>, ...);
+              $EXEC.exec(<... $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              $EXEC.exec(<... $INP ...>, ...);
+              $EXEC.exec(<... $INP ...>, ...)
     message: >-
       User controlled data in 'shelljs.exec()' can result in Remote OS
       Command Execution.

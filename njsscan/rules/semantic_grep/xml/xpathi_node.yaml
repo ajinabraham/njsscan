@@ -23,27 +23,27 @@ rules:
           - pattern: |
               $INP = <... $REQ.$QUERY.$VAR ...>;
               ...
-              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$PARAM ...>;
               ...
-              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$PARAM["..."] ...>;
               ...
-              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ.$PARAM("...") ...>;
               ...
-              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ["..."] ...>;
               ...
-              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...)
           - pattern: |
               $INP = <... $REQ("...") ...>;
               ...
-              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...);
+              $XPATH.parse(<... "=~/^[\/\/].+/" + $INP ...>, ...)
     message: >-
       User controlled data in xpath.parse() can result in XPATH injection
       vulnerability.

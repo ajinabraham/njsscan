@@ -3,23 +3,23 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
       - pattern-not-inside: '$SESSION(<... {name:...} ...>,...)'
       - pattern-not-inside: |
           $OPTS = <... {name:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.name = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
     message: >-
       Consider changing the default session cookie name. An attacker can use it
       to fingerprint the server and target attacks accordingly.
@@ -33,41 +33,41 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
       - pattern-not-inside: '$SESSION(<... {cookie:{secure:true}} ...>,...)'
       - pattern-not-inside: |
           $OPTS = <... {cookie:{secure:true}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {secure:true} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {secure:true} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.secure = true;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie.secure = true;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
     message: >-
       Default session middleware settings: `secure` not set. It ensures the
       browser only sends the cookie over HTTPS.
@@ -81,10 +81,10 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
       - pattern-not-inside: '$SESSION(<... {cookie:{sameSite:true}} ...>,...)'
@@ -93,87 +93,87 @@ rules:
       - pattern-not-inside: |
           $OPTS = <... {cookie:{sameSite:true}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {sameSite:true} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {sameSite:true} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.sameSite = true;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie.sameSite = true;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = <... {cookie:{sameSite:'strict'}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {sameSite:'strict'} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {sameSite:'strict'} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.sameSite = 'strict';
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie.sameSite = 'strict';
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = <... {cookie:{sameSite:'strict'}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {sameSite:'strict'} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {sameSite:'strict'} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.sameSite = 'strict';
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie.sameSite = 'strict';
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
     message: >-
       Default session middleware settings: `sameSite` attribute is not
       configured to strict or lax. These configurations provides protection
@@ -188,41 +188,41 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern-either:
           - pattern-inside: '$SESSION(<... {cookie:{httpOnly:false}} ...>,...)'
           - pattern-inside: |
               $OPTS = <... {cookie:{httpOnly:false}} ...>;
               ...
-              $SESSION($OPTS,...);
+              $SESSION($OPTS,...)
           - pattern-inside: |
               $OPTS = ...;
               ...
               $COOKIE = <... {httpOnly:false} ...>;
               ...
-              $SESSION($OPTS,...);
+              $SESSION($OPTS,...)
           - pattern-inside: |
               $OPTS = ...;
               ...
               $OPTS.cookie = <... {httpOnly:false} ...>;
               ...
-              $SESSION($OPTS,...);
+              $SESSION($OPTS,...)
           - pattern-inside: |
               $OPTS = ...;
               ...
               $COOKIE.httpOnly = false;
               ...
-              $SESSION($OPTS,...);
+              $SESSION($OPTS,...)
           - pattern-inside: |
               $OPTS = ...;
               ...
               $OPTS.cookie.httpOnly = false;
               ...
-              $SESSION($OPTS,...);
+              $SESSION($OPTS,...)
     message: >-
       Session middleware settings: `httpOnly` is explicitly set to false. 
       It ensures that sensitive cookies cannot be accessed by client side 
@@ -237,41 +237,41 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
       - pattern-not-inside: '$SESSION(<... {cookie:{domain:...}} ...>,...)'
       - pattern-not-inside: |
           $OPTS = <... {cookie:{domain:...}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {domain:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {domain:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.domain = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie.domain = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
     message: >-
       Default session middleware settings: `domain` not set. It indicates the
       domain of the cookie; use it to compare against the domain of the server
@@ -287,41 +287,41 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
       - pattern-not-inside: '$SESSION(<... {cookie:{path:...}} ...>,...)'
       - pattern-not-inside: |
           $OPTS = <... {cookie:{path:...}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {path:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {path:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.path = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie.path = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
     message: >-
       Default session middleware settings: `path` not set. It indicates the path
       of the cookie; use it to compare against the request path. If this and
@@ -336,41 +336,41 @@ rules:
     patterns:
       - pattern-either:
           - pattern-inside: |
-              $SESSION = require('cookie-session');
+              $SESSION = require('cookie-session')
               ...
           - pattern-inside: |
-              $SESSION = require('express-session');
+              $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
       - pattern-not-inside: '$SESSION(<... {cookie:{expires:...}} ...>,...)'
       - pattern-not-inside: |
           $OPTS = <... {cookie:{expires:...}} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE = <... {expires:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $OPTS.cookie = <... {expires:...} ...>;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
           $COOKIE.expires = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
       - pattern-not-inside: |-
           $OPTS = ...;
           ...
           $OPTS.cookie.expires = ...;
           ...
-          $SESSION($OPTS,...);
+          $SESSION($OPTS,...)
     message: >-
       Default session middleware settings: `expires` not set. Use it to set
       expiration date for persistent cookies.

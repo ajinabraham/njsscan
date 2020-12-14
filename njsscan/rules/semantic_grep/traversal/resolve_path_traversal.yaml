@@ -2,7 +2,7 @@ rules:
   - id: join_resolve_path_traversal
     patterns:
       - pattern-inside: |
-          require('path');
+          require('path')
           ...
       - pattern-either:
           - pattern-inside: 'function ($REQ, $RES, ...) {...}'
@@ -16,21 +16,21 @@ rules:
           - pattern: |
               $VAR = <... $REQ.$BODY ...>;
               ...
-              $PATH.join(...,<... $VAR ...>,...);
+              $PATH.join(...,<... $VAR ...>,...)
           - pattern: |
               $VAR = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PATH.join(...,<... $VAR ...>,...);
+              $PATH.join(...,<... $VAR ...>,...)
           - pattern: '$PATH.resolve(...,<... $REQ.$BODY ...>,...)'
           - pattern: '$PATH.resolve(...,<... $REQ.$QUERY.$FOO ...>,...)'
           - pattern: |
               $VAR = <... $REQ.$BODY ...>;
               ...
-              $PATH.resolve(...,<... $VAR ...>,...);
+              $PATH.resolve(...,<... $VAR ...>,...)
           - pattern: |-
               $VAR = <... $REQ.$QUERY.$FOO ...>;
               ...
-              $PATH.resolve(...,<... $VAR ...>,...);
+              $PATH.resolve(...,<... $VAR ...>,...)
     message: >-
       Path constructed with user input can result in Path Traversal. Ensure that
       user input does not reach `join()` or `resolve()`. 

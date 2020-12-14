@@ -29,7 +29,7 @@ rules:
               ...
               $X = <... "=~/.*http[s]*:///i" + $Z ...>;
           - pattern: |
-              $Z = $REQ("host");
+              $Z = $REQ("host")
               ...
               $X = <... "=~/.*http[s]*:///i" + $Z ...>;
           - pattern: |
@@ -41,7 +41,7 @@ rules:
               ...
               $X = { $Y: <... "=~/.*http[s]*:///i" + $Z ...>};
           - pattern: |
-              $Z = $REQ("host");
+              $Z = $REQ("host")
               ...
               $X = { $Y: <... "=~/.*http[s]*:///i" + $REQ("host") ...>};
     message: >-

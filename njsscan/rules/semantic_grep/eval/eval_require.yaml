@@ -11,11 +11,11 @@ rules:
           - pattern: |
               $INP = <... $REQ.$QUERY ...>;
               ...
-              require(<... $INP ...>);
+              require(<... $INP ...>)
           - pattern: |
               $INP = <... $REQ.$QUERY.$FOO ...>;
               ...
-              require(<... $INP ...>);
+              require(<... $INP ...>)
           - pattern: require(<... $REQ.$QUERY.$FOO ...>)
           - pattern: require(<... $REQ.$BODY ...>)
     message: >-

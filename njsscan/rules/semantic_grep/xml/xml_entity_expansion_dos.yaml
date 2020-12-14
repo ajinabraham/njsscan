@@ -9,17 +9,17 @@ rules:
         - pattern-inside: $APP.$METHOD(..., function $FUNC($REQ, $RES, ...) {...})
       - pattern-either:
           - pattern: |
-              $PARSER = new expat.Parser();
+              $PARSER = new expat.Parser()
               ...
-              $PARSER.write(..., <... $REQ.$QUERY ...>, ...);
+              $PARSER.write(..., <... $REQ.$QUERY ...>, ...)
           - pattern: |
-              $PARSER = new expat.Parser();
+              $PARSER = new expat.Parser()
               ...
-              $PARSER.write(..., <... $REQ.$QUERY.$FOO ...>, ...);
+              $PARSER.write(..., <... $REQ.$QUERY.$FOO ...>, ...)
           - pattern: |
-              $PARSER = new expat.Parser();
+              $PARSER = new expat.Parser()
               ...
-              $PARSER.write(..., <... $REQ.$QUERY.$FOO.$FILE ...>, ...);
+              $PARSER.write(..., <... $REQ.$QUERY.$FOO.$FILE ...>, ...)
     message: >-
       User controlled data in XML Parsers can result in
       XML Internal Entity Processing vulnerabilities like in DoS.
