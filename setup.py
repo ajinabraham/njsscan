@@ -52,5 +52,6 @@ setup(
         'libsast>=1.3.5',
         'sarif-om>=1.0.4',
         'jschema-to-python>=1.2.3',
+        'tabulate==0.8.7',
     ],
 )

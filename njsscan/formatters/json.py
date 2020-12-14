@@ -3,8 +3,9 @@
 import json
 
 
-def json_output(outfile, scan_results):
+def json_output(outfile, scan_results, version):
     """JSON Output."""
+    scan_results['njsscan_version'] = version
     json_output = json.dumps(
         scan_results,
         sort_keys=True,

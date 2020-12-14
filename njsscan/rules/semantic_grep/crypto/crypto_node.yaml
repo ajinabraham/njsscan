@@ -47,8 +47,8 @@ rules:
           - pattern: |
               $X.createCipheriv("=~/^aes-/i", $KEY, "", ...)
     message: >-
-      AES algorithms requires an initialization vector (IV).  Providing no or
-      null IV in some implementation results to a 0 IV.  Use of a deterministic
+      AES algorithms requires an initialization vector (IV). Providing no or
+      null IV in some implementation results to a 0 IV. Use of a deterministic
       IV makes dictionary attacks easier.
     languages:
       - javascript

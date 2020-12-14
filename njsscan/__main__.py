@@ -71,15 +71,15 @@ def main():
         if args.sonarqube:
             sonarqube.sonarqube_output(args.output, scan_results)
         elif args.json:
-            json.json_output(args.output, scan_results)
+            json.json_output(args.output, scan_results, __version__)
         elif args.sarif:
             sarif.sarif_output(args.output, scan_results, __version__)
         else:
-            cli.cli_output(args.output, scan_results)
+            cli.cli_output(args.output, scan_results, __version__)
         handle_exit(scan_results, args.exit_warning)
 
     elif args.version:
-        print('njsscan: v' + __version__)
+        cli.print_tool_info(__version__)
     else:
         parser.print_help()
 

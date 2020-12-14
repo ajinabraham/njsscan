@@ -53,27 +53,33 @@ optional arguments:
 ## Example Usage
 
 ```bash
-$ njsscan xss_node.js
+$ njsscan test.js
 - Pattern Match ████████████████████████████████████████████████████████████ 1
-- Semantic Grep ████████████████████████████████████████████████████████████ 53
+- Semantic Grep ███████████████████████████ 160
 
-======================================================================================================
-RULE ID: express_xss
-OWASP: A1: Injection
-CWE: CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
-DESCRIPTION: Untrusted User Input in Response will result in Reflected Cross Site Scripting Vulnerability.
-SEVERITY: ERROR
-======================================================================================================
-
-__________________FILES___________________________
-
-
-File: xss_node.js
-Match Position: 5 - 37
-Line Number(s): 5: 6
-Match String:     var html = "Hello" + req.query.name + ". How are you?"
-
-    res.write('Response</br>' + html);
+njsscan: v0.1.9 | Ajin Abraham | opensecurity.in
+╒═════════════╤═══════════════════════════════════════════════════════════════════════════════════════════════╕
+│ RULE ID     │ express_xss                                                                                   │
+├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ OWASP       │ A1: Injection                                                                                 │
+├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ CWE         │ CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')  │
+├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ DESCRIPTION │ Untrusted User Input in Response will result in Reflected Cross Site Scripting Vulnerability. │
+├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ SEVERITY    │ ERROR                                                                                         │
+├─────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ FILES       │ ╒════════════════╤═══════════════════════════════════════════════╕                            │
+│             │ │ File           │ test.js                                       │                            │
+│             │ ├────────────────┼───────────────────────────────────────────────┤                            │
+│             │ │ Match Position │ 5 - 46                                        │                            │
+│             │ ├────────────────┼───────────────────────────────────────────────┤                            │
+│             │ │ Line Number(s) │ 7: 8                                          │                            │
+│             │ ├────────────────┼───────────────────────────────────────────────┤                            │
+│             │ │ Match String   │ const { name } = req.query;                   │                            │
+│             │ │                │     res.send('<h1> Hello :' + name + "</h1>") │                            │
+│             │ ╘════════════════╧═══════════════════════════════════════════════╛                            │
+╘═════════════╧═══════════════════════════════════════════════════════════════════════════════════════════════╛
 ```
 
 ## nodejsscan SAST
