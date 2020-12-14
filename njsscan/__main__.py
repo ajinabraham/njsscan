@@ -69,7 +69,7 @@ def main():
             args.missing_controls,
         ).scan()
         if args.sonarqube:
-            sonarqube.sonarqube_output(args.output, scan_results)
+            sonarqube.sonarqube_output(args.output, scan_results, __version__)
         elif args.json:
             json.json_output(args.output, scan_results, __version__)
         elif args.sarif:

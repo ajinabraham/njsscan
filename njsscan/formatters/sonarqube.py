@@ -43,7 +43,7 @@ def get_sonarqube_issue(njsscan_issue):
     return issue
 
 
-def sonarqube_output(outfile, scan_results):
+def sonarqube_output(outfile, scan_results, version):
     """Sonarqube JSON Output."""
     sonarqube_issues = []
     for i in ['nodejs', 'templates']:
@@ -54,4 +54,4 @@ def sonarqube_output(outfile, scan_results):
     sonarqube_report = {
         'issues': sonarqube_issues,
     }
-    return json_output(outfile, sonarqube_report)
+    return json_output(outfile, sonarqube_report, version)
