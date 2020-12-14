@@ -69,6 +69,7 @@ TRIGGERED = {
     'handlebars_noescape': 2,
     'squirrelly_autoescape': 1,
     'node_sqli_injection': 6,
+    'node_knex_sqli_injection': 4,
     'node_nosqli_injection': 2,
     'node_nosqli_js_injection': 3,
     'host_header_injection': 12,
@@ -161,7 +162,7 @@ def json_output(res):
 
 
 def sonar_output(res):
-    sonar_out = sonarqube.sonarqube_output(None, res)
+    sonar_out = sonarqube.sonarqube_output(None, res, '0.0.0')
     assert sonar_out is not None
 
 
