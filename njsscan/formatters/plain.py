@@ -4,11 +4,13 @@ from njsscan.logger import init_logger
 
 logger = init_logger(__name__)
 
+
 def print_tool_info(ver):
     """Tool info."""
     tool_str = '\nnjsscan: v{} | Ajin Abraham | opensecurity.in'.format(ver)
     logger.info(tool_str)
     return tool_str
+
 
 def format_plain(rule_id, details):
     """Get CLI friendly format."""

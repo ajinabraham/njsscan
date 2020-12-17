@@ -9,9 +9,9 @@ from njsscan.njsscan import NJSScan
 from njsscan.formatters import (
     cli,
     json,
+    plain,
     sarif,
     sonarqube,
-    plain,
 )
 
 
