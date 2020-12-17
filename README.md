@@ -42,6 +42,7 @@ optional arguments:
   --json                set output format as JSON
   --sarif               set output format as SARIF 2.1.0
   --sonarqube           set output format compatible with SonarQube
+  --plain               set output format as plain text (no tables)
   -o OUTPUT, --output OUTPUT
                         output filename to save the result
   --missing-controls    enable missing security controls check

@@ -11,6 +11,7 @@ from njsscan.formatters import (
     json,
     sarif,
     sonarqube,
+    plain,
 )
 
 
@@ -45,6 +46,9 @@ def main():
     parser.add_argument('--sonarqube',
                         help='set output format compatible with SonarQube',
                         action='store_true')
+    parser.add_argument('--plain',
+                        help='set output format as plain text no tables',
+                        action='store_true')
     parser.add_argument('-o', '--output',
                         help='output filename to save the result',
                         required=False)
@@ -74,6 +78,8 @@ def main():
             json.json_output(args.output, scan_results, __version__)
         elif args.sarif:
             sarif.sarif_output(args.output, scan_results, __version__)
+        elif args.plain:
+            plain.plain_output(args.output, scan_results, __version__)
         else:
             cli.cli_output(args.output, scan_results, __version__)
         handle_exit(scan_results, args.exit_warning)
