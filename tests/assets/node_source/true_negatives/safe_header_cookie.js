@@ -12,7 +12,7 @@ function samestite() {
             sameSite: 'strict',
             domain: 'example.com',
             path: 'foo/bar',
-            expires: expiryDate
+            maxAge: expiryDate
         }
     }
 
