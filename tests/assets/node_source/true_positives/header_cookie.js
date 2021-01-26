@@ -106,7 +106,7 @@ function test6() {
         }
     }
 
-    // ruleid:cookie_session_no_expires
+    // ruleid:cookie_session_no_maxage
     app.use(session(opts))
 }
 

@@ -332,7 +332,7 @@ rules:
     metadata:
       cwe: 'CWE-522: Insufficiently Protected Credentials'
       owasp: 'A2: Broken Authentication'
-  - id: cookie_session_no_expires
+  - id: cookie_session_no_maxage
     patterns:
       - pattern-either:
           - pattern-inside: |
@@ -342,38 +342,38 @@ rules:
               $SESSION = require('express-session')
               ...
       - pattern: $SESSION(...)
-      - pattern-not-inside: '$SESSION(<... {cookie:{expires:...}} ...>,...)'
+      - pattern-not-inside: '$SESSION(<... {cookie:{maxAge:...}} ...>,...)'
       - pattern-not-inside: |
-          $OPTS = <... {cookie:{expires:...}} ...>;
+          $OPTS = <... {cookie:{maxAge:...}} ...>;
           ...
           $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
-          $COOKIE = <... {expires:...} ...>;
+          $COOKIE = <... {maxAge:...} ...>;
           ...
           $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
-          $OPTS.cookie = <... {expires:...} ...>;
+          $OPTS.cookie = <... {maxAge:...} ...>;
           ...
           $SESSION($OPTS,...)
       - pattern-not-inside: |
           $OPTS = ...;
           ...
-          $COOKIE.expires = ...;
+          $COOKIE.maxAge = ...;
           ...
           $SESSION($OPTS,...)
       - pattern-not-inside: |-
           $OPTS = ...;
           ...
-          $OPTS.cookie.expires = ...;
+          $OPTS.cookie.maxAge = ...;
           ...
           $SESSION($OPTS,...)
     message: >-
-      Default session middleware settings: `expires` not set. Use it to set
-      expiration date for persistent cookies.
+      Session middleware settings: `maxAge` not set. Use it to set
+      expiration date for cookies.
     severity: INFO
     languages:
       - javascript

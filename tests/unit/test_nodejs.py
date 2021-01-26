@@ -104,7 +104,7 @@ TRIGGERED = {
     'cookie_session_no_httponly': 1,
     'cookie_session_no_domain': 1,
     'cookie_session_no_path': 1,
-    'cookie_session_no_expires': 1,
+    'cookie_session_no_maxage': 1,
     'shelljs_os_command_exec': 2,
     'playwright_ssrf': 5,
     'express_lfr': 1,
