@@ -34,7 +34,7 @@ var express = require('express');
 var app = express();
 app.get('/', function (req, res) {
     var filePath = path.join(__dirname, '/' + req.query.load);
-    fileSystem.readFile(filePath); // ignore: generic_path_traversal
+    fileSystem.readFile(filePath); // njsscan-ignore: generic_path_traversal
     readStream.pipe(res);
 });
 

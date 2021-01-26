@@ -10,8 +10,8 @@ from njsscan.utils import (
 
 
 class NJSScan:
-    def __init__(self, paths, json, check_controls) -> None:
-        conf = get_config(paths)
+    def __init__(self, paths, json, check_controls, config=False) -> None:
+        conf = get_config(paths, config)
         self.check_controls = check_controls
         self.options = {
             'match_rules': settings.PATTERN_RULES_DIR,
@@ -91,7 +91,8 @@ class NJSScan:
             tmp_files = files.copy()
             for file in files:
                 mstr = file.get('match_string')
-                if 'ignore:' in mstr and rule_id in mstr:
+                cmt = 'ignore:' in mstr or 'njsscan-ignore:' in mstr
+                if cmt and rule_id in mstr:
                     tmp_files.remove(file)
                 if len(tmp_files) == 0:
                     del_keys.add(rule_id)

@@ -38,8 +38,8 @@ User.find(query, function (err, users) {
 });
 
 app.post('/foo', function (req, res) {
-    // ruleid:node_nosqli_js_injection
     var query = {};
+    // ruleid:node_nosqli_js_injection
     query['$where'] = `this.email == '${req.body.email}'`;
     User.find(query, function (err, data) {
         if (err) {

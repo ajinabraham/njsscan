@@ -30,9 +30,7 @@ Requires Python 3.6+ and supports only Mac and Linux
 
 ```bash
 $ njsscan
-usage: njsscan [-h] [--json] [--sarif] [--sonarqube] [-o OUTPUT]
-               [--missing-controls] [-w] [-v]
-               [path [path ...]]
+usage: njsscan [-h] [--json] [--sarif] [--sonarqube] [-o OUTPUT] [-c CONFIG] [--missing-controls] [-w] [-v] [path ...]
 
 positional arguments:
   path                  Path can be file(s) or directories with source code
@@ -44,6 +42,8 @@ optional arguments:
   --sonarqube           set output format compatible with SonarQube
   -o OUTPUT, --output OUTPUT
                         output filename to save the result
+  -c CONFIG, --config CONFIG
+                        Location to .njsscan config file
   --missing-controls    enable missing security controls check
   -w, --exit-warning    non zero exit code on warning
   -v, --version         show njsscan version
@@ -152,14 +152,14 @@ A `.njsscan` file in the root of the source code directory allows you to configu
 
 ## Suppress Findings
 
-You can suppress findings from javascript source files by adding the comment `//ignore: rule_id1, rule_id2` to the line that trigger the findings.
+You can suppress findings from javascript source files by adding the comment `// njsscan-ignore: rule_id1, rule_id2` to the line that trigger the findings.
 
 Example:
 
 ```javascript
 app.get('/some/redirect', function (req, res) {
     var target = req.param("target");
-    res.redirect(target); //ignore: express_open_redirect
+    res.redirect(target); // njsscan-ignore: express_open_redirect
 });
 ```
 

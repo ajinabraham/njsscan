@@ -37,28 +37,6 @@ rules:
               $RES.writeHead(...,
               {"=~/access-control-allow-origin/i":
               '*' }, ...)
-          - pattern: >
-              $VAL = '*';
-              ...
-              $RES.set("=~/access-control-allow-origin/i",
-              $VAL, ...)
-          - pattern: >
-              $VAL = '*';
-              ...
-              $RES.set(..., {
-              "=~/access-control-allow-origin/i" :
-              $VAL }, ...)
-          - pattern: >
-              $VAL = '*';
-              ...
-              $RES.header("=~/access-control-allow-origin/i",
-              $VAL, ...)
-          - pattern: >
-              $VAL = '*';
-              ...
-              $RES.writeHead(...,
-              {"=~/access-control-allow-origin/i":
-              $VAL }, ...)
     message: >-
       Access-Control-Allow-Origin response header is set to "*". This will
       disable CORS Same Origin Policy restrictions.

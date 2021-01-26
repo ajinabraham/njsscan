@@ -11,7 +11,7 @@ import yaml
 logger = init_logger(__name__)
 
 
-def get_config(base_path):
+def get_config(base_path, config_file):
     options = {
         'nodejs_extensions': config.NODEJS_FILE_EXTENSIONS,
         'template_extensions': config.TEMPLATE_FILE_EXTENSIONS,
@@ -20,7 +20,10 @@ def get_config(base_path):
         'ignore_paths': config.IGNORE_PATHS,
         'ignore_rules': set(),
     }
-    cfile = Path(base_path[0]) / config.NJSSCAN_CONFIG_FILE
+    if config_file:
+        cfile = Path(config_file)
+    else:
+        cfile = Path(base_path[0]) / config.NJSSCAN_CONFIG_FILE
     if cfile.is_file() and cfile.exists():
         extras = read_yaml(cfile)
         root = validate_config(extras, options)

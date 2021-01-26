@@ -1,0 +1,57 @@
+rules:
+  - id: express_lfr
+    patterns:
+      - pattern-inside: |
+          require('hbs')
+          ...
+      - pattern-inside: |
+          require('express')
+          ...
+      - pattern-either:
+          - pattern: |
+              $INP = <... $REQ.$QUERY ...>;
+              ...
+              $RES.render($VIEW, <... $INP ...>)
+          - pattern: |
+              $INP = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              $RES.render($VIEW, <... $INP ...>)
+          - pattern: '$RES.render($VIEW, <... $REQ.$QUERY.$FOO ...>)'
+          - pattern: '$RES.render($VIEW, <... $REQ.$BODY ...>)'
+    message: >-
+      Untrusted user input in express render() function can result in arbitrary
+      file read when hbs templating is used.
+    languages:
+      - javascript
+    severity: ERROR
+    metadata:
+      owasp: 'A5: Broken Access Control'
+      cwe: 'CWE-23: Relative Path Traversal'
+  - id: express_lfr_warning
+    patterns:
+      - pattern-not-inside: |
+          require('hbs')
+          ...
+      - pattern-inside: |
+          require('express')
+          ...
+      - pattern-either:
+          - pattern: |
+              $INP = <... $REQ.$QUERY ...>;
+              ...
+              $RES.render($VIEW, <... $INP ...>)
+          - pattern: |
+              $INP = <... $REQ.$QUERY.$FOO ...>;
+              ...
+              $RES.render($VIEW, <... $INP ...>)
+          - pattern: '$RES.render($VIEW, <... $REQ.$QUERY.$FOO ...>)'
+          - pattern: '$RES.render($VIEW, <... $REQ.$BODY ...>)'
+    message: >-
+      Untrusted user input in express render() function can result in arbitrary
+      file read if hbs templating is used.
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      owasp: 'A5: Broken Access Control'
+      cwe: 'CWE-23: Relative Path Traversal'

@@ -26,7 +26,6 @@ app.use(lusca.nosniff());
 app.use(lusca.referrerPolicy('same-origin'));
 
 app.get('/', function (req, res) {
-    // ruleid:header_xss_generic
     var x = 0;
     // ruleid:header_xss_generic
     res.writeHead(200, { 'x-xss-protection': 0 });
@@ -45,6 +44,7 @@ app.get('/', function (req, res) {
     })
     // ruleid:header_xss_generic
     res.writeHead(200, { 'x-xss-protection': 0 })
+    // ruleid:header_xss_generic
     res.set('X-XSS-Protection', x);
 
     // do not detect

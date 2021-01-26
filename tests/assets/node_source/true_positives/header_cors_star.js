@@ -11,9 +11,7 @@ app.get('/', function (req, res) {
 
 app.get('/', function (req, res) {
     var y = 1;
-    // ruleid:express_cors
     var x = '*';
-    //sgrep bug - https://github.com/returntocorp/sgrep/issues/512
     // ruleid:express_cors
     res.writeHead(200, { 'Access-Control-Allow-Origin': '*' });
     // ruleid:express_cors
@@ -30,7 +28,7 @@ app.get('/', function (req, res) {
     })
     // ruleid:express_cors
     res.writeHead(200, { 'Access-Control-Allow-Origin': '*' })
-
+    // ruleid:express_cors
     res.set('access-control-allow-origin', x);
 
     // do not detect - sgrep bug

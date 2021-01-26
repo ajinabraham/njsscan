@@ -48,6 +48,9 @@ def main():
     parser.add_argument('-o', '--output',
                         help='output filename to save the result',
                         required=False)
+    parser.add_argument('-c', '--config',
+                        help='Location to .njsscan config file',
+                        required=False)
     parser.add_argument('--missing-controls',
                         help='enable missing security controls check',
                         action='store_true',
@@ -67,6 +70,7 @@ def main():
             args.path,
             is_json,
             args.missing_controls,
+            args.config,
         ).scan()
         if args.sonarqube:
             sonarqube.sonarqube_output(args.output, scan_results, __version__)

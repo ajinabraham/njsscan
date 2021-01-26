@@ -70,7 +70,7 @@ TRIGGERED = {
     'squirrelly_autoescape': 1,
     'node_sqli_injection': 6,
     'node_knex_sqli_injection': 4,
-    'node_nosqli_injection': 2,
+    'node_nosqli_injection': 5,
     'node_nosqli_js_injection': 3,
     'host_header_injection': 12,
     'xxe_xml2json': 2,
@@ -107,6 +107,8 @@ TRIGGERED = {
     'cookie_session_no_expires': 1,
     'shelljs_os_command_exec': 2,
     'playwright_ssrf': 5,
+    'express_lfr': 1,
+    'express_lfr_warning': 1,
 }
 CONTROLS = {
     'anti_csrf_control': 0,
