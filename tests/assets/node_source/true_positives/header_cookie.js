@@ -12,7 +12,7 @@ function test1() {
             httpOnly: true,
             domain: 'example.com',
             path: 'foo/bar',
-            expires: expiryDate
+            maxAge: 2000
         }
     }
     // ruleid:cookie_session_default
@@ -30,7 +30,7 @@ function test2() {
             sameSite: true,
             domain: 'example.com',
             path: 'foo/bar',
-            expires: new Date(Date.now() + 60 * 60 * 1000)
+            maxAge: 2000
         }
     })))
 }
@@ -46,7 +46,7 @@ function test3() {
             sameSite: 'lax',
             domain: 'example.com',
             path: 'foo/bar',
-            expires: new Date(Date.now() + 60 * 60 * 1000)
+            maxAge: 2000
         }
     }))
 }
@@ -64,7 +64,7 @@ function test4() {
             sameSite: 'strict',
             httpOnly: true,
             path: 'foo/bar',
-            expires: new Date(Date.now() + 60 * 60 * 1000)
+            maxAge: 2000
         }
     }
     // ruleid:cookie_session_no_domain
@@ -86,7 +86,7 @@ function test5() {
     if (app.get('env') === 'production') {
         app.set('trust proxy', 1) // trust first proxy
         opts.cookie.domain = 'example.com'
-        opts.cookie.expires = expiryDate
+        opts.cookie.maxAge = 20000
     }
 
     // ruleid:cookie_session_no_path
@@ -121,7 +121,7 @@ function samestite() {
             sameSite: 'none',
             domain: 'example.com',
             path: 'foo/bar',
-            expires: expiryDate
+            maxAge: 2000
         }
     }
 
