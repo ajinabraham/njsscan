@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf_8 -*-
+from datetime import datetime
+
 
 __title__ = 'njsscan'
 __authors__ = 'Ajin Abraham'
-__copyright__ = 'Copyright 2020 Ajin Abraham, OpenSecurity'
-__version__ = '0.2.2'
+__copyright__ = f'Copyright {datetime.now().year} Ajin Abraham, OpenSecurity'
+__version__ = '0.2.3'
 __version_info__ = tuple(int(i) for i in __version__.split('.'))
 __all__ = [
     '__title__',
