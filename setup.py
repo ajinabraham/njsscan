@@ -1,4 +1,4 @@
-"""Setup for libsast."""
+"""Setup for njsscan."""
 from setuptools import (
     find_packages,
     setup,
