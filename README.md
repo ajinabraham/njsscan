@@ -121,7 +121,7 @@ See [nodejsscan](https://github.com/ajinabraham/nodejsscan)
 
 ## Configure njsscan
 
-A `.njsscan` file in the root of the source code directory allows you to configure njsscan.
+A `.njsscan` file in the root of the source code directory allows you to configure njsscan. You can also use a custom `.njsscan` file using `--config` argument.
 
 ```yaml
 ---
