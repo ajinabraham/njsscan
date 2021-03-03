@@ -2,7 +2,6 @@ rules:
   - id: jwt_exposed_data
     patterns:
       - pattern-inside: |
-          ...
           require('jose')
           ...
       - pattern-either:
