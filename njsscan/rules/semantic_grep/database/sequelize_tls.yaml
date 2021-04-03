@@ -1,0 +1,41 @@
+# Source: https://github.com/returntocorp/semgrep-rules/blob/develop/javascript/sequelize/security/audit/sequelize-enforce-tls.yaml
+rules:
+  - id: sequelize_tls
+    message: >
+      The Sequelize connection string indicates that database server does not use
+      TLS. Non TLS connections are susceptible to man in the
+      middle (MITM) attacks.
+    languages:
+      - javascript
+    severity: WARNING
+    metadata:
+      owasp: 'A6: 2017-Security Misconfiguration'
+      cwe: 'CWE-319: Cleartext Transmission of Sensitive Information'
+    patterns:
+      - pattern: |
+          {
+            host: $HOST,
+            database: $DATABASE,
+            dialect: $DIALECT
+           }
+      - pattern-not: |
+          {
+            host: $HOST,
+            database: $DATABASE,
+            dialect: "postgres",
+            dialectOptions: {
+                ssl: true
+            }
+          }
+      - pattern-not: |
+          {
+            host: $HOST,
+            database: $DATABASE,
+            dialect: $DIALECT,
+            dialectOptions: {
+              ssl: { ... }
+            }
+          }
+      - metavariable-regex:
+          metavariable: $DIALECT
+          regex: '[''"](mariadb|mysql|postgres)[''"]'

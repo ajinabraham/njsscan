@@ -1,0 +1,31 @@
+# Source: https://github.com/returntocorp/semgrep-rules/blob/develop/javascript/sequelize/security/audit/sequelize-tls-disabled-cert-validation.yaml
+rules:
+  - id: sequelize_tls_cert_validation
+    message: >
+      The Sequelize connection string indicates that TLS certificate vailidation
+      of database server is disabled. This is equivalent to not having TLS. An
+      attacker can present any invalid certificate and Sequelize will make
+      database connection ignoring certificate errors. This setting make the
+      connection susceptible to man in the middle (MITM) attacks. Not
+      applicable to SQLite database.
+    severity: ERROR
+    languages:
+      - javascript
+    metadata:
+      owasp: 'A6: 2017-Security Misconfiguration'
+      cwe: 'CWE-295: Improper Certificate Validation'
+    patterns:
+      - pattern: |
+          {
+            host: $HOST,
+            database: $DATABASE,
+            dialect: $DIALECT,
+            dialectOptions: {
+              ssl: {
+                rejectUnauthorized: false
+              }
+            }
+           }
+      - metavariable-regex:
+          metavariable: $DIALECT
+          regex: '[''"](mariadb|mysql|postgres)[''"]'

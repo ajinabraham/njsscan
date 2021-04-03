@@ -109,6 +109,9 @@ TRIGGERED = {
     'playwright_ssrf': 5,
     'express_lfr': 1,
     'express_lfr_warning': 1,
+    'sequelize_tls': 4,
+    'sequelize_tls_cert_validation': 3,
+    'sequelize_weak_tls': 4,
 }
 CONTROLS = {
     'anti_csrf_control': 0,
