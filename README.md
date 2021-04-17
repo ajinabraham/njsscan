@@ -30,7 +30,7 @@ Requires Python 3.6+ and supports only Mac and Linux
 
 ```bash
 $ njsscan
-usage: njsscan [-h] [--json] [--sarif] [--sonarqube] [-o OUTPUT] [-c CONFIG] [--missing-controls] [-w] [-v] [path ...]
+usage: njsscan [-h] [--json] [--sarif] [--sonarqube] [--html] [-o OUTPUT] [-c CONFIG] [--missing-controls] [-w] [-v] [path ...]
 
 positional arguments:
   path                  Path can be file(s) or directories with source code
@@ -40,6 +40,7 @@ optional arguments:
   --json                set output format as JSON
   --sarif               set output format as SARIF 2.1.0
   --sonarqube           set output format compatible with SonarQube
+  --html                set output format as HTML
   -o OUTPUT, --output OUTPUT
                         output filename to save the result
   -c CONFIG, --config CONFIG

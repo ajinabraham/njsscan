@@ -31,7 +31,8 @@ app.use(cookieParser())
 
 app.get('/form', csrfProtection, function (req, res) {
     // pass the csrfToken to the view
-    res.render('send', { csrfToken: req.csrfToken() })
+    var x = req.csrfToken()
+    res.set(csrfToken, x )
 })
 
 app.post('/process', parseForm, csrfProtection, function (req, res) {

@@ -2,7 +2,6 @@ rules:
   - id: xss_serialize_javascript
     patterns:
       - pattern-inside: |
-          ...
           $S = require('serialize-javascript')
           ...
       - pattern-not-inside: escape(...)

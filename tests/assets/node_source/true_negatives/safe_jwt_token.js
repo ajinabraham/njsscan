@@ -41,8 +41,8 @@ export default { jwtSign, jwtVerify }
 
         router.post('/signup', (req, res) => {
             let user = new User({
-                name: req.body.name,
-                password: req.body.password
+                name: name,
+                password: password
             });
             var token = jwt.sign(user, safetoken, { expiresIn: 60 * 60 * 10 });
             res.send({ success: true, token: token });
