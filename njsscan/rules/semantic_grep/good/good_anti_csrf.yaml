@@ -16,4 +16,4 @@ rules:
     message: 'This application has anti CSRF protection which prevents cross site request forgery attacks.'
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO

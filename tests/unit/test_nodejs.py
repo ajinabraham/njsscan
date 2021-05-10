@@ -89,7 +89,7 @@ TRIGGERED = {
     'wkhtmltoimage_ssrf': 1,
     'hardcoded_passport_secret': 13,
     'grpc_insecure_connection': 3,
-    'jwt_express_hardcoded': 3,
+    'jwt_express_hardcoded': 5,
     'jwt_exposed_credentials': 14,
     'jwt_exposed_data': 2,
     'jwt_not_revoked': 5,

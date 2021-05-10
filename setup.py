@@ -31,7 +31,7 @@ setup(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         ('License :: OSI Approved :: '
-         'GNU Lesser General Public License v2 (LGPLv2)'),
+         'GNU Lesser General Public License v3 or later (LGPLv3+)'),
         'Programming Language :: Python :: 3.6',
     ],
     packages=find_packages(include=[
@@ -49,7 +49,7 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'colorama>=0.4.3',
-        'libsast>=1.4.1',
+        'libsast>=1.4.2',
         'sarif-om>=1.0.4',
         'jschema-to-python>=1.2.3',
         'tabulate>=0.8.8',

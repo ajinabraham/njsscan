@@ -6,7 +6,7 @@ rules:
       https://helmetjs.github.io/docs/csp/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {contentSecurityPolicy: false}, ...)
@@ -23,7 +23,7 @@ rules:
       https://helmetjs.github.io/docs/crossdomain/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {permittedCrossDomainPolicies: false}, ...)
@@ -44,7 +44,7 @@ rules:
       https://helmetjs.github.io/docs/expect-ct/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {expectCt: false}, ...)
@@ -65,7 +65,7 @@ rules:
       https://helmetjs.github.io/docs/feature-policy/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {featurePolicy: false}, ...)
@@ -82,7 +82,7 @@ rules:
       https://helmetjs.github.io/docs/frameguard/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {frameguard: false}, ...)
@@ -102,7 +102,7 @@ rules:
       https://helmetjs.github.io/docs/dns-prefetch-control/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {dnsPrefetchControl: false}, ...)
@@ -125,7 +125,7 @@ rules:
       https://helmetjs.github.io/docs/hide-powered-by/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {hidePoweredBy: false}, ...)
@@ -146,7 +146,7 @@ rules:
       https://helmetjs.github.io/docs/hsts/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {hsts: false}, ...)
@@ -165,7 +165,7 @@ rules:
       https://helmetjs.github.io/docs/ienoopen/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {ieNoOpen: false}, ...)
@@ -184,7 +184,7 @@ rules:
       https://helmetjs.github.io/docs/dont-sniff-mimetype/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {noSniff: false}, ...)
@@ -203,7 +203,7 @@ rules:
       https://helmetjs.github.io/docs/referrer-policy/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {referrerPolicy: false}, ...)
@@ -220,7 +220,7 @@ rules:
       https://helmetjs.github.io/docs/xss-filter/
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
     patterns:
       - pattern-not: |
           $HELMET(..., {xssFilter: false}, ...)

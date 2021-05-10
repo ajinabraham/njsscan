@@ -11,4 +11,4 @@ rules:
     message: 'This application has API rate limiting controls.'
     languages:
       - javascript
-    severity: WARNING
+    severity: INFO
