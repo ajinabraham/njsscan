@@ -176,9 +176,9 @@ Add the following to the file `.github/workflows/njsscan.yml`.
 name: njsscan
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
 jobs:
   njsscan:
     runs-on: ubuntu-latest
@@ -202,9 +202,9 @@ Add the following to the file `.github/workflows/njsscan_sarif.yml`.
 name: njsscan sarif
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
 jobs:
   njsscan:
     runs-on: ubuntu-latest
