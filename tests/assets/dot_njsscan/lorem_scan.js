@@ -48,7 +48,7 @@ app.get('/', function (req, res) {
 app.get('/some/path', function (req, res) {
     var target = req.param("target");
     // BAD: sanitization doesn't apply here
-    res.redirect(target); //ignore: express_open_redirect
+    res.redirect(target); //njsscan-ignore: express_open_redirect
 });
 
 app.listen(8888);

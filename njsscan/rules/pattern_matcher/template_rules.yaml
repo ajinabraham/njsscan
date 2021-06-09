@@ -1,91 +1,100 @@
 ---
 - id: handlebar_mustache_template
-  description: The Handlebar.js/Mustache.js template has an unescaped variable. Untrusted
+  message: The Handlebar.js/Mustache.js template has an unescaped variable. Untrusted
     user input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: '{{{(?!.*body).+}}}|{{[ ]*&[\w]+.*}}'
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: dust_template
-  description: The Dust.js template has an unescaped variable. Untrusted user input
+  message: The Dust.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS)
   type: Regex
   pattern: '{.+\|[ ]*s[ ]*}[^}]'
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: pug_jade_template
-  description: The Pug.js/Jade.js template has an unescaped variable. Untrusted user
+  message: The Pug.js/Jade.js template has an unescaped variable. Untrusted user
     input passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: '!{.+}'
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: ejs_ect_template
-  description: The EJS/ECT template has an unescaped variable. Untrusted user input
+  message: The EJS/ECT template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: <%-(?![ ]*include\().*%>
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: vue_template
-  description: The Vue.js template has an unescaped variable. Untrusted user input
+  message: The Vue.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS).
   type: Regex
   pattern: v-html=[\'|"].+[\'|"]
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: underscore_template
-  description: The Underscore unescape function with untrusted user input results
+  message: The Underscore unescape function with untrusted user input results
     in Cross Site Scripting (XSS).
   type: Regex
   pattern: '_.unescape\(.+\)'
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: squirrelly_template
-  description: The Squirrelly.js template has an unescaped variable. Untrusted user input
+  message: The Squirrelly.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS)
   type: Regex
   pattern: '{{.+\|.*safe.*}}'
   severity: ERROR
   input_case: exact
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  owasp: "A1: Injection"
+  metadata:
+    cwe: cwe-79
+    owasp: "A1: Injection"
 
 - id: electronjs_node_integration
-  description: Node integration exposes node.js APIs to the electron app and this
+  message: Node integration exposes node.js APIs to the electron app and this
     can introduce remote code execution vulnerabilities to the application if the
     app is vulnerable to Cross Site Scripting (XSS).
   type: Regex
   pattern: <webview.+nodeIntegration(?!.*=.*['|"]false['|"])
   severity: WARNING
   input_case: exact
-  cwe: "CWE-272: Least Privilege Violation"
-  owasp: "A6: Security Misconfiguration"
+  metadata:
+    cwe: cwe-272
+    owasp: "A6: Security Misconfiguration"
   
 - id: electronjs_disable_websecurity
-  description: Disabling webSecurity will disable the same-origin policy and
+  message: Disabling webSecurity will disable the same-origin policy and
     allows the execution of insecure code from any domain.
   type: Regex
   pattern: <webview.+disablewebsecurity(?!.*=.*['|"]false['|"])
   severity: ERROR
   input_case: exact
-  cwe: "CWE-346: Origin Validation Error"
-  owasp: "A6: Security Misconfiguration"
+  metadata:
+    cwe: cwe-79
+    owasp: "A6: Security Misconfiguration"
