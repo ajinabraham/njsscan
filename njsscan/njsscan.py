@@ -1,16 +1,21 @@
 # -*- coding: utf_8 -*-
 """The nodejsscan cli: njsscan."""
+from linecache import getline
+
 from libsast import Scanner
+from libsast import standards
 
 from njsscan import settings
 from njsscan.utils import (
     get_config,
     read_missing_controls,
 )
+from njsscan.patcher import patch_libsast
 
 
 class NJSScan:
     def __init__(self, paths, json, check_controls, config=False) -> None:
+        patch_libsast()
         conf = get_config(paths, config)
         self.check_controls = check_controls
         self.options = {
@@ -30,6 +35,7 @@ class NJSScan:
             'nodejs': {},
             'errors': [],
         }
+        self.standards = standards.get_standards()
 
     def scan(self) -> dict:
         """Start Scan."""
@@ -60,6 +66,17 @@ class NJSScan:
                 else:
                     continue
 
+    def expand_mappings(self, meta):
+        """Expand libsast standard mappings."""
+        meta_keys = meta['metadata'].keys()
+        for mkey in meta_keys:
+            if mkey not in self.standards.keys():
+                continue
+            to_expand = meta['metadata'][mkey]
+            expanded = self.standards[mkey].get(to_expand)
+            if expanded:
+                meta['metadata'][mkey] = expanded
+
     def format_sgrep(self, sgrep_output):
         """Remove metavars from sgrep output."""
         self.result['errors'] = sgrep_output['errors']
@@ -71,6 +88,9 @@ class NJSScan:
 
     def format_matches(self, matcher_out):
         """Format Pattern Matcher output."""
+        for rule_id in matcher_out:
+            # TODO Remove after standards is handled in libsast
+            self.expand_mappings(matcher_out[rule_id])
         self.result['templates'] = matcher_out
 
     def post_ignore_rules(self):
@@ -80,6 +100,15 @@ class NJSScan:
                 del self.result['nodejs'][rule_id]
             if rule_id in self.result['templates']:
                 del self.result['templates'][rule_id]
+
+    def suppress_pm_comments(self, obj, rule_id):
+        """Suppress pattern matcher."""
+        file_path = obj['file_path']
+        lines = obj['match_lines']
+        match_line = getline(file_path, lines[0])
+        if 'njsscan-ignore:' in match_line and rule_id in match_line:
+            return True
+        return False
 
     def post_ignore_files(self):
         """Ignore file by rule."""
@@ -91,8 +120,19 @@ class NJSScan:
             tmp_files = files.copy()
             for file in files:
                 mstr = file.get('match_string')
-                cmt = 'ignore:' in mstr or 'njsscan-ignore:' in mstr
-                if cmt and rule_id in mstr:
+                if 'njsscan-ignore:' in mstr and rule_id in mstr:
+                    tmp_files.remove(file)
+                if len(tmp_files) == 0:
+                    del_keys.add(rule_id)
+            details['files'] = tmp_files
+        for rule_id, details in self.result['templates'].items():
+            files = details.get('files')
+            if not files:
+                continue
+            tmp_files = files.copy()
+            for file in files:
+                mstr = file.get('match_string')
+                if self.suppress_pm_comments(file, rule_id):
                     tmp_files.remove(file)
                 if len(tmp_files) == 0:
                     del_keys.add(rule_id)
@@ -101,3 +141,5 @@ class NJSScan:
         for rid in del_keys:
             if rid in self.result['nodejs']:
                 del self.result['nodejs'][rid]
+            if rid in self.result['templates']:
+                del self.result['templates'][rid]
