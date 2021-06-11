@@ -2,6 +2,8 @@ rules:
 - id: node_nosqli_injection
   patterns:
   - pattern-not-inside: |
+      import $SANITIZE from 'mongo-sanitize'
+      ...
       $SANITIZE = require('mongo-sanitize')
       ...
       $SANITIZE(...)
