@@ -57,7 +57,7 @@ TRIGGERED = {
     'header_xss_lusca': 2,
     'node_jwt_none_algorithm': 2,
     'electron_disable_websecurity': 3,
-    'electron_allow_http': 3,
+    'electron_allow_http': 2,
     'electron_blink_integration': 1,
     'electron_nodejs_integration': 1,
     'electron_context_isolation': 1,

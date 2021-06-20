@@ -30,6 +30,7 @@ app.post('/login', function (req, res) {
 
 
 app.post('/login', function (req, res) {
+    // ruleid:node_nosqli_injection
     x = req.body.email
     // ruleid:node_nosqli_injection
     User.findOne({ 'email': x, 'password': req.body.password }, function (err, data) {

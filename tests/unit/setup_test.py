@@ -14,7 +14,7 @@ def get_paths(who):
     js_dir = base_dir / 'assets' / 'node_source'
     template_dir = base_dir / 'assets' / 'templates'
     if who == 'nodejs':
-        true_positves = js_dir / 'true_positives'
+        true_positves = js_dir / 'true_positives' / 'semantic_grep'
         true_negatives = js_dir / 'true_negatives'
     else:
         true_positves = template_dir / 'true_positives'

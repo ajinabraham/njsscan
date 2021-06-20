@@ -24,7 +24,6 @@ const mainWindow = new BrowserWindow({
 var x = new BrowserWindow({
     webPreferences: {
         webSecurity: false,
-        allowRunningInsecureContent: true
     }
 })
 
