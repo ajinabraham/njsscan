@@ -33,9 +33,13 @@ jobs:
       run: |
         tox -e bandit
 
-    - name: Semgrep validate
+    - name: Semgrep validate rules
       run: |
         semgrep --validate --strict --config=./njsscan/rules/semantic_grep/
+
+    - name: Semgrep tests
+      run: |
+        semgrep --quiet --test --config ./njsscan/rules/semantic_grep ./tests/assets/node_source/true_positives/semantic_grep/
 
     - name: Run tests
       run: |

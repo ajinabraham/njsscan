@@ -13,7 +13,7 @@ router.post('/ping', (req, res) => {
 
 })
 
-router.post('/gzip', (req, res) => {
+router.post('/gzip', (req, res) => {/Users/ajinabraham/Code/njsscan/tests/assets/node_source/semantic_grep/exec/exec_os_command.js
     // ruleid:generic_os_command_exec
     exec(
         'gzip ' + req.query.file_path,
