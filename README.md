@@ -149,6 +149,9 @@ A `.njsscan` file in the root of the source code directory allows you to configu
   - regex_injection_dos
   - pug_jade_template
 
+  severity-filter:
+  - WARNING
+  - ERROR
 ```
 
 ## Suppress Findings

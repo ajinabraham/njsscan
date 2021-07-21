@@ -19,6 +19,7 @@ def get_config(base_path, config_file):
         'ignore_extensions': config.IGNORE_EXTENSIONS,
         'ignore_paths': config.IGNORE_PATHS,
         'ignore_rules': set(),
+        'severity_filter': config.SEVERITY_FILTER,
     }
     if config_file:
         cfile = Path(config_file)
@@ -36,6 +37,7 @@ def get_config(base_path, config_file):
         usr_igonre_paths = root.get('ignore-paths')
         usr_ignore_exts = root.get('ignore-extensions')
         usr_ignore_rules = root.get('ignore-rules')
+        usr_severity_filter = root.get('severity-filter')
         if usr_njs_ext:
             options['nodejs_extensions'].update(usr_njs_ext)
         if usr_tmpl_ext:
@@ -48,6 +50,8 @@ def get_config(base_path, config_file):
             options['ignore_extensions'].update(usr_ignore_exts)
         if usr_ignore_rules:
             options['ignore_rules'].update(usr_ignore_rules)
+        if usr_severity_filter:
+            options['severity_filter'] = usr_severity_filter
     return options
 
 
