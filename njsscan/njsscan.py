@@ -51,7 +51,8 @@ class NJSScan:
         self.format_sgrep(results['semantic_grep'])
         self.format_matches(results['pattern_matcher'])
         self.post_ignore_rules()
-        self.post_ignore_rules_by_severity()
+        self.post_ignore_rules_by_severity('nodejs')
+        self.post_ignore_rules_by_severity('template')
         self.post_ignore_files()
 
     def missing_controls(self, result):
@@ -103,16 +104,18 @@ class NJSScan:
             if rule_id in self.result['templates']:
                 del self.result['templates'][rule_id]
 
-    def post_ignore_rules_by_severity(self):
+    def post_ignore_rules_by_severity(self, key):
         """Filter findings by rule severity."""
         del_keys = set()
-        for rule_id, details in self.result['nodejs'].items():
+        if key not in self.result:
+            return
+        for rule_id, details in self.result[key].items():
             issue_severity = details.get('metadata').get('severity')
             if issue_severity not in self.options['severity_filter']:
                 del_keys.add(rule_id)
         for rid in del_keys:
-            if rid in self.result['nodejs']:
-                del self.result['nodejs'][rid]
+            if rid in self.result[key]:
+                del self.result[key][rid]
 
     def suppress_pm_comments(self, obj, rule_id):
         """Suppress pattern matcher."""
