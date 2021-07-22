@@ -64,3 +64,9 @@ GOOD_CONTROLS_ID = {
     'helmet_header_xss_filter',
     'helmet_header_check_crossdomain',
 }
+
+SEVERITY_FILTER = (
+    'INFO',
+    'WARNING',
+    'ERROR',
+)
