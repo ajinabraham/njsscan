@@ -257,6 +257,26 @@ script:
     - njsscan .
 ```
 
+#### Circle CI
+
+Add the following to the file `.circleci/config.yaml`
+
+```yaml
+version: 2.1
+jobs:
+  njsscan:
+    docker:
+      - image: cimg/python:3.9.6
+    steps:
+      - checkout
+      - run:
+          name: Install njsscan
+          command: pip install --upgrade njsscan
+      - run:
+           name: njsscan check
+           command: njsscan .
+```
+
 ## Docker
 
 ### Prebuilt image from [DockerHub](https://hub.docker.com/r/opensecurity/njsscan)
