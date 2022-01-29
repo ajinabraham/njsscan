@@ -5,6 +5,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  SEMGREP_R2C_INTERNAL_EXPLICIT_SEMGREPIGNORE: ./tests/assets/.semgrepignore
+
 jobs:
   build:
     runs-on: ubuntu-latest
