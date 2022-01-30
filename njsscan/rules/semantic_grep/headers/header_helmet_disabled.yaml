@@ -32,5 +32,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-        owasp: 'A6: Security Misconfiguration'
-        cwe: 'CWE-693: Protection Mechanism Failure'
+        owasp-web: a6
+        cwe: cwe-693

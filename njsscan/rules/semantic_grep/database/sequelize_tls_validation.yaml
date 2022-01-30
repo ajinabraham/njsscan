@@ -12,8 +12,8 @@ rules:
     languages:
       - javascript
     metadata:
-      owasp: 'A6: 2017-Security Misconfiguration'
-      cwe: 'CWE-295: Improper Certificate Validation'
+      owasp-web: 'A6: 2017-Security Misconfiguration'
+      cwe: cwe-295
     patterns:
       - pattern: |
           {

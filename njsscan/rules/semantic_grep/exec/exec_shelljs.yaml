@@ -30,7 +30,7 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-78: Improper Neutralization of Special Elements used in an OS
+        cwe-78: Improper Neutralization of Special Elements used in an OS
         Command ('OS Command Injection')

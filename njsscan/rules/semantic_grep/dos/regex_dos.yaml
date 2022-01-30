@@ -63,5 +63,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-185: Incorrect Regular Expression'
+      owasp-web: a6
+      cwe: cwe-185

@@ -25,8 +25,8 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A5: Broken Access Control'
-      cwe: 'CWE-23: Relative Path Traversal'
+      owasp-web: a5
+      cwe: cwe-23
   - id: express_lfr_warning
     patterns:
       - pattern-not-inside: |
@@ -53,5 +53,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A5: Broken Access Control'
-      cwe: 'CWE-23: Relative Path Traversal'
+      owasp-web: a5
+      cwe: cwe-23

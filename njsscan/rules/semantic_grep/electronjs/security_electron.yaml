@@ -13,8 +13,8 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-346: Origin Validation Error'
+      owasp-web: a6
+      cwe: cwe-346
   - id: electron_allow_http
     patterns:
       - pattern-either:
@@ -30,8 +30,8 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-319: Cleartext Transmission of Sensitive Information'
+      owasp-web: a6
+      cwe: cwe-319
   - id: electron_blink_integration
     patterns:
       - pattern-either:
@@ -46,8 +46,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-272: Least Privilege Violation'
+      owasp-web: a6
+      cwe: cwe-272
   - id: electron_nodejs_integration
     patterns:
       - pattern-either:
@@ -63,8 +63,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-272: Least Privilege Violation'
+      owasp-web: a6
+      cwe: cwe-272
   - id: electron_context_isolation
     patterns:
       - pattern-either:
@@ -79,8 +79,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   - id: electron_experimental_features
     patterns:
       - pattern-either:
@@ -95,5 +95,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-272: Least Privilege Violation'
+      owasp-web: a6
+      cwe: cwe-272

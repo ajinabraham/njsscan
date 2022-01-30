@@ -70,5 +70,5 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A3: Sensitive Data Exposure'
-      cwe: 'CWE-798: Use of Hard-coded Credentials'
+      owasp-web: a3
+      cwe: cwe-798

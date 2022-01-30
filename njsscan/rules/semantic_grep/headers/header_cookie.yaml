@@ -27,8 +27,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-522
+      owasp-web: a2
   - id: cookie_session_no_secure
     patterns:
       - pattern-either:
@@ -75,8 +75,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-614: Sensitive Cookie in HTTPS Session Without ''Secure'' Attribute'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-614
+      owasp-web: a2
   - id: cookie_session_no_samesite
     patterns:
       - pattern-either:
@@ -154,8 +154,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-1275: Sensitive Cookie with Improper SameSite Attribute'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-1275
+      owasp-web: a2
   - id: cookie_session_no_httponly
     patterns:
       - pattern-either:
@@ -203,8 +203,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-1004: Sensitive Cookie Without ''HttpOnly'' Flag'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-1004
+      owasp-web: a2
   - id: cookie_session_no_domain
     patterns:
       - pattern-either:
@@ -253,8 +253,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-522
+      owasp-web: a2
   - id: cookie_session_no_path
     patterns:
       - pattern-either:
@@ -302,8 +302,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-522
+      owasp-web: a2
   - id: cookie_session_no_maxage
     patterns:
       - pattern-either:
@@ -350,5 +350,5 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-613: Insufficient Session Expiration'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-613
+      owasp-web: a2

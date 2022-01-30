@@ -27,9 +27,9 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-601: URL Redirection to Untrusted Site ('Open Redirect')
+        cwe-601: URL Redirection to Untrusted Site ('Open Redirect')
   - id: express_open_redirect2
     patterns:
       - pattern-inside: |
@@ -78,6 +78,6 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-601: URL Redirection to Untrusted Site ('Open Redirect')
+        cwe-601: URL Redirection to Untrusted Site ('Open Redirect')

@@ -10,9 +10,9 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-79: Improper Neutralization of Input During Web Page Generation
+        cwe-79: Improper Neutralization of Input During Web Page Generation
         ('Cross-site Scripting')
   - id: handlebars_noescape
     patterns:
@@ -25,9 +25,9 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web
+        cwe-80: Improper Neutralization of Script-Related HTML Tags in a Web
         Page (Basic XSS)
   - id: squirrelly_autoescape
     pattern: $X.autoEscaping(false)
@@ -38,7 +38,7 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-79: Improper Neutralization of Input During Web Page Generation
+        cwe-79: Improper Neutralization of Input During Web Page Generation
         ('Cross-site Scripting')

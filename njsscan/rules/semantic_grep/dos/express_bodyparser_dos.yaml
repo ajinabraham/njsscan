@@ -15,5 +15,5 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-400: Uncontrolled Resource Consumption'
+      owasp-web: a9
+      cwe: cwe-400

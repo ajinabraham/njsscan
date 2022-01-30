@@ -597,8 +597,8 @@ rules:
       Hardcoded plain text secret used for Passport Strategy. Store it properly
       in an environment variable.
     metadata:
-      cwe: 'CWE-522: Insufficiently Protected Credentials'
-      owasp: 'A2: Broken Authentication'
+      cwe: cwe-522
+      owasp-web: a2
     languages:
       - javascript
     severity: ERROR

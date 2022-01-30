@@ -15,7 +15,7 @@ rules:
     languages:
       - javascript
     metadata:
-      owasp: 'A1: Injection'
+      owasp-web: a1
       cwe: >-
-        CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web
+        cwe-80: Improper Neutralization of Script-Related HTML Tags in a Web
         Page

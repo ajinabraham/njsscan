@@ -27,8 +27,8 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A3: Sensitive Data Exposure'
-      cwe: 'CWE-209: Generation of Error Message Containing Sensitive Information'
+      owasp-web: a3
+      cwe: cwe-209
   - id: generic_error_disclosure
     patterns:
       - pattern-either:
@@ -47,5 +47,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A3: Sensitive Data Exposure'
-      cwe: 'CWE-209: Generation of Error Message Containing Sensitive Information'
+      owasp-web: a3
+      cwe: cwe-209

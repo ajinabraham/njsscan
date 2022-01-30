@@ -13,5 +13,5 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A8: Insecure Deserialization'
-      cwe: 'CWE-502: Deserialization of Untrusted Data'
+      owasp-web: a8
+      cwe: cwe-502

@@ -31,5 +31,5 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327

@@ -63,5 +63,5 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
-      cwe: 'CWE-400: Uncontrolled Resource Consumption'
+      owasp-web: a1
+      cwe: cwe-400

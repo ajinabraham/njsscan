@@ -3,83 +3,83 @@ controls:
     metadata:
       description: 'This application does not have anti CSRF protection which prevents cross site request forgery attacks.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-352: Cross-Site Request Forgery (CSRF)'
+      owasp-web: a6
+      cwe: cwe-352
   rate_limit_control:
     metadata:
       description: 'This application does not have API rate limiting controls.'
       severity: INFO
-      owasp: 'A5: Broken Access Control'
-      cwe: 'CWE-770: Allocation of Resources Without Limits or Throttling'
+      owasp-web: a5
+      cwe: cwe-770
   helmet_header_check_csp:
     metadata:
       description: 'Helmet Content Security Policy header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_check_expect_ct:
     metadata:
       description: 'Helmet Expect CT header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_feature_policy:
     metadata:
       description: 'Helmet Feature Policy header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_frame_guard:
     metadata:
       description: 'Helmet X Frame Options header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_dns_prefetch:
     metadata:
       description: 'Helmet DNS Prefetch header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_x_powered_by:
     metadata:
       description: 'Helmet X Powered By header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_hsts:
     metadata:
       description: 'Helmet HSTS header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_ienoopen:
     metadata:
       description: 'Helmet IE No Open header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_nosniff:
     metadata:
       description: 'Helmet No Sniff header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_referrer_policy:
     metadata:
       description: 'Helmet Referrer Policy header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_xss_filter:
     metadata:
       description: 'Helmet XSS Protection header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693
   helmet_header_check_crossdomain:
     metadata:
       description: 'Helmet X Permitted Cross Domain Policies header is not configured for this application.'
       severity: INFO
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-693: Protection Mechanism Failure'
+      owasp-web: a6
+      cwe: cwe-693

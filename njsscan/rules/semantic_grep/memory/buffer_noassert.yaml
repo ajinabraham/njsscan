@@ -33,9 +33,9 @@ rules:
     languages:
       - javascript
     metadata:
-      owasp: 'A6: Security Misconfiguration'
+      owasp-web: a6
       cwe: >-
-        CWE-119: Improper Restriction of Operations within the Bounds of a
+        cwe-119: Improper Restriction of Operations within the Bounds of a
         Memory Buffer
     message: >-
       Detected usage of noassert in Buffer API, which allows the offset the be

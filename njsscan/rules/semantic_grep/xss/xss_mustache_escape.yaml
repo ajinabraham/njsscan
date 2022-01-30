@@ -5,8 +5,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: 'CWE-116: Improper Encoding or Escaping of Output'
-      owasp: 'A7: Cross-Site Scripting XSS'
+      cwe: cwe-116
+      owasp-web: a7
     message: >-
       Markup escaping disabled. This can be used with some template engines to
       escape disabling of HTML entities, which can lead to XSS attacks.

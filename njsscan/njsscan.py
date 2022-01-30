@@ -2,20 +2,20 @@
 """The nodejsscan cli: njsscan."""
 from linecache import getline
 
-from libsast import Scanner
-from libsast import standards
+from libsast import (
+    Scanner,
+    standards,
+)
 
 from njsscan import settings
 from njsscan.utils import (
     get_config,
     read_missing_controls,
 )
-from njsscan.patcher import patch_libsast
 
 
 class NJSScan:
     def __init__(self, paths, json, check_controls, config=False) -> None:
-        patch_libsast()
         conf = get_config(paths, config)
         self.check_controls = check_controls
         self.options = {
@@ -65,6 +65,7 @@ class NJSScan:
                 del result['nodejs'][rule_id]
             else:
                 if self.check_controls:
+                    self.expand_mappings(controls[rule_id])
                     result['nodejs'][rule_id] = controls[rule_id]
                 else:
                     continue
@@ -91,9 +92,6 @@ class NJSScan:
 
     def format_matches(self, matcher_out):
         """Format Pattern Matcher output."""
-        for rule_id in matcher_out:
-            # TODO Remove after standards is handled in libsast
-            self.expand_mappings(matcher_out[rule_id])
         self.result['templates'] = matcher_out
 
     def post_ignore_rules(self):

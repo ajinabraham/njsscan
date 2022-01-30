@@ -490,5 +490,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-208: Observable Timing Discrepancy'
+      owasp-web: a9
+      cwe: cwe-208

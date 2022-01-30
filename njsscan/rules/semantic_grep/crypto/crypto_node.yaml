@@ -10,8 +10,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327
   - id: node_sha1
     patterns:
       - pattern: |
@@ -23,8 +23,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327
   - id: node_aes_ecb
     patterns:
       - pattern-either:
@@ -39,8 +39,8 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327
   - id: node_aes_noiv
     patterns:
       - pattern-either:
@@ -54,8 +54,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327
   - id: node_weak_crypto
     patterns:
       - pattern-either:
@@ -69,8 +69,8 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327
   - id: node_insecure_random_generator
     patterns:
       - pattern-either:
@@ -85,5 +85,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A9: Using Components with Known Vulnerabilities'
-      cwe: 'CWE-327: Use of a Broken or Risky Cryptographic Algorithm'
+      owasp-web: a9
+      cwe: cwe-327

@@ -9,8 +9,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: 2017-Security Misconfiguration'
-      cwe: 'CWE-319: Cleartext Transmission of Sensitive Information'
+      owasp-web: 'A6: 2017-Security Misconfiguration'
+      cwe: cwe-319
     patterns:
       - pattern: |
           {

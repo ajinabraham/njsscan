@@ -27,5 +27,5 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A4: XML External Entities (XXE)'
-      cwe: "CWE-776: Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')"
+      owasp-web: a4
+      cwe: cwe-776

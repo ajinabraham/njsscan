@@ -25,5 +25,5 @@ rules:
     languages:
       - javascript
     metadata:
-      owasp: 'A1: Injection'
-      cwe: 'CWE-706: Use of Incorrectly-Resolved Name or Reference'
+      owasp-web: a1
+      cwe: cwe-706

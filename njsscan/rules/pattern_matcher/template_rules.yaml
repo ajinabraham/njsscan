@@ -8,7 +8,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: dust_template
   message: The Dust.js template has an unescaped variable. Untrusted user input
@@ -19,7 +19,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: pug_jade_template
   message: The Pug.js/Jade.js template has an unescaped variable. Untrusted user
@@ -30,7 +30,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: ejs_ect_template
   message: The EJS/ECT template has an unescaped variable. Untrusted user input
@@ -41,7 +41,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: vue_template
   message: The Vue.js template has an unescaped variable. Untrusted user input
@@ -52,7 +52,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: underscore_template
   message: The Underscore unescape function with untrusted user input results
@@ -63,7 +63,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: squirrelly_template
   message: The Squirrelly.js template has an unescaped variable. Untrusted user input
@@ -74,7 +74,7 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A1: Injection"
+    owasp-web: a1
 
 - id: electronjs_node_integration
   message: Node integration exposes node.js APIs to the electron app and this
@@ -86,7 +86,7 @@
   input_case: exact
   metadata:
     cwe: cwe-272
-    owasp: "A6: Security Misconfiguration"
+    owasp-web: a6
   
 - id: electronjs_disable_websecurity
   message: Disabling webSecurity will disable the same-origin policy and
@@ -97,4 +97,4 @@
   input_case: exact
   metadata:
     cwe: cwe-79
-    owasp: "A6: Security Misconfiguration"
+    owasp-web: a6

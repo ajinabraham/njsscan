@@ -10,8 +10,8 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-346: Origin Validation Error'
+      owasp-web: a6
+      cwe: cwe-346
   - id: express_cors
     patterns:
       - pattern-either:
@@ -44,5 +44,5 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp: 'A6: Security Misconfiguration'
-      cwe: 'CWE-346: Origin Validation Error'
+      owasp-web: a6
+      cwe: cwe-346
