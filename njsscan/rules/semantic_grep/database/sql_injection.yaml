@@ -2,6 +2,19 @@ rules:
   - id: node_sqli_injection
     patterns:
       - pattern-either:
+          - pattern-inside: |
+              require('sql-client')
+              ...
+          - pattern-inside: |
+              require('mysql')
+              ...
+          - pattern-inside: |
+              require('pg')
+              ...
+          - pattern-inside: |
+              require('mssql')
+              ...
+      - pattern-either:
           - pattern: |
               $CON.query(<... $REQ.$QUERY.$VAR ...>, ...)
           - pattern: |
@@ -33,7 +46,7 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp: 'A1: Injection'
+      owasp: "A1: Injection"
       cwe: >-
         CWE-89: Improper Neutralization of Special Elements used in an SQL
         Command ('SQL Injection')
