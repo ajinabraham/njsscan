@@ -124,7 +124,7 @@ def create_result(rule_id, issue_dict, rules, rule_indices):
         level=level_from_severity(issue_dict['metadata']['severity']),
         locations=locations,
         properties={
-            'owasp': issue_dict['metadata']['owasp'],
+            'owasp-web': issue_dict['metadata']['owasp-web'],
             'cwe': issue_dict['metadata']['cwe'],
         },
     )
