@@ -52,6 +52,4 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a1
-      cwe: >-
-        cwe-643: Improper Neutralization of Data within XPath Expressions
-        ('XPath Injection')
+      cwe: cwe-643
