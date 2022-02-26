@@ -7,10 +7,8 @@ rules:
       Sequelize use TLSv1.2 but it's recommended to use TLS1.3. Not applicable
       to SQLite database.
     metadata:
-      owasp-web: 'A6: 2017-Security Misconfiguration'
-      cwe: >-
-        cwe-757: Selection of Less-Secure Algorithm During Negotiation
-        ('Algorithm Downgrade')
+      owasp-web: a6
+      cwe: cwe-757
     severity: ERROR
     languages:
       - javascript

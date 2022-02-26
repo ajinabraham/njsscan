@@ -20,7 +20,7 @@ rules:
       that sensitive information is not exposed through JWT token payload.
     severity: WARNING
     metadata:
-      owasp-web: 'A3:2017-Sensitive Data Exposure'
+      owasp-web: a3
       cwe: cwe-522
     languages:
       - javascript

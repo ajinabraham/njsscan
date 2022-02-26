@@ -24,5 +24,4 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a6
-      cwe: >-
-        cwe-400: Uncontrolled Resource Consumption
+      cwe: cwe-400

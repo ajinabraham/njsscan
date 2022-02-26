@@ -12,7 +12,7 @@ rules:
     languages:
       - javascript
     metadata:
-      owasp-web: 'A6: 2017-Security Misconfiguration'
+      owasp-web: a6
       cwe: cwe-295
     patterns:
       - pattern: |

@@ -49,7 +49,6 @@ rules:
       - javascript
     severity: ERROR
     metadata:
-      owasp-web: "A1: Injection"
-      cwe: >-
-        cwe-89: Improper Neutralization of Special Elements used in an SQL
-        Command ('SQL Injection')
+      owasp-web: a1
+      cwe: cwe-89
+

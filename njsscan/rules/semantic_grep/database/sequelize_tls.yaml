@@ -9,7 +9,7 @@ rules:
       - javascript
     severity: WARNING
     metadata:
-      owasp-web: 'A6: 2017-Security Misconfiguration'
+      owasp-web: a6
       cwe: cwe-319
     patterns:
       - pattern: |
@@ -38,4 +38,4 @@ rules:
           }
       - metavariable-regex:
           metavariable: $DIALECT
-          regex: '[''"](mariadb|mysql|postgres)[''"]'
+          regex: '[''"](mariadb|mysql|postgres|oracle)[''"]'
