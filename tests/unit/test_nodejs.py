@@ -91,7 +91,7 @@ TRIGGERED = {
     'grpc_insecure_connection': 3,
     'jwt_express_hardcoded': 5,
     'jwt_exposed_credentials': 14,
-    'jwt_exposed_data': 2,
+    'jwt_exposed_data': 3,
     'jwt_not_revoked': 5,
     'buffer_noassert': 1,
     'xss_disable_mustache_escape': 1,
