@@ -1,18 +1,17 @@
 rules:
   - id: grpc_insecure_connection
-    patterns: 
-        - pattern-inside: |
-            require('grpc')
-            ...
-        - pattern: $CREDENTIALS.createInsecure()
+    patterns:
+      - pattern-inside: |
+          require('grpc')
+          ...
+      - pattern: $CREDENTIALS.createInsecure()
     message: >-
-        Found an insecure gRPC connection. This creates a connection without
-        encryption to a gRPC client/server. A malicious attacker could 
-        tamper with the gRPC message, which could compromise the machine.
+      Found an insecure gRPC connection. This creates a connection without
+      encryption to a gRPC client/server. A malicious attacker could  tamper
+      with the gRPC message, which could compromise the machine.
     metadata:
-        owasp-web: a8
-        cwe: cwe-502
+      owasp-web: a8
+      cwe: cwe-502
     severity: ERROR
     languages:
-        - javascript
-
+      - javascript
