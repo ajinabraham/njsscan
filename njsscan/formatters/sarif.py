@@ -93,10 +93,14 @@ def create_result(rule_id, issue_dict, rules, rule_indices):
         rule_index = rule_indices[rule_id]
     else:
         doc = 'https://ajinabraham.github.io/nodejsscan/#{}'.format(rule_id)
+        cwe_id = issue_dict['metadata']['cwe'].split(':')[0].lower()
         rule = om.ReportingDescriptor(
             id=rule_id,
             name=get_rule_name(rule_id),
             help_uri=doc,
+            properties={
+                'tags': ['security', f'external/cwe{cwe_id}'],
+            },
         )
         rule_index = len(rules)
         rules[rule_id] = rule
