@@ -10,7 +10,8 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a6
-      cwe: cwe-319
+      owasp: "A06:2017 - Security Misconfiguration"
+      cwe: "CWE-319: Cleartext Transmission of Sensitive Information"
     patterns:
       - pattern: |
           {

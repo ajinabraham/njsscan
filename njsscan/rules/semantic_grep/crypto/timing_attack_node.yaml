@@ -491,4 +491,5 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a9
-      cwe: cwe-208
+      owasp: "A09:2017 - Using Components with Known Vulnerabilities"
+      cwe: "CWE-208: Observable Timing Discrepancy"

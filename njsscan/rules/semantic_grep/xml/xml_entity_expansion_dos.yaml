@@ -28,4 +28,6 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a4
-      cwe: cwe-776
+      owasp: "A04:2017 - XML External Entities (XXE)"
+      cwe: "CWE-776: Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')"
+      

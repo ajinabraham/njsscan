@@ -28,7 +28,8 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a1
-      cwe: cwe-601
+      cwe: "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')"
+      owasp: "A01:2021 - Broken Access Control"
   - id: express_open_redirect2
     patterns:
       - pattern-inside: |
@@ -78,4 +79,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a1
-      cwe: cwe-601
+      cwe: "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')"
+      owasp: "A01:2021 - Broken Access Control"

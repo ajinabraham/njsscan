@@ -33,4 +33,5 @@ rules:
     severity: WARNING
     metadata:
         owasp-web: a6
-        cwe: cwe-693
+        owasp: "A06:2017 - Security Misconfiguration"
+        cwe: "CWE-693: Protection Mechanism Failure"

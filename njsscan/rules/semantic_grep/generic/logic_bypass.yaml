@@ -52,4 +52,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a5
-      cwe: cwe-807
+      owasp: "A05:2017 - Broken Access Control"
+      cwe: "CWE-807: Reliance on Untrusted Inputs in a Security Decision"

@@ -7,11 +7,12 @@ rules:
       - pattern: $CREDENTIALS.createInsecure()
     message: >-
       Found an insecure gRPC connection. This creates a connection without
-      encryption to a gRPC client/server. A malicious attacker could  tamper
+      encryption to a gRPC client/server. A malicious attacker could tamper
       with the gRPC message, which could compromise the machine.
     metadata:
       owasp-web: a8
-      cwe: cwe-502
+      cwe: "CWE-502: Deserialization of Untrusted Data"
+      owasp: "A08:2021 - Software and Data Integrity Failures"
     severity: ERROR
     languages:
       - javascript

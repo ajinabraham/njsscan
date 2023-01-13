@@ -53,7 +53,8 @@ rules:
       - javascript
     metadata:
       owasp-web: a1
-      cwe: cwe-94
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-94: Improper Control of Generation of Code ('Code Injection')"
   - id: vm_runinnewcontext_injection
     patterns:
       - pattern-inside: |
@@ -114,7 +115,8 @@ rules:
       - javascript
     metadata:
       owasp-web: a1
-      cwe: cwe-94
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-94: Improper Control of Generation of Code ('Code Injection')"
   - id: vm_compilefunction_injection
     patterns:
       - pattern-inside: |
@@ -223,7 +225,8 @@ rules:
       - javascript
     metadata:
       owasp-web: a1
-      cwe: cwe-94
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-94: Improper Control of Generation of Code ('Code Injection')"
   - id: vm_code_injection
     patterns:
       - pattern-inside: |
@@ -292,4 +295,5 @@ rules:
       - javascript
     metadata:
       owasp-web: a1
-      cwe: cwe-94
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-94: Improper Control of Generation of Code ('Code Injection')"

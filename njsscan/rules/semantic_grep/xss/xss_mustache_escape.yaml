@@ -5,7 +5,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: cwe-116
+      owasp: "A03:2021 - Injection"
+      cwe: "CWE-116: Improper Encoding or Escaping of Output"
       owasp-web: a7
     message: >-
       Markup escaping disabled. This can be used with some template engines to

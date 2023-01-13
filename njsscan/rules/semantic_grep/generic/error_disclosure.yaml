@@ -28,7 +28,8 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a3
-      cwe: cwe-209
+      owasp: "A04:2021 - Insecure Design"
+      cwe: "CWE-209: Generation of Error Message Containing Sensitive Information"
   - id: generic_error_disclosure
     patterns:
       - pattern-either:
@@ -48,4 +49,5 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a3
-      cwe: cwe-209
+      owasp: "A04:2021 - Insecure Design"
+      cwe: "CWE-209: Generation of Error Message Containing Sensitive Information"

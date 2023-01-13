@@ -52,4 +52,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a1
-      cwe: cwe-20
+      cwe: "CWE-20: Improper Input Validation"
+      owasp: "A03:2021 - Injection"

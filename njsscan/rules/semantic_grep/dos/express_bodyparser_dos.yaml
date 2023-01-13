@@ -16,4 +16,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a9
-      cwe: cwe-400
+      owasp: "A09:2017 - Using Components with Known Vulnerabilities"
+      cwe: "CWE-400: Uncontrolled Resource Consumption"

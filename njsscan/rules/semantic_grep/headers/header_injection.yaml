@@ -52,4 +52,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a1
-      cwe: cwe-644
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-644: Improper Neutralization of HTTP Headers for Scripting Syntax"

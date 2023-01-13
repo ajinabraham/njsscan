@@ -32,4 +32,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"

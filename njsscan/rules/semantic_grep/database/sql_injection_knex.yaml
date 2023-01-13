@@ -65,5 +65,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a1
-      cwe: cwe-89
-
+      owasp: "A03:2021 - Injection"
+      cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"

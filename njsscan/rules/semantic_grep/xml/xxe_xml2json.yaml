@@ -26,7 +26,8 @@ rules:
       vulnerabilities.
     metadata:
       owasp-web: a4
-      cwe: cwe-611
+      owasp: "A06:2021 - Vulnerable and Outdated Components"
+      cwe: "CWE-611: Improper Restriction of XML External Entity Reference"
     severity: ERROR
     languages:
       - javascript

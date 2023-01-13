@@ -14,7 +14,8 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a6
-      cwe: cwe-295
+      owasp: "A07:2021 - Identification and Authentication Failures"
+      cwe: "CWE-295: Improper Certificate Validation"
   - id: node_curl_ssl_verify_disable
     patterns:
       - pattern: |
@@ -25,4 +26,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a6
-      cwe: cwe-599
+      owasp: "A06:2017 - Security Misconfiguration"
+      cwe: "CWE-599: Missing Validation of OpenSSL Certificate"

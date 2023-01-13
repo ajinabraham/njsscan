@@ -125,4 +125,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a5
-      cwe: cwe-23
+      cwe: "CWE-23: Relative Path Traversal"
+      owasp: "A01:2021 - Broken Access Control"

@@ -19,7 +19,8 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a6
-      cwe: cwe-693
+      owasp: "A06:2017 - Security Misconfiguration"
+      cwe: "CWE-693: Protection Mechanism Failure"
   - id: header_xss_generic
     patterns:
       - pattern-either:
@@ -47,4 +48,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a6
-      cwe: cwe-693
+      owasp: "A06:2017 - Security Misconfiguration"
+      cwe: "CWE-693: Protection Mechanism Failure"

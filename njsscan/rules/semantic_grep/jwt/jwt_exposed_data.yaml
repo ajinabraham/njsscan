@@ -21,6 +21,7 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a3
-      cwe: cwe-522
+      cwe: "CWE-522: Insufficiently Protected Credentials"
+      owasp: "A02:2017 - Broken Authentication"
     languages:
       - javascript

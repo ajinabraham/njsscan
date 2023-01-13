@@ -95,7 +95,8 @@ rules:
       Server-Side Request Forgery vulnerabilities.
     metadata:
       owasp-web: a1
-      cwe: cwe-918
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-918: Server-Side Request Forgery (SSRF)"
     severity: ERROR
     languages:
       - javascript

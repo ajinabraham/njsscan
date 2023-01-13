@@ -41,4 +41,5 @@ rules:
       - javascript
     metadata:
       owasp-web: a1
-      cwe: cwe-94
+      owasp: "A01:2017 - Injection"
+      cwe: "CWE-94: Improper Control of Generation of Code ('Code Injection')"

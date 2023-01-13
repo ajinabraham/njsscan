@@ -8,7 +8,8 @@ rules:
       to SQLite database.
     metadata:
       owasp-web: a6
-      cwe: cwe-757
+      cwe: "CWE-757: Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')"
+      owasp: "A02:2021 - Cryptographic Failures"
     severity: ERROR
     languages:
       - javascript

@@ -54,4 +54,5 @@ rules:
   severity: ERROR
   metadata:
     owasp-web: a1
-    cwe: cwe-943
+    owasp: "A01:2017 - Injection"
+    cwe: "CWE-943: Improper Neutralization of Special Elements in Data Query Logic"

@@ -14,4 +14,5 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a8
-      cwe: cwe-502
+      cwe: "CWE-502: Deserialization of Untrusted Data"
+      owasp: "A08:2021 - Software and Data Integrity Failures"

@@ -64,4 +64,5 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a6
-      cwe: cwe-185
+      cwe: "CWE-185: Incorrect Regular Expression"
+      owasp: "A01:2021 - Broken Access Control"

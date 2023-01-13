@@ -27,7 +27,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: cwe-522
+      cwe: "CWE-522: Insufficiently Protected Credentials"
+      owasp: "A02:2017 - Broken Authentication"
       owasp-web: a2
   - id: cookie_session_no_secure
     patterns:
@@ -253,7 +254,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: cwe-522
+      cwe: "CWE-522: Insufficiently Protected Credentials"
+      owasp: "A02:2017 - Broken Authentication"
       owasp-web: a2
   - id: cookie_session_no_path
     patterns:
@@ -302,7 +304,8 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: cwe-522
+      cwe: "CWE-522: Insufficiently Protected Credentials"
+      owasp: "A02:2017 - Broken Authentication"
       owasp-web: a2
   - id: cookie_session_no_maxage
     patterns:
@@ -350,5 +353,6 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: cwe-613
+      cwe: "CWE-613: Insufficient Session Expiration"
+      owasp: "A02:2017 - Broken Authentication"
       owasp-web: a2

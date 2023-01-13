@@ -11,7 +11,8 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
   - id: node_sha1
     patterns:
       - pattern: |
@@ -24,7 +25,8 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
   - id: node_aes_ecb
     patterns:
       - pattern-either:
@@ -40,7 +42,8 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
   - id: node_aes_noiv
     patterns:
       - pattern-either:
@@ -55,7 +58,8 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
   - id: node_weak_crypto
     patterns:
       - pattern-either:
@@ -70,7 +74,8 @@ rules:
     severity: ERROR
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"
   - id: node_insecure_random_generator
     patterns:
       - pattern-either:
@@ -86,4 +91,5 @@ rules:
     severity: WARNING
     metadata:
       owasp-web: a9
-      cwe: cwe-327
+      owasp: "A02:2021 – Cryptographic Failures"
+      cwe: "CWE-327: Use of a Broken or Risky Cryptographic Algorithm"

@@ -7,7 +7,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: dust_template
@@ -18,7 +19,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: pug_jade_template
@@ -29,7 +31,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: ejs_ect_template
@@ -40,7 +43,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: vue_template
@@ -51,7 +55,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: underscore_template
@@ -62,7 +67,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: squirrelly_template
@@ -73,7 +79,8 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a1
 
 - id: electronjs_node_integration
@@ -85,7 +92,8 @@
   severity: WARNING
   input_case: exact
   metadata:
-    cwe: cwe-272
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a6
   
 - id: electronjs_disable_websecurity
@@ -96,5 +104,6 @@
   severity: ERROR
   input_case: exact
   metadata:
-    cwe: cwe-79
+    cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+    owasp: "A01:2021 - Broken Access Control"
     owasp-web: a6

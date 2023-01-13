@@ -17,5 +17,6 @@ rules:
     languages:
       - javascript
     metadata:
-      cwe: cwe-522
+      cwe: "CWE-522: Insufficiently Protected Credentials"
+      owasp: "A02:2017 - Broken Authentication"
       owasp-web: a2
