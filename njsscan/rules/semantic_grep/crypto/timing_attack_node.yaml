@@ -485,7 +485,8 @@ rules:
               return api != $X;
     message: >-
       String comparisons using '===', '!==', '!=' and '==' is vulnerable to timing attacks.
-      More info: https://snyk.io/blog/node-js-timing-attack-ccc-ctf/
+      A timing attack allows the attacker to learn potentially sensitive information by, for example, measuring how long it takes for the application to respond to a request. 
+      More info: https://nodejs.org/en/learn/getting-started/security-best-practices#information-exposure-through-timing-attacks-cwe-208
     languages:
       - javascript
     severity: WARNING
