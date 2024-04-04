@@ -69,7 +69,7 @@
   message: The Squirrelly.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS)
   type: Regex
-  pattern: '{{.+\|.*safe.*}}'
+  pattern: '{{(?!.*(?:safeURL|safeHTML|safeCSS|safeJS|safeJSStr|safeHTMLAttr)).*\|.*safe.*}}'
   severity: ERROR
   input_case: exact
   metadata:
