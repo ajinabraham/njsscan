@@ -1,7 +1,7 @@
 # -*- coding: utf_8 -*-
 """Sonarqube output format."""
 
-from njsscan.formatters.json import json_output
+from njsscan.formatters.json_out import json_output
 
 
 def get_sonarqube_issue(njsscan_issue):

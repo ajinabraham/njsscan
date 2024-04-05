@@ -8,7 +8,7 @@ from njsscan import __version__
 from njsscan.njsscan import NJSScan
 from njsscan.formatters import (
     cli,
-    json,
+    json_out,
     sarif,
     sonarqube,
 )
@@ -81,7 +81,7 @@ def main():
                 scan_results,
                 __version__)
         elif args.json:
-            json.json_output(
+            json_out.json_output(
                 args.output,
                 scan_results,
                 __version__)
