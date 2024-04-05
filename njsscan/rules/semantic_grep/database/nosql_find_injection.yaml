@@ -2,6 +2,16 @@ rules:
 - id: node_nosqli_injection
   patterns:
   - pattern-not-inside: |
+      $SEQUELIZE = require('sequelize')
+      ...
+      $SEQUELIZE(...)
+      ...
+  - pattern-not-inside: |
+      import $SEQUELIZE from 'sequelize'
+      ...
+      $SEQUELIZE(...)
+      ...
+  - pattern-not-inside: |
       $SANITIZE = require('mongo-sanitize')
       ...
       $SANITIZE(...)
