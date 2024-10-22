@@ -5,7 +5,7 @@ from .setup_test import (
 )
 
 from njsscan.formatters import (
-    json,
+    json_out,
     sarif,
     sonarqube,
 )
@@ -161,8 +161,8 @@ def nodejs_rule_trigger_count(res):
 
 
 def json_output(res):
-    json_out = json.json_output(None, res, '0.0.0')
-    assert json_out is not None
+    jout = json_out.json_output(None, res, '0.0.0')
+    assert jout is not None
 
 
 def sonar_output(res):
