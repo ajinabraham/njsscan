@@ -185,7 +185,10 @@ jobs:
     name: njsscan check
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4.2.2
+    - uses: actions/setup-python@v5.3.0
+      with:
+        python-version: '3.12'
     - name: nodejsscan scan
       id: njsscan
       uses: ajinabraham/njsscan-action@master
@@ -211,14 +214,17 @@ jobs:
     name: njsscan code scanning
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4.2.2
+    - uses: actions/setup-python@v5.3.0
+      with:
+        python-version: '3.12'
     - name: nodejsscan scan
       id: njsscan
       uses: ajinabraham/njsscan-action@master
       with:
         args: '. --sarif --output results.sarif || true'
     - name: Upload njsscan report
-      uses: github/codeql-action/upload-sarif@v1
+      uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: results.sarif
 ```

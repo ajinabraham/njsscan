@@ -47,7 +47,7 @@ TRIGGERED = {
     'node_deserialize': 1,
     'serializetojs_deserialize': 2,
     'yaml_deserialize': 3,
-    'hardcoded_jwt_secret': 8,
+    'hardcoded_jwt_secret': 19,
     'node_secret': 11,
     'node_password': 9,
     'node_username': 1,
