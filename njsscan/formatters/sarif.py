@@ -63,6 +63,7 @@ def add_results(scan_results, run):
 
 def create_rule_results(rule_id, issue_dict, rules, rule_indices):
     rule_results = []
+
     rule, rule_index = rules.get(rule_id), rule_indices.get(rule_id)
 
     if not rule:
