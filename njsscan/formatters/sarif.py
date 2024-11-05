@@ -50,7 +50,7 @@ def add_results(scan_results, run):
     for rule_id, issue_dict in combined_results.items():
         if 'files' not in issue_dict:
             continue
-        result = create_result(
+        result = create_rule_results(
             rule_id,
             issue_dict,
             rules,
@@ -61,7 +61,9 @@ def add_results(scan_results, run):
         run.tool.driver.rules = list(rules.values())
 
 
-def create_result(rule_id, issue_dict, rules, rule_indices):
+def create_rule_results(rule_id, issue_dict, rules, rule_indices):
+    rule_results = []
+
     rule, rule_index = rules.get(rule_id), rule_indices.get(rule_id)
 
     if not rule:
@@ -77,16 +79,11 @@ def create_result(rule_id, issue_dict, rules, rule_indices):
         rules[rule_id] = rule
         rule_indices[rule_id] = rule_index
 
-    locations = [create_location(item) for item in issue_dict['files']]
-    return om.Result(
-        rule_id=rule.id,
-        rule_index=rule_index,
-        message=om.Message(text=issue_dict['metadata']['description']),
-        level=level_from_severity(issue_dict['metadata']['severity']),
-        locations=locations,
-        properties={
-            'owasp-web': issue_dict['metadata']['owasp-web'],
-            'cwe': issue_dict['metadata']['cwe']})
+    for item in issue_dict.get('files', []):
+        location = create_location(item)
+        rule_results.append(create_result(rule, rule_index, issue_dict, [location]))
+
+    return rule_results
 
 
 def create_location(item):
@@ -99,6 +96,18 @@ def create_location(item):
                 start_column=item['match_position'][0],
                 end_column=item['match_position'][1],
                 snippet=om.ArtifactContent(text=item['match_string']))))
+
+
+def create_result(rule, rule_index, issue_dict, locations):
+    return om.Result(
+        rule_id=rule.id,
+        rule_index=rule_index,
+        message=om.Message(text=issue_dict['metadata']['description']),
+        level=level_from_severity(issue_dict['metadata']['severity']),
+        locations=locations,
+        properties={
+            'owasp-web': issue_dict['metadata']['owasp-web'],
+            'cwe': issue_dict['metadata']['cwe']})
 
 
 def sarif_output(outfile, scan_results, njsscan_version):
@@ -115,8 +124,7 @@ def sarif_output(outfile, scan_results, njsscan_version):
                 version=njsscan_version,
             )),
             invocations=[om.Invocation(
-                end_time_utc=datetime.now(
-                    timezone.utc).strftime(TS_FORMAT),
+                end_time_utc=datetime.now(timezone.utc).strftime(TS_FORMAT),
                 execution_successful=True,
             )])])
     run = log.runs[0]
