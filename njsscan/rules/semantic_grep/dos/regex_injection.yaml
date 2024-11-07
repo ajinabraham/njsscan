@@ -57,8 +57,10 @@ rules:
           - pattern: |
               $STR.split(<... $REQ.$PARAM.$BAR ...>)
     message: >-
-      User controlled data in RegExp() can make the application vulnerable to
-      layer 7 DoS.
+      User controlled data in RegExp() can make the application vulnerable to layer 7 DoS.
+If user input is used to create a regular expression without validation, it can be exploited to create a complex regular expression that takes an excessive amount of time to evaluate. This can lead to a Denial of Service (DoS) attack where the application becomes unresponsive.
+Even if a ReDoS attack is not intended, poorly crafted or complex regular expressions from user input can cause performance issues that impact the responsiveness of an application.
+Always sanitize and validate user input to ensure that only safe, expected characters are used in the pattern. This can be done by whitelisting known safe characters and escaping potentially harmful ones.
     languages:
       - javascript
     severity: ERROR
