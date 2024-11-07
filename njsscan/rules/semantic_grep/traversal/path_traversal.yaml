@@ -118,8 +118,10 @@ rules:
               ...
               $X.readFileAsync(..., <... $INP ...>, ...)
     message: >-
-      Untrusted user input in readFile()/readFileSync() can endup in Directory
-      Traversal Attacks.
+      Untrusted user input in createReadStream()/readFile()/readFileSync()/readFileAsync() can end up in Directory Traversal Attack.
+      A Directory Traversal Attack (also known as Path Traversal Attack) is a type of security vulnerability that occurs when an attacker is able to access files or directories on a server that are outside the intended directory structure. This attack leverages insufficient validation or sanitization of user inputs in applications that interact with the file system.
+      Strictly validate user inputs. Ensure that user-supplied paths do not include sequences like ../ or ..\\ that could traverse directories.
+      In Node.js, use the path module to safely handle and resolve file paths. The path.normalize() function can be used to ensure that paths do not go outside the intended directory.
     languages:
       - javascript
     severity: ERROR

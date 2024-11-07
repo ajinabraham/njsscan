@@ -45,8 +45,13 @@ rules:
         - pattern: |
             $RES.writeHead(..., { $X: <... $REQ.$QUERY.$FOO ...> }, ...)
     message: >-
-      Untrusted user input in response header will result in HTTP Header
-      Injection or Response Splitting Attacks.
+      If user input is not properly sanitized, an attacker can insert malicious data into response headers. 
+      This can lead to HTTP response splitting, where an attacker injects additional headers or even full HTTP responses, 
+      potentially altering how clients or intermediaries (e.g., proxies) handle the request. 
+      This can lead to vulnerabilities like Cross-Site Scripting (XSS) and cache poisoning.
+      Always sanitize and validate user inputs to ensure they do not contain characters or data that could alter the header structure (e.g., newline characters, control characters). 
+      Another good option is to leverage well-established libraries or frameworks that handle headers securely. 
+      Many frameworks offer built-in methods for setting headers that ensure they are correctly formatted and safe.
     languages:
       - javascript
     severity: ERROR
