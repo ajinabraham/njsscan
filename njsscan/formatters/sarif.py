@@ -55,7 +55,7 @@ def add_results(scan_results, run):
             issue_dict,
             rules,
             rule_indices)
-        run.results.append(result)
+        run.results.extend(result)
 
     if rules:
         run.tool.driver.rules = list(rules.values())
