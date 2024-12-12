@@ -24,7 +24,7 @@ def generate_cvssv3_string(severity, attack_vector="N", attack_complexity="L", p
 def get_defectdojo_issue(value):
     severity_mapping = {
         "INFO": "Info",
-        "WARNING": "Medium",
+        "WARNING": "High",
         "ERROR": "Critical"
     }
 
@@ -34,8 +34,8 @@ def get_defectdojo_issue(value):
     concatenated_description = f"{base_description}\n\nOWASP Reference: {owasp_web}\n\nMatched Strings:\n" + "\n".join(match_strings)
 
     # Map severity
-    raw_severity = value.get("metadata", {}).get("severity", "Medium")
-    severity = severity_mapping.get(raw_severity.upper(), "Medium")
+    raw_severity = value.get("metadata", {}).get("severity", "High")
+    severity = severity_mapping.get(raw_severity.upper(), "High")
 
     # Extract CWE number
     raw_cwe = value.get("metadata", {}).get("cwe", "")
