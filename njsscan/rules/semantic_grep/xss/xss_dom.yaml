@@ -1,0 +1,38 @@
+rules:
+  - id: dom_xss
+    mode: taint
+    pattern-sources:
+      - pattern: document.location.$PROP
+      - pattern: location.hash
+      - pattern: location.search
+      - pattern: document.URL
+      - pattern: document.documentURI
+      - pattern: document.referrer
+      - pattern: window.name
+      - pattern: $EL.textContent
+      - pattern: $EL.innerText
+      - pattern: $EL.getAttribute(...)
+    pattern-sanitizers:
+      - pattern: DOMPurify.sanitize(...)
+      - pattern: sanitizeHtml(...)
+      - pattern: encodeURIComponent(...)
+      - pattern: $X.escapeHtml(...)
+    pattern-sinks:
+      - pattern: $EL.innerHTML = $SINK
+      - pattern: $EL.outerHTML = $SINK
+      - pattern: $EL.insertAdjacentHTML($POS, $SINK)
+      - pattern: document.write($SINK)
+      - pattern: document.writeln($SINK)
+      - pattern: $EL.html($SINK)
+    message: >-
+      DOM-derived text is written back to the page as HTML. The value read from
+      the DOM (or the URL) reaches an HTML interpretation sink such as innerHTML,
+      outerHTML, insertAdjacentHTML or document.write, which results in DOM Cross
+      Site Scripting. Sanitize the value with DOMPurify.sanitize() before writing
+      it, or assign it with textContent so that it is never parsed as HTML.
+    languages:
+      - javascript
+    severity: ERROR
+    metadata:
+      owasp-web: a3
+      cwe: cwe-79
