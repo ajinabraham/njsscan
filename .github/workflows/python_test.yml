@@ -10,23 +10,23 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: [3.8, 3.9, '3.10']
+        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v5
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install tox semgrep
+        pip install tox semgrep==1.172.0
 
     - name: Lint
       run: |
@@ -38,11 +38,11 @@ jobs:
 
     - name: Semgrep validate rules
       run: |
-        semgrep --validate --strict --config=./njsscan/rules/semantic_grep/
+        semgrep --metrics=off --validate --strict --config=./njsscan/rules/semantic_grep/
 
     - name: Semgrep tests
       run: |
-        semgrep --quiet --test --config ./njsscan/rules/semantic_grep ./tests/assets/node_source/true_positives/semantic_grep/
+        SEMGREP_SETTINGS_FILE=/dev/null semgrep --metrics=off --test --config ./njsscan/rules/semantic_grep ./tests/assets/node_source/true_positives/semantic_grep/
 
     - name: Run tests
       run: |

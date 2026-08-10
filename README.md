@@ -6,7 +6,7 @@ Made with ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82
 [![PyPI version](https://badge.fury.io/py/njsscan.svg)](https://badge.fury.io/py/njsscan)
 [![platform](https://img.shields.io/badge/platform-osx%2Flinux-green.svg)](https://github.com/ajinabraham/njsscan)
 [![License](https://img.shields.io/:license-lgpl3+-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-[![python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Build](https://github.com/ajinabraham/njsscan/workflows/Build/badge.svg)](https://github.com/ajinabraham/njsscan/actions?query=workflow%3ABuild)
 
 ### Support njsscan
@@ -21,7 +21,7 @@ Made with ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82
 
 `pip install njsscan`
 
-Requires Python 3.7+ and supports only Mac and Linux
+Requires Python 3.10+ and supports only Mac and Linux
 
 ## Command Line Options
 
@@ -185,8 +185,8 @@ jobs:
     name: njsscan check
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v4.2.2
-    - uses: actions/setup-python@v5.3.0
+      uses: actions/checkout@v5
+    - uses: actions/setup-python@v6
       with:
         python-version: '3.12'
     - name: nodejsscan scan
@@ -214,8 +214,8 @@ jobs:
     name: njsscan code scanning
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v4.2.2
-    - uses: actions/setup-python@v5.3.0
+      uses: actions/checkout@v5
+    - uses: actions/setup-python@v6
       with:
         python-version: '3.12'
     - name: nodejsscan scan
