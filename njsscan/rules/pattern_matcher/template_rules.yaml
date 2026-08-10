@@ -69,8 +69,20 @@
   message: The Squirrelly.js template has an unescaped variable. Untrusted user input
     passed to this variable results in Cross Site Scripting (XSS)
   type: Regex
-  pattern: '{{.+\|.*safe.*}}'
+  pattern: '{{[\s\S]*?\|\s*\bsafe\b[\s\S]*?}}'
   severity: ERROR
+  input_case: exact
+  metadata:
+    cwe: cwe-79
+    owasp-web: a1
+
+- id: hugo_template
+  message: The Hugo template marks content as safe for unescaped output. Accidental
+    use of safeHTML/safeJS/safeURL (and related helpers) with untrusted data can
+    result in Cross Site Scripting (XSS).
+  type: Regex
+  pattern: '{{.+\|.*(?:safeURL|safeHTML|safeCSS|safeJS|safeJSStr|safeHTMLAttr).*}}'
+  severity: WARNING
   input_case: exact
   metadata:
     cwe: cwe-79

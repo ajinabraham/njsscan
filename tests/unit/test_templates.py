@@ -13,6 +13,7 @@ EXPECTED = [
     'handlebar_mustache_template',
     'dust_template',
     'squirrelly_template',
+    'hugo_template',
     'electronjs_node_integration',
     'electronjs_disable_websecurity',
 ]
