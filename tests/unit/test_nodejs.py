@@ -95,6 +95,7 @@ TRIGGERED = {
     'jwt_not_revoked': 5,
     'buffer_noassert': 1,
     'xss_disable_mustache_escape': 1,
+    'dom_xss': 4,
     'join_resolve_path_traversal': 4,
     'eval_require': 4,
     'cookie_session_default': 1,
