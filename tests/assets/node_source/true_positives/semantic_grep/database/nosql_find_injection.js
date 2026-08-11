@@ -2,8 +2,8 @@
 
 app.post('/smth', function (req, res) {
     var query = {};
-    // ruleid:node_nosqli_injection
     query['email'] = req.body.email;
+    // ruleid:node_nosqli_injection
     User.findOne(query, function (err, data) {
         if (err) {
             res.send(err);
@@ -30,7 +30,6 @@ app.post('/login', function (req, res) {
 
 
 app.post('/login', function (req, res) {
-    // ruleid:node_nosqli_injection
     x = req.body.email
     // ruleid:node_nosqli_injection
     User.findOne({ 'email': x, 'password': req.body.password }, function (err, data) {
@@ -45,8 +44,8 @@ app.post('/login', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-    // ruleid:node_nosqli_injection
     x = { 'email': req.body.email, 'password': req.body.password }
+    // ruleid:node_nosqli_injection
     User.findOne(x, function (err, data) {
         if (err) {
             res.send(err);
