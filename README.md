@@ -191,8 +191,8 @@ jobs:
     name: njsscan check
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v5
-    - uses: actions/setup-python@v6
+      uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
       with:
         python-version: '3.12'
     - name: nodejsscan scan
@@ -220,8 +220,8 @@ jobs:
     name: njsscan code scanning
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v5
-    - uses: actions/setup-python@v6
+      uses: actions/checkout@v7
+    - uses: actions/setup-python@v7
       with:
         python-version: '3.12'
     - name: nodejsscan scan
