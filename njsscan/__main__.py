@@ -8,6 +8,7 @@ from njsscan import __version__
 from njsscan.njsscan import NJSScan
 from njsscan.formatters import (
     cli,
+    defectdojo,
     json_out,
     sarif,
     sonarqube,
@@ -45,6 +46,10 @@ def main():
     parser.add_argument('--sonarqube',
                         help='set output format compatible with SonarQube',
                         action='store_true')
+    parser.add_argument('--defectdojo',
+                        help=('set output format compatible with '
+                              'DefectDojo Generic Findings Import'),
+                        action='store_true')
     parser.add_argument('--html',
                         help='set output format as HTML',
                         action='store_true')
@@ -68,7 +73,12 @@ def main():
                         action='store_true')
     args = parser.parse_args()
     if args.path:
-        is_json = args.json or args.sonarqube or args.sarif
+        is_json = (
+            args.json
+            or args.sonarqube
+            or args.sarif
+            or args.defectdojo
+        )
         scan_results = NJSScan(
             args.path,
             is_json,
@@ -87,6 +97,11 @@ def main():
                 __version__)
         elif args.sarif:
             sarif.sarif_output(
+                args.output,
+                scan_results,
+                __version__)
+        elif args.defectdojo:
+            defectdojo.defectdojo_output(
                 args.output,
                 scan_results,
                 __version__)
