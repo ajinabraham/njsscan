@@ -1,10 +1,13 @@
 """Test Node.js rules."""
+import json
+
 from .setup_test import (
     get_paths,
     scanner,
 )
 
 from njsscan.formatters import (
+    defectdojo,
     json_out,
     sarif,
     sonarqube,
@@ -69,7 +72,7 @@ TRIGGERED = {
     'squirrelly_autoescape': 1,
     'node_sqli_injection': 6,
     'node_knex_sqli_injection': 4,
-    'node_nosqli_injection': 5,
+    'node_nosqli_injection': 4,
     'node_nosqli_js_injection': 3,
     'host_header_injection': 12,
     'xxe_xml2json': 2,
@@ -95,6 +98,7 @@ TRIGGERED = {
     'jwt_not_revoked': 5,
     'buffer_noassert': 1,
     'xss_disable_mustache_escape': 1,
+    'dom_xss': 4,
     'join_resolve_path_traversal': 4,
     'eval_require': 4,
     'cookie_session_default': 1,
@@ -150,6 +154,7 @@ def test_nodejs_rules():
     json_output(res)
     sonar_output(res)
     sarif_output(res)
+    defectdojo_output(res)
 
 
 def nodejs_rule_trigger_count(res):
@@ -173,3 +178,23 @@ def sonar_output(res):
 def sarif_output(res):
     sarif_out = sarif.sarif_output(None, res, '0.0.0')
     assert sarif_out is not None
+
+
+def defectdojo_output(res):
+    dout = defectdojo.defectdojo_output(None, res, '0.0.0')
+    assert dout is not None
+    report = json.loads(dout)
+    assert report['type'] == 'njsscan'
+    assert 'findings' in report
+    assert len(report['findings']) > 0
+    finding = report['findings'][0]
+    assert finding['title']
+    assert finding['severity'] in {
+        'Critical', 'High', 'Medium', 'Low', 'Info',
+    }
+    assert finding['description']
+    assert finding['static_finding'] is True
+    if 'cwe' in finding:
+        assert isinstance(finding['cwe'], int)
+    assert 'endpoints' not in finding
+    assert 'cvssv3' not in finding

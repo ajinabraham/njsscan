@@ -28,12 +28,17 @@ setup(
     author='Ajin Abraham',
     author_email='ajin25@gmail.com',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         ('License :: OSI Approved :: '
          'GNU Lesser General Public License v3 or later (LGPLv3+)'),
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
     ],
+    python_requires='>=3.10',
     packages=find_packages(include=[
         'njsscan', 'njsscan.*',
     ]),
@@ -48,9 +53,9 @@ setup(
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     install_requires=[
-        'colorama>=0.4.5',
-        'libsast>=3.1.4',
-        'semgrep==1.86.0',
+        'colorama>=0.4.6',
+        'libsast>=3.1.8',
+        'semgrep==1.172.0',
         'sarif-om>=1.0.4',
         'jschema-to-python>=1.2.3',
         'tabulate>=0.8.10',
