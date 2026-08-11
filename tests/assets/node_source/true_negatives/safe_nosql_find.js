@@ -35,3 +35,21 @@ async function removeContent(params) {
         return true;
     }
 }
+
+// mongo-sanitize on request input should not flag (issue #83)
+app.post('/login-safe', function (req, res) {
+    const emailClean = sani(req.body.email)
+    User.findOne({ email: emailClean }, function (err, data) { })
+    User.findOne({ email: sani(req.body.email) }, function (err, data) { })
+})
+
+const api = {
+    currencyRate: {
+        getByDateAndBase: async (date, base) => {
+            return db.collection('currencyRate').findOne({
+                date: sani(date),
+                base: sani(base.toUpperCase()),
+            })
+        },
+    },
+}

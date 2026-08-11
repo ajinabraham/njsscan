@@ -1,79 +1,50 @@
 rules:
 - id: node_nosqli_injection
-  patterns:
-  - pattern-not-inside: |
-      $SEQUELIZE = require('sequelize')
-      ...
-      $SEQUELIZE(...)
-      ...
-  - pattern-not-inside: |
-      import $SEQUELIZE from 'sequelize'
-      ...
-      $SEQUELIZE(...)
-      ...
-  - pattern-not-inside: |
-      $SANITIZE = require('mongo-sanitize')
-      ...
-      $SANITIZE(...)
-      ...
-  - pattern-not-inside: |
-      import $SANITIZE from 'mongo-sanitize'
-      ...
-      $SANITIZE(...)
-      ...
-  - pattern-either:
-    - pattern: |
-        $OBJ.findOne({$KEY : <... $REQ.$FOO.$BAR ...> }, ...)
-    - pattern: |
-        $OBJ.findOne({$KEY: <... $REQ.$FOO ...> }, ...)
-    - pattern: |
-        $INP = <... $REQ.$FOO.$BAR ...>;
-        ...
-        $OBJ.findOne({$KEY : <... $INP ...> }, ...)
-    - pattern: |
-        $INP = <... $REQ.$FOO ...>;
-        ...
-        $OBJ.findOne({$KEY: <... $INP ...> }, ...)
-    - pattern: |
-        $QUERY = {$KEY: <... $REQ.$FOO.$BAR ...>};
-        ...
-        $OBJ.findOne($QUERY, ...)
-    - pattern: |
-        $QUERY = {$KEY: <... $REQ.$FOO ...>};
-        ...
-        $OBJ.findOne($QUERY, ...)
-    - pattern: |
-        $INP = <... $REQ.$FOO.$BAR ...>;
-        ...
-        $QUERY = {$KEY : <... $INP ...> };
-        ...
-        $OBJ.findOne(<... $QUERY  ...>, ...)
-    - pattern: |
-        $INP = <... $REQ.$FOO ...>;
-        ...
-        $QUERY = {$KEY : <... $INP ...> };
-        ...
-        $OBJ.findOne(<... $QUERY  ...>, ...)
-    - pattern: |
-        $QUERY[$KEY] = <... $REQ.$FOO.$BAR ...>;
-        ...
-        $OBJ.findOne($QUERY, ...)
-    - pattern: |
-        $QUERY[$KEY] = <... $REQ.$FOO ...>;
-        ...
-        $OBJ.findOne($QUERY, ...)
-    - pattern: |
-        $INP = <... $REQ.$FOO.$BAR ...>;
-        ...
-        $QUERY[$KEY] = <... $INP ...>;
-        ...
-        $OBJ.findOne(<... $QUERY  ...>, ...)
-    - pattern: |
-        $INP = <... $REQ.$FOO ...>;
-        ...
-        $QUERY[$KEY] = <... $INP ...>;
-        ...
-        $OBJ.findOne(<... $QUERY  ...>, ...)
+  mode: taint
+  pattern-sources:
+    - patterns:
+        - pattern-either:
+            - pattern: $REQ.$PROP
+            - pattern: $REQ.$PROP.$FIELD
+            - pattern: $REQ.$PROP[$KEY]
+        - metavariable-regex:
+            metavariable: $REQ
+            regex: (?i)^(req|request)$
+        - metavariable-regex:
+            metavariable: $PROP
+            regex: ^(body|query|params|headers|cookies)$
+  pattern-sanitizers:
+    - patterns:
+        - pattern: $SANITIZE(...)
+        - pattern-either:
+            - pattern-inside: |
+                $SANITIZE = require('mongo-sanitize')
+                ...
+            - pattern-inside: |
+                import $SANITIZE from 'mongo-sanitize'
+                ...
+            - pattern-inside: |
+                import * as $SANITIZE from 'mongo-sanitize'
+                ...
+            - pattern-inside: |
+                import {..., $SANITIZE, ...} from 'mongo-sanitize'
+                ...
+  pattern-sinks:
+    - pattern: $OBJ.findOne($QUERY, ...)
+  pattern-not-sinks:
+    - patterns:
+        - pattern: $OBJ.findOne($QUERY, ...)
+        - pattern-either:
+            - pattern-inside: |
+                $SEQUELIZE = require('sequelize')
+                ...
+                $SEQUELIZE(...)
+                ...
+            - pattern-inside: |
+                import $SEQUELIZE from 'sequelize'
+                ...
+                $SEQUELIZE(...)
+                ...
   message: Untrusted user input in findOne() function can result in NoSQL Injection.
   languages:
   - javascript

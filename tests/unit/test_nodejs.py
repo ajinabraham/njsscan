@@ -72,7 +72,7 @@ TRIGGERED = {
     'squirrelly_autoescape': 1,
     'node_sqli_injection': 6,
     'node_knex_sqli_injection': 4,
-    'node_nosqli_injection': 5,
+    'node_nosqli_injection': 4,
     'node_nosqli_js_injection': 3,
     'host_header_injection': 12,
     'xxe_xml2json': 2,
