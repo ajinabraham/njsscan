@@ -28,6 +28,7 @@ class NJSScan:
             'ignore_paths': conf['ignore_paths'],
             'ignore_rules': conf['ignore_rules'],
             'severity_filter': conf['severity_filter'],
+            'severity_overrides': conf['severity_overrides'],
             'show_progress': not json,
         }
         self.paths = paths
@@ -51,8 +52,9 @@ class NJSScan:
         self.format_sgrep(results['semantic_grep'])
         self.format_matches(results['pattern_matcher'])
         self.post_ignore_rules()
+        self.post_override_severities()
         self.post_ignore_rules_by_severity('nodejs')
-        self.post_ignore_rules_by_severity('template')
+        self.post_ignore_rules_by_severity('templates')
         self.post_ignore_files()
 
     def missing_controls(self, result):
@@ -101,6 +103,21 @@ class NJSScan:
                 del self.result['nodejs'][rule_id]
             if rule_id in self.result['templates']:
                 del self.result['templates'][rule_id]
+
+    def post_override_severities(self):
+        """Override finding severities from .njsscan severity-overrides."""
+        overrides = self.options.get('severity_overrides') or {}
+        if not overrides:
+            return
+        for section in ('nodejs', 'templates'):
+            for rule_id, severity in overrides.items():
+                details = self.result[section].get(rule_id)
+                if not details:
+                    continue
+                meta = details.get('metadata')
+                if not isinstance(meta, dict):
+                    continue
+                meta['severity'] = severity
 
     def post_ignore_rules_by_severity(self, key):
         """Filter findings by rule severity."""

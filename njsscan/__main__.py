@@ -9,6 +9,7 @@ from njsscan.njsscan import NJSScan
 from njsscan.formatters import (
     cli,
     defectdojo,
+    gitlab_sast,
     json_out,
     sarif,
     sonarqube,
@@ -50,6 +51,9 @@ def main():
                         help=('set output format compatible with '
                               'DefectDojo Generic Findings Import'),
                         action='store_true')
+    parser.add_argument('--gitlab-sast',
+                        help='set output format as GitLab SAST report',
+                        action='store_true')
     parser.add_argument('--html',
                         help='set output format as HTML',
                         action='store_true')
@@ -78,6 +82,7 @@ def main():
             or args.sonarqube
             or args.sarif
             or args.defectdojo
+            or args.gitlab_sast
         )
         scan_results = NJSScan(
             args.path,
@@ -87,6 +92,11 @@ def main():
         ).scan()
         if args.sonarqube:
             sonarqube.sonarqube_output(
+                args.output,
+                scan_results,
+                __version__)
+        elif args.gitlab_sast:
+            gitlab_sast.gitlab_sast_output(
                 args.output,
                 scan_results,
                 __version__)

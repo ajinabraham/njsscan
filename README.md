@@ -27,7 +27,7 @@ Requires Python 3.10+ and supports only Mac and Linux
 
 ```bash
 $ njsscan
-usage: njsscan [-h] [--json] [--sarif] [--sonarqube] [--defectdojo] [--html] [-o OUTPUT] [-c CONFIG] [--missing-controls] [-w] [-v] [path ...]
+usage: njsscan [-h] [--json] [--sarif] [--sonarqube] [--defectdojo] [--gitlab-sast] [--html] [-o OUTPUT] [-c CONFIG] [--missing-controls] [-w] [-v] [path ...]
 
 positional arguments:
   path                  Path can be file(s) or directories with source code
@@ -38,6 +38,7 @@ optional arguments:
   --sarif               set output format as SARIF 2.1.0
   --sonarqube           set output format compatible with SonarQube
   --defectdojo          set output format compatible with DefectDojo Generic Findings Import
+  --gitlab-sast         set output format as GitLab SAST report
   --html                set output format as HTML
   -o OUTPUT, --output OUTPUT
                         output filename to save the result
@@ -150,6 +151,10 @@ A `.njsscan` file in the root of the source code directory allows you to configu
   severity-filter:
   - WARNING
   - ERROR
+
+  severity-overrides:
+    express_xss: WARNING
+    node_secret: ERROR
 ```
 
 ## Suppress Findings
@@ -238,14 +243,28 @@ Add the following to the file `.gitlab-ci.yml`.
 
 ```yaml
 stages:
-    - test
+  - test
+
 njsscan:
-    image: python
-    before_script:
-        - pip3 install --upgrade njsscan
-    script:
-        - njsscan .
+  image: python:3.12
+  stage: test
+  before_script:
+    - pip3 install --upgrade njsscan
+  script:
+    - njsscan . --gitlab-sast -o gl-sast-report.json
+  artifacts:
+    reports:
+      sast: gl-sast-report.json
 ```
+
+Example command (local):
+
+```bash
+njsscan . --gitlab-sast -o gl-sast-report.json
+```
+
+This writes a native [GitLab SAST report](https://docs.gitlab.com/user/application_security/sast/) so findings appear in the Vulnerability Report / MR security widget without a SARIF converter.
+
 Example: [dvna with njsscan gitlab](https://gitlab.com/ajinabraham/dvna/-/jobs/602110439)
 
 
