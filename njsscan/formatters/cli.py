@@ -59,15 +59,26 @@ def format_table(rule_id, details, fmt):
     return tabulate(items, tablefmt=fmt)
 
 
+def print_errors(errors):
+    """Report files that could not be scanned."""
+    if not errors:
+        return
+    paths = sorted({err['path'] for err in errors if err.get('path')})
+    logger.error(
+        '%s file(s) could not be scanned and were skipped: %s. '
+        'The report below is incomplete.',
+        len(paths), ', '.join(paths))
+
+
 def cli_output(outfile, scan_results, version, fmt):
     """Format output printing."""
     tool = print_tool_info(version)
+    print_errors(scan_results.get('errors'))
     if not (scan_results['nodejs'] or scan_results['templates']):
         logger.info('No issues found.')
         return []
-    scan_results.pop('errors', None)
     buffer = []
-    for out in scan_results:
+    for out in ('nodejs', 'templates'):
         for rule_id, details in scan_results[out].items():
             formatted = format_table(rule_id, details, fmt)
             buffer.append(formatted)

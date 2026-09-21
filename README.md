@@ -253,6 +253,7 @@ njsscan:
   script:
     - njsscan . --gitlab-sast -o gl-sast-report.json
   artifacts:
+    when: always
     reports:
       sast: gl-sast-report.json
 ```

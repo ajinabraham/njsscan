@@ -224,10 +224,11 @@ def build_scan(version, start_time, end_time, status='success'):
 def gitlab_sast_output(outfile, scan_results, version):
     """Write or print a GitLab SAST report."""
     now = datetime.now(timezone.utc).strftime(TS_FORMAT)
+    status = 'failure' if scan_results.get('errors') else 'success'
     report = {
         'version': SCHEMA_VERSION,
         'vulnerabilities': build_vulnerabilities(scan_results),
-        'scan': build_scan(version, now, now),
+        'scan': build_scan(version, now, now, status),
     }
     jout = json.dumps(
         report,

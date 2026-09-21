@@ -18,6 +18,10 @@ from njsscan.formatters import (
 
 def handle_exit(results, exit_warn):
     """Handle Exit."""
+    if results.get('errors'):
+        # Files that could not be read or parsed were never scanned, so a
+        # clean report says nothing about them.
+        sys.exit(1)
     combined = {}
     if results.get('nodejs'):
         combined.update(results['nodejs'])

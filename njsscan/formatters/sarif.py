@@ -125,7 +125,7 @@ def sarif_output(outfile, scan_results, njsscan_version):
             )),
             invocations=[om.Invocation(
                 end_time_utc=datetime.now(timezone.utc).strftime(TS_FORMAT),
-                execution_successful=True,
+                execution_successful=not scan_results.get('errors'),
             )])])
     run = log.runs[0]
     add_results(scan_results, run)

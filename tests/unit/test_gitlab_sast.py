@@ -63,6 +63,7 @@ def test_gitlab_sast_report_shape(tmp_path):
     report = json.loads(outfile.read_text())
 
     assert report['version'] == SCHEMA_VERSION
+    assert report['scan']['status'] == 'success'
     assert report['scan']['type'] == 'sast'
     assert report['scan']['scanner']['id'] == 'njsscan'
     assert report['scan']['scanner']['version'] == __version__
