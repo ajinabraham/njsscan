@@ -58,6 +58,6 @@ setup(
         'semgrep==1.172.0',
         'sarif-om>=1.0.4',
         'jschema-to-python>=1.2.3',
-        'tabulate>=0.8.10',
+        'tabulate>=0.10.0',
     ],
 )
