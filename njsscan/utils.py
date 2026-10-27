@@ -37,11 +37,11 @@ def normalize_severity_overrides(raw):
 
 def get_config(base_path, config_file):
     options = {
-        'nodejs_extensions': config.NODEJS_FILE_EXTENSIONS,
-        'template_extensions': config.TEMPLATE_FILE_EXTENSIONS,
-        'ignore_filenames': config.IGNORE_FILENAMES,
-        'ignore_extensions': config.IGNORE_EXTENSIONS,
-        'ignore_paths': config.IGNORE_PATHS,
+        'nodejs_extensions': config.NODEJS_FILE_EXTENSIONS.copy(),
+        'template_extensions': config.TEMPLATE_FILE_EXTENSIONS.copy(),
+        'ignore_filenames': config.IGNORE_FILENAMES.copy(),
+        'ignore_extensions': config.IGNORE_EXTENSIONS.copy(),
+        'ignore_paths': config.IGNORE_PATHS.copy(),
         'ignore_rules': set(),
         'severity_filter': config.SEVERITY_FILTER,
         'severity_overrides': {},
